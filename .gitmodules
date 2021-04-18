@@ -1,0 +1,3 @@
+[submodule "src/Command"]
+	path = src/Command
+	url = https://github.com/eldinomick/symfony5-command.git
