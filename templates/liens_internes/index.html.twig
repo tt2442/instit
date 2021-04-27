@@ -1,0 +1,36 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}  LiensInternes 
+{% endblock %}
+{% block body %} <h1> LiensInternes </h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead><tr><th>Materiels </th><th>Id </th><th>Observation </th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for  liens_interne  in  liens_internes  %}
+            <tr>
+<td>{{liens_interne.materiels|json_encode}}</td>
+<td>{{liens_interne.id}}</td>
+<td>{{liens_interne.Observation}}</td><td>
+                    <form method='post' action="{{ path('liens_internes_delete', {'id':  liens_interne.id }) }}" 
+                    onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  liens_interne . id ) }}">
+                        <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir' href="{{ path('liens_internes_show', {'id':  liens_interne.id }) }}"><i class="icone fas fa-glasses "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer' href="{{ path('liens_internes_edit', {'id':  liens_interne.id }) }}"><i class="icone fas fa-pen "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer' href="{{ path('liens_internes_copy', {'id':  liens_interne.id }) }}"><i class="icone fas fa-copy "></i></a>
+
+                        <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
+                    </form>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan=3>Aucun enregistrement</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div><a href="{{ path('liens_internes_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+{% endblock %}

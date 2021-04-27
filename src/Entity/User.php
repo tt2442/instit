@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -15,6 +17,8 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * PARTIE=admin
+     * EXTEND=admin.html.twig
      */
     private $id;
 
@@ -25,6 +29,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
+     * OPT=choices=>['Admin'=>'ROLE_ADMIN', 'Particulier'=>'ROLE_PART', 'Professionnel'=>'ROLE_PRO', 'Imprimeur'=>'ROLE_PRINT']
+     * OPT=multiple=>true
+     * OPT=expanded=>true
+     * TWIG=u.truncate(8, '...') 
      */
     private $roles = [];
 
@@ -83,6 +91,28 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Pays;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="Commentaires")
+     */
+    private $ArticlesAchetes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
+     */
+    private $Commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commandes::class, mappedBy="User")
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->ArticlesAchetes = new ArrayCollection();
+        $this->Commentaires = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -281,6 +311,90 @@ class User implements UserInterface
     public function setPays(?string $Pays): self
     {
         $this->Pays = $Pays;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticlesAchetes(): Collection
+    {
+        return $this->ArticlesAchetes;
+    }
+
+    public function addArticlesAchetE(Articles $articlesAchetE): self
+    {
+        if (!$this->ArticlesAchetes->contains($articlesAchetE)) {
+            $this->ArticlesAchetes[] = $articlesAchetE;
+        }
+
+        return $this;
+    }
+
+    public function removeArticlesAchetE(Articles $articlesAchetE): self
+    {
+        $this->ArticlesAchetes->removeElement($articlesAchetE);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaires[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->Commentaires;
+    }
+
+    public function addCommentaire(Commentaires $commentaire): self
+    {
+        if (!$this->Commentaires->contains($commentaire)) {
+            $this->Commentaires[] = $commentaire;
+            $commentaire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaires $commentaire): self
+    {
+        if ($this->Commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getUser() === $this) {
+                $commentaire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commandes[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commandes $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUser() === $this) {
+                $commande->setUser(null);
+            }
+        }
 
         return $this;
     }

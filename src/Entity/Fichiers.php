@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FichiersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,8 @@ class Fichiers
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * PARTIE=admin
+     * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -36,6 +40,16 @@ class Fichiers
      * @ORM\Column(type="boolean")
      */
     private $Enligne;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Fichiers")
+     */
+    private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +100,33 @@ class Fichiers
     public function setEnligne(bool $Enligne): self
     {
         $this->Enligne = $Enligne;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->addFichier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            $article->removeFichier($this);
+        }
 
         return $this;
     }

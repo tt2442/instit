@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LiensExternesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +15,8 @@ class LiensExternes
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * PARTIE=admin
+     * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -36,6 +40,16 @@ class LiensExternes
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Observation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Materiels::class, mappedBy="LiensExternes")
+     */
+    private $materiels;
+
+    public function __construct()
+    {
+        $this->materiels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +100,33 @@ class LiensExternes
     public function setObservation(?string $Observation): self
     {
         $this->Observation = $Observation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Materiels[]
+     */
+    public function getMateriels(): Collection
+    {
+        return $this->materiels;
+    }
+
+    public function addMateriel(Materiels $materiel): self
+    {
+        if (!$this->materiels->contains($materiel)) {
+            $this->materiels[] = $materiel;
+            $materiel->addLiensExterne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMateriel(Materiels $materiel): self
+    {
+        if ($this->materiels->removeElement($materiel)) {
+            $materiel->removeLiensExterne($this);
+        }
 
         return $this;
     }

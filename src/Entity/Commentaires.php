@@ -13,6 +13,8 @@ class Commentaires
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * PARTIE=admin
+     * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -31,6 +33,16 @@ class Commentaires
      * @ORM\Column(type="datetime")
      */
     private $Date;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Commentaires")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="Commentaires")
+     */
+    private $articles;
 
     public function getId(): ?int
     {
@@ -69,6 +81,30 @@ class Commentaires
     public function setDate(\DateTimeInterface $Date): self
     {
         $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getArticles(): ?Articles
+    {
+        return $this->articles;
+    }
+
+    public function setArticles(?Articles $articles): self
+    {
+        $this->articles = $articles;
 
         return $this;
     }

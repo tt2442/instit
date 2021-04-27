@@ -6,7 +6,17 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import 'bootstrap';
+import "bootstrap/dist/css/bootstrap.css";
+import './styles/app.scss';
 import Inputmask from "inputmask"; $(document).ready(function () { Inputmask().mask(document.querySelectorAll("input")); })
+import '@fortawesome/fontawesome-free';
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
+
+
 // start the Stimulus application
+
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import './bootstrap';

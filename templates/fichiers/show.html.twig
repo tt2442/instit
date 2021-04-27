@@ -1,0 +1,42 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir Fichiers 
+{% endblock %}
+{% block body %} <h1>Voir Fichiers </h1>
+<div class='table-responsive'>
+    <table class='table'>
+<td>{{fichier.articles|json_encode}}</td>
+</tr>
+<tr>
+<th>Id</th>
+<td>{{fichier.id}}</td>
+</tr>
+<tr>
+<th>Image</th>
+<td>{{fichier.Image}}</td>
+</tr>
+<tr>
+<th>Tag</th>
+<td>{{fichier.Tag ? 'Yes' : 'No'}}</td>
+</tr>
+<tr>
+<th>Degrade</th>
+<td>{{fichier.Degrade ? 'Yes' : 'No'}}</td>
+</tr>
+<tr>
+<th>Enligne</th>
+<td>{{fichier.Enligne ? 'Yes' : 'No'}}</td>
+</tr><td>
+    <form method='post' action="{{ path('fichiers_delete', {'id':  fichier.id }) }}" onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  fichier . id ) }}">
+        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer' href="{{ path('fichiers_copy', {'id':  fichier.id }) }}">Dupliquer</a>
+        <a href='{{ path('fichiers_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
+        <button class="btn btn-xs btn-warning ">Supprimer</button>
+    </form>
+    </tr>{% endif %}
+    </tbody>
+    </table>
+    </div><a href="{{ path('fichiers_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+
+{{ include('fichiers/_delete_form.html.twig') }}
+    {% endblock %}

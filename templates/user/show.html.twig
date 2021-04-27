@@ -1,0 +1,89 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir User 
+{% endblock %}
+{% block body %} <h1>Voir User </h1>
+<div class='table-responsive'>
+    <table class='table'>{% if 'ROLE_SUPER_ADMIN' not in user.roles %}
+<td>{{user.ArticlesAchetes|json_encode}}</td>
+</tr>
+<td>{{user.Commentaires|json_encode}}</td>
+</tr>
+<td>{{user.commandes|json_encode}}</td>
+</tr>
+<tr>
+<th>Id</th>
+<td>{{user.id}}</td>
+</tr>
+<tr>
+<th>Email</th>
+<td>{{user.email}}</td>
+</tr>
+<tr>
+<th>Roles</th>
+<td>{% set options={'Admin':'ROLE_ADMIN', 'Particulier':'ROLE_PART', 'Professionnel':'ROLE_PRO', 'Imprimeur':'ROLE_PRINT',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in user.roles %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
+</tr>
+<tr>
+<th>Password</th>
+<td>{{user.password}}</td>
+</tr>
+<tr>
+<th>Nom</th>
+<td>{{user.Nom}}</td>
+</tr>
+<tr>
+<th>Prenom</th>
+<td>{{user.Prenom}}</td>
+</tr>
+<tr>
+<th>Sexe</th>
+<td>{{user.Sexe}}</td>
+</tr>
+<tr>
+<th>Adresse</th>
+<td>{{user.Adresse}}</td>
+</tr>
+<tr>
+<th>CodePostal</th>
+<td>{{user.CodePostal}}</td>
+</tr>
+<tr>
+<th>Ville</th>
+<td>{{user.Ville}}</td>
+</tr>
+<tr>
+<th>Region</th>
+<td>{{user.Region}}</td>
+</tr>
+<tr>
+<th>Mobile</th>
+<td>{{user.Mobile}}</td>
+</tr>
+<tr>
+<th>Fixe</th>
+<td>{{user.Fixe}}</td>
+</tr>
+<tr>
+<th>Pays</th>
+<td>{{user.Pays}}</td>
+</tr><td>
+    <form method='post' action="{{ path('user_delete', {'id':  user.id }) }}" onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  user . id ) }}">
+        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer' href="{{ path('user_copy', {'id':  user.id }) }}">Dupliquer</a>
+        <a href='{{ path('user_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
+        <button class="btn btn-xs btn-warning ">Supprimer</button>
+    </form>
+    </tr>{% endif %}
+    </tbody>
+    </table>
+    </div><a href="{{ path('user_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+
+{{ include('user/_delete_form.html.twig') }}
+    {% endblock %}

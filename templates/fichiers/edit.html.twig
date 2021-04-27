@@ -1,0 +1,13 @@
+{% extends 'admin.html.twig' %}{% block title %}Edition Fichiers{% endblock %}
+
+{% block body %}
+<h1>Editer Fichiers </h1>
+
+{{ form_start(form) }}
+{{ form_row(form.articles) }}{{ form_row(form.id) }}{{ form_row(form.Image) }}{{ form_row(form.Tag) }}{{ form_row(form.Degrade) }}{{ form_row(form.Enligne) }}
+<button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
+<a href="{{ path('fichiers_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>
+
+{{ form_end(form, {'render_rest': false}) }}
+{{ include('fichiers/_delete_form.html.twig') }}
+{% endblock %}

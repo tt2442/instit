@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Utilisateurs
+            <code><a href="{{ path('user_index') }}">Utilisateurs</a></code>
+        </li>
+        <li>Articles
+            <code><a href="{{ path('articles_index') }}">Articles</a></code>
+        </li>
+        <li>Categories
+            <code><a href="{{ path('categories_index') }}">Categories</a></code>
+        </li>
+        <li>Commandes
+            <code><a href="{{ path('commandes_index') }}">Commandes</a></code>
+        </li>
+        <li>Commentaires
+            <code><a href="{{ path('commentaires_index') }}">Commentaires</a></code>
+        </li>
+        <li>Fichiers
+            <code><a href="{{ path('fichiers_index') }}">Fichiers</a></code>
+        </li>
+        <li>Liens internes
+            <code><a href="{{ path('liens_internes_index') }}">Liens internes</a></code>
+        </li>
+        <li>Liens externes
+            <code><a href="{{ path('liens_externes_index') }}">Liens externes</a></code>
+        </li>
+
+    </ul>
+</div>
+{% endblock %}
