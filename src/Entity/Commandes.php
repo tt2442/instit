@@ -28,16 +28,19 @@ class Commandes
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * OPT=required=>false
      */
     private $User;
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="commandes")
+     * OPT=required=>false
      */
     private $Articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="commandes")
+     * OPT=required=>false
      */
     private $Promotions;
 

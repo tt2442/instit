@@ -13,15 +13,18 @@ public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
 {
 $builder->add('articles', EntityType::class,[
                 'class' => Articles::class,
-                'multiple' => true,'attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
 ->add('LiensInternes', EntityType::class,[
                 'class' => LiensInternes::class,
-                'multiple' => true,'attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
 ->add('LiensExternes', EntityType::class,[
                 'class' => LiensExternes::class,
-                'multiple' => true,'attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
+
 ->add('Nom', null,['attr'=>[]])
+
 ->add('Description', null,['attr'=>[]])
+
 ->add('Quantite', null,['attr'=>[]])
 
 ;}

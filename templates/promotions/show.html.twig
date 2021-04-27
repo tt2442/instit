@@ -11,6 +11,8 @@
 </tr>
 <td>{{promotion.commandes|json_encode}}</td>
 </tr>
+<td>{{promotion.users|json_encode}}</td>
+</tr>
 <tr>
 <th>Id</th>
 <td>{{promotion.id}}</td>
@@ -25,7 +27,14 @@
 </tr>
 <tr>
 <th>Etat</th>
-<td>{{promotion.Etat ? 'Yes' : 'No'}}</td>
+<td>{% set options={'Actif':'true', 'Passif':'false',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotions.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr>
 <tr>
 <th>Nom</th>
@@ -37,7 +46,14 @@
 </tr>
 <tr>
 <th>Type</th>
-<td>{{promotion.Type}}</td>
+<td>{% set options={"Pourcentage sur l'achat":'achat','Pourcentage sur la livraison':'livraison',"Montant sur l'achat":'montant_achat','...':'ect',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotions.Type %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr>
 <tr>
 <th>Valeur</th>

@@ -24,11 +24,12 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * ALIAS=texte_propre
      */
     private $Titre;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $Description;
 
@@ -39,56 +40,67 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * OPT=choices=>['Actif'=>'actif', 'En rupture'=>'rupture','Arrêté'=>'arret','En réapprovisionnement'=>'reapprovisionnement']
      */
     private $Etat;
 
     /**
      * @ORM\Column(type="integer")
+     * ALIAS=number
      */
     private $Quantite;
 
     /**
      * @ORM\Column(type="integer")
+     * ALIAS=prix
      */
     private $FraisEnvoi;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticlesAchet�es")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticlesAchetes")
+     * OPT=required=>false
      */
     private $Users;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * ALIAS=prix
      */
     private $Prix;
 
     /**
      * @ORM\ManyToOne(targetEntity=Promotions::class, inversedBy="articles")
+     * OPT=required=>false
      */
     private $Promotions;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="articles")
+     * OPT=required=>false
      */
     private $Categories;
 
     /**
      * @ORM\ManyToMany(targetEntity=Fichiers::class, inversedBy="articles")
+     * OPT=required=>false
      */
     private $Fichiers;
 
     /**
      * @ORM\ManyToMany(targetEntity=Materiels::class, inversedBy="articles")
+     * OPT=required=>false
      */
     private $Materiels;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="articles")
+     * OPT=required=>false
      */
     private $Commentaires;
 
     /**
      * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Articles")
+     * OPT=required=>false
      */
     private $commandes;
 
@@ -335,5 +347,10 @@ class Articles
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitre();
     }
 }

@@ -33,49 +33,63 @@ class Promotions
 
     /**
      * @ORM\Column(type="boolean")
+     * OPT=choices=>['Actif'=>'true', 'Passif'=>'false']
      */
     private $Etat;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * ALIAS=texte_propre
      */
     private $Nom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", length=255, nullable=true)
      */
     private $Description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * OPT=choices=>["Pourcentage sur l'achat"=>'achat','Pourcentage sur la livraison'=>'livraison',"Montant sur l'achat"=>'montant_achat','...'=>'ect']
      */
     private $Type;
 
     /**
      * @ORM\Column(type="integer")
+     * ALIAS=number
      */
     private $Valeur;
 
     /**
      * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="Promotions")
+     * OPT=required=>false
      */
     private $articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categories::class, mappedBy="Promotions")
+     * OPT=required=>false
      */
     private $categories;
 
     /**
      * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Promotions")
+     * OPT=required=>false
      */
     private $commandes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="adelete")
+     * OPT=required=>false
+     */
+    private $users;
 
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->commandes = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -246,6 +260,33 @@ class Promotions
     {
         if ($this->commandes->removeElement($commande)) {
             $commande->removePromotion($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAdelete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAdelete($this);
         }
 
         return $this;

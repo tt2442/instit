@@ -23,26 +23,30 @@ class Categories
 
     /**
      * @ORM\Column(type="string", length=255)
+     * ALIAS=texte_propre
      */
     private $Nom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $Description;
 
     /**
      * @ORM\Column(type="boolean")
+     * OPT=choices=>['Actif'=>'true','Inactif'=>'false']
      */
     private $Etat;
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Categories")
+     * OPT=required=>false
      */
     private $articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="categories")
+     * OPT=required=>false
      */
     private $Promotions;
 

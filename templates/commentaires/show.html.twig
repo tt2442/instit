@@ -15,7 +15,14 @@
 </tr>
 <tr>
 <th>Etat</th>
-<td>{{commentaire.Etat}}</td>
+<td>{% set options={'Approuvé':'approuve','Rejeté':'rejete','Caché':'cache',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in commentaires.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr>
 <tr>
 <th>Message</th>

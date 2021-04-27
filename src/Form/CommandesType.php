@@ -7,21 +7,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver
 use App\Entity\User;
 use App\Entity\Articles;
 use App\Entity\Promotions;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 class CommandesType extends AbstractType
 {
 public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
 {
 $builder->add('User', EntityType::class,[
                 'class' => User::class,
-                'attr'=>[]])
+                'required'=>false,'attr'=>[]])
 ->add('Articles', EntityType::class,[
                 'class' => Articles::class,
-                'multiple' => true,'attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
 ->add('Promotions', EntityType::class,[
                 'class' => Promotions::class,
-                'multiple' => true,'attr'=>[]])
-->add('Date', DateTimeType::class,['attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
+
+->add('Date', null,['attr'=>[]])
 
 ;}
 

@@ -14,7 +14,14 @@
 <td>{{commentaire.user|json_encode}}</td>
 <td>{{commentaire.articles|json_encode}}</td>
 <td>{{commentaire.id}}</td>
-<td>{{commentaire.Etat}}</td>
+<td>{% set options={'Approuvé':'approuve','Rejeté':'rejete','Caché':'cache',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in commentaires.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 <td>{{commentaire.Message}}</td>
 <td>{{commentaire.Date ? commentaire.Date|date('Y-m-d H:i:s') : ''}}</td><td>
                     <form method='post' action="{{ path('commentaires_delete', {'id':  commentaire.id }) }}" 

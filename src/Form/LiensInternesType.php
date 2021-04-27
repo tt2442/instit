@@ -11,7 +11,8 @@ public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
 {
 $builder->add('materiels', EntityType::class,[
                 'class' => Materiels::class,
-                'multiple' => true,'attr'=>[]])
+                'multiple' => true,'required'=>false,'attr'=>[]])
+
 ->add('Observation', null,['attr'=>[]])
 
 ;}

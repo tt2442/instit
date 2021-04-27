@@ -38,16 +38,19 @@ class Materiels
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Materiels")
+     * OPT=required=>false
      */
     private $articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=LiensInternes::class, inversedBy="materiels")
+     * OPT=required=>false
      */
     private $LiensInternes;
 
     /**
      * @ORM\ManyToMany(targetEntity=LiensExternes::class, inversedBy="materiels")
+     * OPT=required=>false
      */
     private $LiensExternes;
 

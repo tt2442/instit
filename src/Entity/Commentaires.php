@@ -21,11 +21,12 @@ class Commentaires
 
     /**
      * @ORM\Column(type="string", length=255)
+     * OPT=choices=>['Approuvé'=>'approuve','Rejeté'=>'rejete','Caché'=>'cache']
      */
     private $Etat;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $Message;
 
@@ -36,11 +37,13 @@ class Commentaires
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Commentaires")
+     * OPT=required=>false
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="Commentaires")
+     * OPT=required=>false
      */
     private $articles;
 

@@ -23,6 +23,7 @@ class LiensExternes
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=texte_propre
      */
     private $Site;
 
@@ -33,16 +34,18 @@ class LiensExternes
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * ALIAS=prix
      */
     private $Prix;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", length=255, nullable=true)
      */
     private $Observation;
 
     /**
      * @ORM\ManyToMany(targetEntity=Materiels::class, mappedBy="LiensExternes")
+     * OPT=required=>false
      */
     private $materiels;
 

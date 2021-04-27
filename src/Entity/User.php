@@ -24,86 +24,103 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * ALIAS=email
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * OPT=choices=>['Admin'=>'ROLE_ADMIN', 'Particulier'=>'ROLE_PART', 'Professionnel'=>'ROLE_PRO', 'Imprimeur'=>'ROLE_PRINT']
+     * OPT=choices=>['Admin'=>'ROLE_ADMIN']
      * OPT=multiple=>true
      * OPT=expanded=>true
-     * TWIG=u.truncate(8, '...') 
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * ATTR=password
+     * ALIAS=password
+     * ATTR=no_index
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * ALIAS=texte_propre
      */
     private $Nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * ALIAS=texte_propre
      */
     private $Prenom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * OPT=choices=>['Homme'=>'m', 'Femme'=>'f']
+     * OPT=expanded=>true
      */
     private $Sexe;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * TWIG=u.truncate(8, '...')
      */
     private $Adresse;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * ALIAS=code_postal
      */
     private $CodePostal;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=texte_propre
      */
     private $Ville;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=texte_propre
      */
     private $Region;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=phonefr
      */
     private $Mobile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=phonefr
      */
     private $Fixe;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=texte_propre
      */
     private $Pays;
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="Commentaires")
+     * OPT=required=>false
      */
     private $ArticlesAchetes;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
+     * OPT=required=>false
      */
     private $Commentaires;
 
     /**
      * @ORM\OneToMany(targetEntity=Commandes::class, mappedBy="User")
+     * OPT=required=>false
      */
     private $commandes;
 
@@ -397,5 +414,10 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

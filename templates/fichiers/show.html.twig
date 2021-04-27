@@ -17,15 +17,29 @@
 </tr>
 <tr>
 <th>Tag</th>
-<td>{{fichier.Tag ? 'Yes' : 'No'}}</td>
+<td>{{fichier.Tag}}</td>
 </tr>
 <tr>
 <th>Degrade</th>
-<td>{{fichier.Degrade ? 'Yes' : 'No'}}</td>
+<td>{% set options={'Oui':'true', 'Non':'false',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in fichiers.Degrade %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr>
 <tr>
 <th>Enligne</th>
-<td>{{fichier.Enligne ? 'Yes' : 'No'}}</td>
+<td>{% set options={'Oui':'true', 'Non':'false',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in fichiers.Enligne %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr><td>
     <form method='post' action="{{ path('fichiers_delete', {'id':  fichier.id }) }}" onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  fichier . id ) }}">

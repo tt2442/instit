@@ -22,12 +22,13 @@ class LiensInternes
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $Observation;
 
     /**
      * @ORM\ManyToMany(targetEntity=Materiels::class, mappedBy="LiensInternes")
+     * OPT=required=>false
      */
     private $materiels;
 

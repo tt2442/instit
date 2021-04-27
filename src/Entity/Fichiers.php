@@ -27,22 +27,28 @@ class Fichiers
     private $Image;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=texte_propre
      */
     private $Tag;
 
     /**
      * @ORM\Column(type="boolean")
+     * OPT=choices=>['Oui'=>'true', 'Non'=>'false']
+     * OPT=expanded=>true
      */
     private $Degrade;
 
     /**
      * @ORM\Column(type="boolean")
+     * OPT=choices=>['Oui'=>'true', 'Non'=>'false']
+     * OPT=expanded=>true
      */
     private $Enligne;
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Fichiers")
+     * OPT=required=>false
      */
     private $articles;
 
@@ -68,12 +74,12 @@ class Fichiers
         return $this;
     }
 
-    public function getTag(): ?bool
+    public function getTag(): ?string
     {
         return $this->Tag;
     }
 
-    public function setTag(bool $Tag): self
+    public function setTag(string $Tag): self
     {
         $this->Tag = $Tag;
 

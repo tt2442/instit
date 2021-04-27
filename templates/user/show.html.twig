@@ -21,7 +21,7 @@
 </tr>
 <tr>
 <th>Roles</th>
-<td>{% set options={'Admin':'ROLE_ADMIN', 'Particulier':'ROLE_PART', 'Professionnel':'ROLE_PRO', 'Imprimeur':'ROLE_PRINT',} %}
+<td>{% set options={'Admin':'ROLE_ADMIN',} %}
          {% set res=[] %}
                     {% for key,option in options %}
                     {% if option in user.roles %}
@@ -29,10 +29,6 @@
                     {% endif %}
                     {% endfor %}
                     {{res|json_encode}}</td>
-</tr>
-<tr>
-<th>Password</th>
-<td>{{user.password}}</td>
 </tr>
 <tr>
 <th>Nom</th>
@@ -44,7 +40,14 @@
 </tr>
 <tr>
 <th>Sexe</th>
-<td>{{user.Sexe}}</td>
+<td>{% set options={'Homme':'m', 'Femme':'f',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in user.Sexe %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
 </tr>
 <tr>
 <th>Adresse</th>
