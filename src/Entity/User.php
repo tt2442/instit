@@ -65,13 +65,14 @@ class User implements UserInterface
     private $Sexe;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", length=255, nullable=true)
      * TWIG=u.truncate(8, '...')
+     * ALIAS=ckeditor
      */
     private $Adresse;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      * ALIAS=code_postal
      */
     private $CodePostal;
@@ -260,12 +261,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCodePostal(): ?int
+    public function getCodePostal(): ?string
     {
         return $this->CodePostal;
     }
 
-    public function setCodePostal(?int $CodePostal): self
+    public function setCodePostal(?string $CodePostal): self
     {
         $this->CodePostal = $CodePostal;
 

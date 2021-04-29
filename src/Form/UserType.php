@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 class UserType extends AbstractType
 {
@@ -31,8 +32,7 @@ $builder->add('ArticlesAchetes', EntityType::class,[
 ->add('Nom', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'texte_propre'",]])
 ->add('Prenom', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'texte_propre'",]])
 ->add('Sexe', ChoiceType::class,['choices'=>['Homme'=>'m', 'Femme'=>'f'],'expanded'=>true,'attr'=>[]])
-
-->add('Adresse', null,['attr'=>[]])
+->add('Adresse', CKEditorType::class,['attr'=>['data-inputmask'=>"'alias': 'ckeditor'",]])
 ->add('CodePostal', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'code_postal'",]])
 ->add('Ville', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'texte_propre'",]])
 ->add('Region', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'texte_propre'",]])

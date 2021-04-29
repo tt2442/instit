@@ -15,10 +15,9 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
 import '../patch/patch_crud/alias.js';
 
-
-
 // start the Stimulus application
 
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import './bootstrap';
+
