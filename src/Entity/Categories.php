@@ -18,6 +18,7 @@ class Categories
      * PARTIE=admin
      * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
+     * ATTR=no_index
      */
     private $id;
 
@@ -41,12 +42,14 @@ class Categories
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Categories")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="categories")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Promotions;
 
@@ -146,5 +149,10 @@ class Categories
         $this->Promotions->removeElement($promotion);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

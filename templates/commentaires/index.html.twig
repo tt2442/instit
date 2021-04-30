@@ -5,19 +5,17 @@
 {% block body %} <h1> Commentaires </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>User </th><th>Articles </th><th>Id </th><th>Etat </th><th>Message </th><th>Date </th><th>Actions</th>
+        <thead><tr><th>User </th><th>Etat </th><th>Message </th><th>Date </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  commentaire  in  commentaires  %}
             <tr>
 <td>{{commentaire.user|json_encode}}</td>
-<td>{{commentaire.articles|json_encode}}</td>
-<td>{{commentaire.id}}</td>
 <td>{% set options={'Approuvé':'approuve','Rejeté':'rejete','Caché':'cache',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in commentaires.Etat %}
+                    {% if option in commentaire.Etat %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}

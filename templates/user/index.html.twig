@@ -5,42 +5,17 @@
 {% block body %} <h1> User </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>ArticlesAchetes </th><th>Commentaires </th><th>Commandes </th><th>Id </th><th>Email </th><th>Roles </th><th>Nom </th><th>Prenom </th><th>Sexe </th><th>Adresse </th><th>CodePostal </th><th>Ville </th><th>Region </th><th>Mobile </th><th>Fixe </th><th>Pays </th><th>Actions</th>
+        <thead><tr><th>Email </th><th>Nom </th><th>Prenom </th><th>Mobile </th><th>Fixe </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  user  in  users  %}
             <tr>{% if 'ROLE_SUPER_ADMIN' not in user.roles %}
-<td>{{user.ArticlesAchetes|json_encode}}</td>
-<td>{{user.Commentaires|json_encode}}</td>
-<td>{{user.commandes|json_encode}}</td>
-<td>{{user.id}}</td>
 <td>{{user.email}}</td>
-<td>{% set options={'Admin':'ROLE_ADMIN',} %}
-         {% set res=[] %}
-                    {% for key,option in options %}
-                    {% if option in user.roles %}
-                    {% set res=res|merge([key]) %}
-                    {% endif %}
-                    {% endfor %}
-                    {{res|json_encode}}</td>
 <td>{{user.Nom}}</td>
 <td>{{user.Prenom}}</td>
-<td>{% set options={'Homme':'m', 'Femme':'f',} %}
-         {% set res=[] %}
-                    {% for key,option in options %}
-                    {% if option in user.Sexe %}
-                    {% set res=res|merge([key]) %}
-                    {% endif %}
-                    {% endfor %}
-                    {{res|json_encode}}</td>
-<td>{{user.Adresse|u.truncate(8, '...')}}</td>
-<td>{{user.CodePostal}}</td>
-<td>{{user.Ville}}</td>
-<td>{{user.Region}}</td>
 <td>{{user.Mobile}}</td>
-<td>{{user.Fixe}}</td>
-<td>{{user.Pays}}</td><td>
+<td>{{user.Fixe}}</td><td>
                     <form method='post' action="{{ path('user_delete', {'id':  user.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  user . id ) }}">

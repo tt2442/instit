@@ -4,10 +4,10 @@
 <h1>Editer Categories </h1>
 
 {{ form_start(form) }}
-{{ form_row(form.articles) }}{{ form_row(form.Promotions) }}{{ form_row(form.id) }}{{ form_row(form.Nom) }}{{ form_row(form.Description) }}{{ form_row(form.Etat) }}
+{{ form_widget(form) }}
 <button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
 <a href="{{ path('categories_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>
 
-{{ form_end(form, {'render_rest': false}) }}
+{{ form_end(form) }}
 {{ include('categories/_delete_form.html.twig') }}
 {% endblock %}

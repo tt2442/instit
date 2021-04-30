@@ -1,6 +1,6 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Partie administration{% endblock %}
 
 {% block body %}
 <style>
@@ -18,9 +18,9 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Partie administration</h1>
 
-    This friendly message is coming from:
+    Ci-dessous les différentes parties du site :
     <ul>
         <li>Utilisateurs
             <code><a href="{{ path('user_index') }}">Utilisateurs</a></code>
@@ -31,9 +31,9 @@
         <li>Categories
             <code><a href="{{ path('categories_index') }}">Categories</a></code>
         </li>
-        <li>Commandes
+        {# <li>Commandes
             <code><a href="{{ path('commandes_index') }}">Commandes</a></code>
-        </li>
+        </li> #}
         <li>Commentaires
             <code><a href="{{ path('commentaires_index') }}">Commentaires</a></code>
         </li>

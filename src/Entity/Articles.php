@@ -19,6 +19,7 @@ class Articles
      * PARTIE=admin
      * EXTEND=admin.html.twig
      * ATTR=no_new=>
+     * ATTR=no_index
      */
     private $id;
 
@@ -35,6 +36,7 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * ATTR=no_index
      */
     private $Multimedia;
 
@@ -53,12 +55,14 @@ class Articles
     /**
      * @ORM\Column(type="integer")
      * ALIAS=prix
+     * OPT=label=>"Frais d'envoi"
      */
     private $FraisEnvoi;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticlesAchetes")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Users;
 
@@ -71,36 +75,42 @@ class Articles
     /**
      * @ORM\ManyToOne(targetEntity=Promotions::class, inversedBy="articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Promotions;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Categories;
 
     /**
      * @ORM\ManyToMany(targetEntity=Fichiers::class, inversedBy="articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Fichiers;
 
     /**
      * @ORM\ManyToMany(targetEntity=Materiels::class, inversedBy="articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Materiels;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Commentaires;
 
     /**
      * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Articles")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $commandes;
 

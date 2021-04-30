@@ -5,27 +5,18 @@
 {% block body %} <h1> Articles </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Users </th><th>Promotions </th><th>Categories </th><th>Fichiers </th><th>Materiels </th><th>Commentaires </th><th>Commandes </th><th>Id </th><th>Titre </th><th>Description </th><th>Multimedia </th><th>Etat </th><th>Quantite </th><th>FraisEnvoi </th><th>Prix </th><th>Actions</th>
+        <thead><tr><th>Titre </th><th>Description </th><th>Etat </th><th>Quantite </th><th>FraisEnvoi </th><th>Prix </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  article  in  articles  %}
             <tr>
-<td>{{article.Users|json_encode}}</td>
-<td>{{article.Promotions|json_encode}}</td>
-<td>{{article.Categories|json_encode}}</td>
-<td>{{article.Fichiers|json_encode}}</td>
-<td>{{article.Materiels|json_encode}}</td>
-<td>{{article.Commentaires|json_encode}}</td>
-<td>{{article.commandes|json_encode}}</td>
-<td>{{article.id}}</td>
 <td>{{article.Titre}}</td>
 <td>{{article.Description}}</td>
-<td>{{article.Multimedia}}</td>
 <td>{% set options={'Actif':'actif', 'En rupture':'rupture','Arrêté':'arret','En réapprovisionnement':'reapprovisionnement',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in articles.Etat %}
+                    {% if option in article.Etat %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}

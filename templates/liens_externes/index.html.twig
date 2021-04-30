@@ -5,14 +5,12 @@
 {% block body %} <h1> LiensExternes </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Materiels </th><th>Id </th><th>Site </th><th>Url </th><th>Prix </th><th>Observation </th><th>Actions</th>
+        <thead><tr><th>Site </th><th>Url </th><th>Prix </th><th>Observation </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  liens_externe  in  liens_externes  %}
             <tr>
-<td>{{liens_externe.materiels|json_encode}}</td>
-<td>{{liens_externe.id}}</td>
 <td>{{liens_externe.Site}}</td>
 <td>{{liens_externe.Url}}</td>
 <td>{{liens_externe.Prix}}</td>

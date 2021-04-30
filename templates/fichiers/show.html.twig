@@ -5,12 +5,6 @@
 {% block body %} <h1>Voir Fichiers </h1>
 <div class='table-responsive'>
     <table class='table'>
-<td>{{fichier.articles|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{fichier.id}}</td>
-</tr>
 <tr>
 <th>Image</th>
 <td>{{fichier.Image}}</td>
@@ -47,7 +41,7 @@
         <a href='{{ path('fichiers_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('fichiers_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>

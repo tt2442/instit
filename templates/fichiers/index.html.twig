@@ -5,20 +5,18 @@
 {% block body %} <h1> Fichiers </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Articles </th><th>Id </th><th>Image </th><th>Tag </th><th>Degrade </th><th>Enligne </th><th>Actions</th>
+        <thead><tr><th>Image </th><th>Tag </th><th>Degrade </th><th>Enligne </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  fichier  in  fichiers  %}
             <tr>
-<td>{{fichier.articles|json_encode}}</td>
-<td>{{fichier.id}}</td>
 <td>{{fichier.Image}}</td>
 <td>{{fichier.Tag}}</td>
 <td>{% set options={'Oui':'true', 'Non':'false',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in fichiers.Degrade %}
+                    {% if option in fichier.Degrade %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}
@@ -26,7 +24,7 @@
 <td>{% set options={'Oui':'true', 'Non':'false',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in fichiers.Enligne %}
+                    {% if option in fichier.Enligne %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}

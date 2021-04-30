@@ -7,12 +7,6 @@
     <table class='table'>
 <td>{{commentaire.user|json_encode}}</td>
 </tr>
-<td>{{commentaire.articles|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{commentaire.id}}</td>
-</tr>
 <tr>
 <th>Etat</th>
 <td>{% set options={'Approuvé':'approuve','Rejeté':'rejete','Caché':'cache',} %}
@@ -38,7 +32,7 @@
         <a href='{{ path('commentaires_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('commentaires_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>

@@ -2,9 +2,12 @@
 namespace App\Form;use App\Entity\Commentaires ;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver
-;use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use App\Entity\User;
+
 use App\Entity\Articles;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class CommentairesType extends AbstractType
@@ -16,7 +19,7 @@ $builder->add('user', EntityType::class,[
                 'required'=>false,'attr'=>[]])
 ->add('articles', EntityType::class,[
                 'class' => Articles::class,
-                'required'=>false,'attr'=>[]])
+                'required'=>false,'attr'=>['no_index',]])
 ->add('Etat', ChoiceType::class,['choices'=>['Approuvé'=>'approuve','Rejeté'=>'rejete','Caché'=>'cache'],'attr'=>[]])
 
 ->add('Message', null,['attr'=>[]])

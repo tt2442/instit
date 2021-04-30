@@ -5,21 +5,18 @@
 {% block body %} <h1> Categories </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Articles </th><th>Promotions </th><th>Id </th><th>Nom </th><th>Description </th><th>Etat </th><th>Actions</th>
+        <thead><tr><th>Nom </th><th>Description </th><th>Etat </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  category  in  categories  %}
             <tr>
-<td>{{category.articles|json_encode}}</td>
-<td>{{category.Promotions|json_encode}}</td>
-<td>{{category.id}}</td>
 <td>{{category.Nom}}</td>
 <td>{{category.Description}}</td>
 <td>{% set options={'Actif':'true','Inactif':'false',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in categories.Etat %}
+                    {% if option in category.Etat %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}

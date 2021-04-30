@@ -5,18 +5,6 @@
 {% block body %} <h1>Voir Promotions </h1>
 <div class='table-responsive'>
     <table class='table'>
-<td>{{promotion.articles|json_encode}}</td>
-</tr>
-<td>{{promotion.categories|json_encode}}</td>
-</tr>
-<td>{{promotion.commandes|json_encode}}</td>
-</tr>
-<td>{{promotion.users|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{promotion.id}}</td>
-</tr>
 <tr>
 <th>DateStart</th>
 <td>{{promotion.DateStart ? promotion.DateStart|date('Y-m-d H:i:s') : ''}}</td>
@@ -65,7 +53,7 @@
         <a href='{{ path('promotions_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('promotions_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>

@@ -18,6 +18,7 @@ class LiensInternes
      * PARTIE=admin
      * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
+     * ATTR=no_index
      */
     private $id;
 
@@ -29,6 +30,7 @@ class LiensInternes
     /**
      * @ORM\ManyToMany(targetEntity=Materiels::class, mappedBy="LiensInternes")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $materiels;
 

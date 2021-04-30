@@ -5,23 +5,18 @@
 {% block body %} <h1> Promotions </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Articles </th><th>Categories </th><th>Commandes </th><th>Users </th><th>Id </th><th>DateStart </th><th>DateEnd </th><th>Etat </th><th>Nom </th><th>Description </th><th>Type </th><th>Valeur </th><th>Actions</th>
+        <thead><tr><th>DateStart </th><th>DateEnd </th><th>Etat </th><th>Nom </th><th>Description </th><th>Type </th><th>Valeur </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  promotion  in  promotions  %}
             <tr>
-<td>{{promotion.articles|json_encode}}</td>
-<td>{{promotion.categories|json_encode}}</td>
-<td>{{promotion.commandes|json_encode}}</td>
-<td>{{promotion.users|json_encode}}</td>
-<td>{{promotion.id}}</td>
 <td>{{promotion.DateStart ? promotion.DateStart|date('Y-m-d H:i:s') : ''}}</td>
 <td>{{promotion.DateEnd ? promotion.DateEnd|date('Y-m-d H:i:s') : ''}}</td>
 <td>{% set options={'Actif':'true', 'Passif':'false',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in promotions.Etat %}
+                    {% if option in promotion.Etat %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}
@@ -31,7 +26,7 @@
 <td>{% set options={"Pourcentage sur l'achat":'achat','Pourcentage sur la livraison':'livraison',"Montant sur l'achat":'montant_achat','...':'ect',} %}
          {% set res=[] %}
                     {% for key,option in options %}
-                    {% if option in promotions.Type %}
+                    {% if option in promotion.Type %}
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}

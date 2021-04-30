@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 <style>
@@ -18,12 +18,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Bienvenue sur instit.cadot.info</h1>
 
-    This friendly message is coming from:
+
     <ul>
-        <li>Admin
-            <code><a href="{{ path('admin') }}">Partie admin</a></code>
+        <li>Vous pouvez voir la partie administration ici :
+            <a href="{{ path('admin') }}" class="btn btn-primary">Partie admin</a>
         </li>
     </ul>
 </div>

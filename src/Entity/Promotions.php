@@ -18,6 +18,7 @@ class Promotions
      * PARTIE=admin
      * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
+     * ATTR=no_index
      */
     private $id;
 
@@ -63,24 +64,28 @@ class Promotions
     /**
      * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="Promotions")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $articles;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categories::class, mappedBy="Promotions")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $categories;
 
     /**
      * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Promotions")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $commandes;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="adelete")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $users;
 

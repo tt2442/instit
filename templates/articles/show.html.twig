@@ -5,24 +5,6 @@
 {% block body %} <h1>Voir Articles </h1>
 <div class='table-responsive'>
     <table class='table'>
-<td>{{article.Users|json_encode}}</td>
-</tr>
-<td>{{article.Promotions|json_encode}}</td>
-</tr>
-<td>{{article.Categories|json_encode}}</td>
-</tr>
-<td>{{article.Fichiers|json_encode}}</td>
-</tr>
-<td>{{article.Materiels|json_encode}}</td>
-</tr>
-<td>{{article.Commentaires|json_encode}}</td>
-</tr>
-<td>{{article.commandes|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{article.id}}</td>
-</tr>
 <tr>
 <th>Titre</th>
 <td>{{article.Titre}}</td>
@@ -30,10 +12,6 @@
 <tr>
 <th>Description</th>
 <td>{{article.Description}}</td>
-</tr>
-<tr>
-<th>Multimedia</th>
-<td>{{article.Multimedia}}</td>
 </tr>
 <tr>
 <th>Etat</th>
@@ -64,7 +42,7 @@
         <a href='{{ path('articles_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('articles_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>

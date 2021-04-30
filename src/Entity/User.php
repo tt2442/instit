@@ -19,6 +19,7 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * PARTIE=admin
      * EXTEND=admin.html.twig
+     * ATTR=no_index
      */
     private $id;
 
@@ -33,6 +34,7 @@ class User implements UserInterface
      * OPT=choices=>['Admin'=>'ROLE_ADMIN']
      * OPT=multiple=>true
      * OPT=expanded=>true
+     * ATTR=no_index
      */
     private $roles = [];
 
@@ -61,6 +63,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      * OPT=choices=>['Homme'=>'m', 'Femme'=>'f']
      * OPT=expanded=>true
+     * ATTR=no_index
      */
     private $Sexe;
 
@@ -68,24 +71,28 @@ class User implements UserInterface
      * @ORM\Column(type="text", length=255, nullable=true)
      * TWIG=u.truncate(8, '...')
      * ALIAS=ckeditor
+     * ATTR=no_index
      */
     private $Adresse;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * ALIAS=code_postal
+     * ATTR=no_index
      */
     private $CodePostal;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * ALIAS=texte_propre
+     * ATTR=no_index
      */
     private $Ville;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * ALIAS=texte_propre
+     * ATTR=no_index
      */
     private $Region;
 
@@ -104,24 +111,28 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * ALIAS=texte_propre
+     * ATTR=no_index
      */
     private $Pays;
 
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="Commentaires")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $ArticlesAchetes;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $Commentaires;
 
     /**
      * @ORM\OneToMany(targetEntity=Commandes::class, mappedBy="User")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $commandes;
 
@@ -419,6 +430,6 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return $this->getNom();
+        return $this->getNom() . $this->getPrenom();
     }
 }

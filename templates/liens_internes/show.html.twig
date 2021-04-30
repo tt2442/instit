@@ -5,12 +5,6 @@
 {% block body %} <h1>Voir LiensInternes </h1>
 <div class='table-responsive'>
     <table class='table'>
-<td>{{liens_interne.materiels|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{liens_interne.id}}</td>
-</tr>
 <tr>
 <th>Observation</th>
 <td>{{liens_interne.Observation}}</td>
@@ -21,7 +15,7 @@
         <a href='{{ path('liens_internes_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('liens_internes_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>

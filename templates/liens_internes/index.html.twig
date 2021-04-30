@@ -5,14 +5,12 @@
 {% block body %} <h1> LiensInternes </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Materiels </th><th>Id </th><th>Observation </th><th>Actions</th>
+        <thead><tr><th>Observation </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for  liens_interne  in  liens_internes  %}
             <tr>
-<td>{{liens_interne.materiels|json_encode}}</td>
-<td>{{liens_interne.id}}</td>
 <td>{{liens_interne.Observation}}</td><td>
                     <form method='post' action="{{ path('liens_internes_delete', {'id':  liens_interne.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">

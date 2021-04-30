@@ -4,10 +4,10 @@
 <h1>Editer Promotions </h1>
 
 {{ form_start(form) }}
-{{ form_row(form.articles) }}{{ form_row(form.categories) }}{{ form_row(form.commandes) }}{{ form_row(form.users) }}{{ form_row(form.id) }}{{ form_row(form.DateStart) }}{{ form_row(form.DateEnd) }}{{ form_row(form.Etat) }}{{ form_row(form.Nom) }}{{ form_row(form.Description) }}{{ form_row(form.Type) }}{{ form_row(form.Valeur) }}
+{{ form_widget(form) }}
 <button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
 <a href="{{ path('promotions_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>
 
-{{ form_end(form, {'render_rest': false}) }}
+{{ form_end(form) }}
 {{ include('promotions/_delete_form.html.twig') }}
 {% endblock %}

@@ -18,6 +18,7 @@ class Fichiers
      * PARTIE=admin
      * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
+     * ATTR=no_index
      */
     private $id;
 
@@ -49,6 +50,7 @@ class Fichiers
     /**
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Fichiers")
      * OPT=required=>false
+     * ATTR=no_index
      */
     private $articles;
 

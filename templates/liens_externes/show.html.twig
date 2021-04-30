@@ -5,12 +5,6 @@
 {% block body %} <h1>Voir LiensExternes </h1>
 <div class='table-responsive'>
     <table class='table'>
-<td>{{liens_externe.materiels|json_encode}}</td>
-</tr>
-<tr>
-<th>Id</th>
-<td>{{liens_externe.id}}</td>
-</tr>
 <tr>
 <th>Site</th>
 <td>{{liens_externe.Site}}</td>
@@ -33,7 +27,7 @@
         <a href='{{ path('liens_externes_index') }}'><button class='btn btn-secondary mr-2' type='button'>Revenir à la liste</button></a>
         <button class="btn btn-xs btn-warning ">Supprimer</button>
     </form>
-    </tr>{% endif %}
+    </tr>
     </tbody>
     </table>
     </div><a href="{{ path('liens_externes_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
