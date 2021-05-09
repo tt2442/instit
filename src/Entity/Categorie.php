@@ -47,16 +47,16 @@ class Categorie
     private $article;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="categorie")
+     * @ORM\ManyToMany(targetEntity=Promotion::class, inversedBy="categorie")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Promotions;
+    private $Promotion;
 
     public function __construct()
     {
         $this->article = new ArrayCollection();
-        $this->Promotions = new ArrayCollection();
+        $this->Promotion = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,25 +128,25 @@ class Categorie
     }
 
     /**
-     * @return Collection|Promotions[]
+     * @return Collection|Promotion[]
      */
-    public function getPromotions(): Collection
+    public function getPromotion(): Collection
     {
-        return $this->Promotions;
+        return $this->Promotion;
     }
 
-    public function addPromotion(Promotions $promotion): self
+    public function addPromotion(Promotion $promotion): self
     {
-        if (!$this->Promotions->contains($promotion)) {
-            $this->Promotions[] = $promotion;
+        if (!$this->Promotion->contains($promotion)) {
+            $this->Promotion[] = $promotion;
         }
 
         return $this;
     }
 
-    public function removePromotion(Promotions $promotion): self
+    public function removePromotion(Promotion $promotion): self
     {
-        $this->Promotions->removeElement($promotion);
+        $this->Promotion->removeElement($promotion);
 
         return $this;
     }

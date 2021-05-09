@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}{% block title %}Edition LiensInterne{% endblock %}
+
+{% block body %}
+<h1>Editer LiensInterne </h1>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
+<a href="{{ path('liens_interne_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la
+    liste</button></a>
+
+{{ form_end(form) }}
+{{ include('liens_interne/_delete_form.html.twig') }}
+{% endblock %}

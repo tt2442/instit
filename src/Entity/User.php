@@ -116,31 +116,31 @@ class User implements UserInterface
     private $Pays;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="Commentaires")
+     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="Commentaire")
      * OPT=required=>false
      * ATTR=no_index
      */
     private $ArticleAchetes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Commentaires;
+    private $Commentaire;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commandes::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="User")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $commandes;
+    private $commande;
 
     public function __construct()
     {
         $this->ArticleAchetes = new ArrayCollection();
-        $this->Commentaires = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
+        $this->Commentaire = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -369,26 +369,26 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Commentaires[]
+     * @return Collection|Commentaire[]
      */
-    public function getCommentaires(): Collection
+    public function getCommentaire(): Collection
     {
-        return $this->Commentaires;
+        return $this->Commentaire;
     }
 
-    public function addCommentaire(Commentaires $commentaire): self
+    public function addCommentaire(Commentaire $commentaire): self
     {
-        if (!$this->Commentaires->contains($commentaire)) {
-            $this->Commentaires[] = $commentaire;
+        if (!$this->Commentaire->contains($commentaire)) {
+            $this->Commentaire[] = $commentaire;
             $commentaire->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeCommentaire(Commentaires $commentaire): self
+    public function removeCommentaire(Commentaire $commentaire): self
     {
-        if ($this->Commentaires->removeElement($commentaire)) {
+        if ($this->Commentaire->removeElement($commentaire)) {
             // set the owning side to null (unless already changed)
             if ($commentaire->getUser() === $this) {
                 $commentaire->setUser(null);
@@ -399,26 +399,26 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Commandes[]
+     * @return Collection|Commande[]
      */
-    public function getCommandes(): Collection
+    public function getCommande(): Collection
     {
-        return $this->commandes;
+        return $this->commande;
     }
 
-    public function addCommande(Commandes $commande): self
+    public function addCommande(Commande $commande): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
+        if (!$this->commande->contains($commande)) {
+            $this->commande[] = $commande;
             $commande->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commandes $commande): self
+    public function removeCommande(Commande $commande): self
     {
-        if ($this->commandes->removeElement($commande)) {
+        if ($this->commande->removeElement($commande)) {
             // set the owning side to null (unless already changed)
             if ($commande->getUser() === $this) {
                 $commande->setUser(null);

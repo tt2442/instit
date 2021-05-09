@@ -11,9 +11,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use App\Entity\Article;
 
-use App\Entity\Commentaires;
+use App\Entity\Commentaire;
 
-use App\Entity\Commandes;
+use App\Entity\Commande;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -29,12 +29,12 @@ class UserType extends AbstractType
             'class' => Article::class,
             'multiple' => true, 'required' => false, 'attr' => ['no_index',]
         ])
-            ->add('Commentaires', EntityType::class, [
-                'class' => Commentaires::class,
+            ->add('Commentaire', EntityType::class, [
+                'class' => Commentaire::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
-            ->add('commandes', EntityType::class, [
-                'class' => Commandes::class,
+            ->add('commande', EntityType::class, [
+                'class' => Commande::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
             ->add('email', EmailType::class, ['attr' => ['data-inputmask' => "'alias': 'email'",]])

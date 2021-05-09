@@ -1,4 +1,0 @@
-<form method="post" action="{{ path('liens_internes_delete', {'id': liens_interne.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ liens_interne.id) }}">
-    <button class="btn btn-warning mt-2">Supprimer</button>
-</form>

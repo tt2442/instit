@@ -73,11 +73,11 @@ class Article
     private $Prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Promotions::class, inversedBy="article")
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Promotions;
+    private $Promotion;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="article")
@@ -87,41 +87,41 @@ class Article
     private $Categorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Fichiers::class, inversedBy="article")
+     * @ORM\ManyToMany(targetEntity=Fichier::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Fichiers;
+    private $Fichier;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Materiels::class, inversedBy="article")
+     * @ORM\ManyToMany(targetEntity=Materiel::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Materiels;
+    private $Materiel;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Commentaires;
+    private $Commentaire;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Article")
+     * @ORM\ManyToMany(targetEntity=Commande::class, mappedBy="Article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $commandes;
+    private $commande;
 
     public function __construct()
     {
         $this->Users = new ArrayCollection();
         $this->Categorie = new ArrayCollection();
-        $this->Fichiers = new ArrayCollection();
-        $this->Materiels = new ArrayCollection();
-        $this->Commentaires = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
+        $this->Fichier = new ArrayCollection();
+        $this->Materiel = new ArrayCollection();
+        $this->Commentaire = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,14 +240,14 @@ class Article
         return $this;
     }
 
-    public function getPromotions(): ?Promotions
+    public function getPromotion(): ?Promotion
     {
-        return $this->Promotions;
+        return $this->Promotion;
     }
 
-    public function setPromotions(?Promotions $Promotions): self
+    public function setPromotion(?Promotion $Promotion): self
     {
-        $this->Promotions = $Promotions;
+        $this->Promotion = $Promotion;
 
         return $this;
     }
@@ -277,82 +277,82 @@ class Article
     }
 
     /**
-     * @return Collection|Fichiers[]
+     * @return Collection|Fichier[]
      */
-    public function getFichiers(): Collection
+    public function getFichier(): Collection
     {
-        return $this->Fichiers;
+        return $this->Fichier;
     }
 
-    public function addFichiers(Fichiers $fichiers): self
+    public function addFichier(Fichier $fichier): self
     {
-        if (!$this->Fichiers->contains($fichiers)) {
-            $this->Fichiers[] = $fichiers;
+        if (!$this->Fichier->contains($fichier)) {
+            $this->Fichier[] = $fichier;
         }
 
         return $this;
     }
 
-    public function removeFichiers(Fichiers $fichiers): self
+    public function removeFichier(Fichier $fichier): self
     {
-        $this->Fichiers->removeElement($fichiers);
+        $this->Fichier->removeElement($fichier);
 
         return $this;
     }
 
     /**
-     * @return Collection|Materiels[]
+     * @return Collection|Materiel[]
      */
-    public function getMateriels(): Collection
+    public function getMateriel(): Collection
     {
-        return $this->Materiels;
+        return $this->Materiel;
     }
 
-    public function addMateriel(Materiels $materiel): self
+    public function addMateriel(Materiel $materiel): self
     {
-        if (!$this->Materiels->contains($materiel)) {
-            $this->Materiels[] = $materiel;
+        if (!$this->Materiel->contains($materiel)) {
+            $this->Materiel[] = $materiel;
         }
 
         return $this;
     }
 
-    public function removeMateriel(Materiels $materiel): self
+    public function removeMateriel(Materiel $materiel): self
     {
-        $this->Materiels->removeElement($materiel);
+        $this->Materiel->removeElement($materiel);
 
         return $this;
     }
 
     /**
-     * @return Collection|Commentaires[]
+     * @return Collection|Commentaire[]
      */
-    public function getCommentaires(): Collection
+    public function getCommentaire(): Collection
     {
-        return $this->Commentaires;
+        return $this->Commentaire;
     }
 
     /**
-     * @return Collection|Commandes[]
+     * @return Collection|Commande[]
      */
-    public function getCommandes(): Collection
+    public function getCommande(): Collection
     {
-        return $this->commandes;
+        return $this->commande;
     }
 
-    public function addCommande(Commandes $commande): self
+    public function addCommande(Commande $commande): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
+        if (!$this->commande->contains($commande)) {
+            $this->commande[] = $commande;
             $commande->addArticle($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commandes $commande): self
+    public function removeCommande(Commande $commande): self
     {
-        if ($this->commandes->removeElement($commande)) {
+        if ($this->commande->removeElement($commande)) {
             $commande->removeArticle($this);
         }
 

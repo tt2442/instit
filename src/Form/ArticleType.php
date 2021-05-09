@@ -11,17 +11,17 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use App\Entity\User;
 
-use App\Entity\Promotions;
+use App\Entity\Promotion;
 
 use App\Entity\Categorie;
 
-use App\Entity\Fichiers;
+use App\Entity\Fichier;
 
-use App\Entity\Materiels;
+use App\Entity\Materiel;
 
-use App\Entity\Commentaires;
+use App\Entity\Commentaire;
 
-use App\Entity\Commandes;
+use App\Entity\Commande;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -34,28 +34,28 @@ class ArticleType extends AbstractType
             'class' => User::class,
             'multiple' => true, 'required' => false, 'attr' => ['no_index',]
         ])
-            ->add('Promotions', EntityType::class, [
-                'class' => Promotions::class,
+            ->add('Promotion', EntityType::class, [
+                'class' => Promotion::class,
                 'required' => false, 'attr' => ['no_index',]
             ])
             ->add('Categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
-            ->add('Fichiers', EntityType::class, [
-                'class' => Fichiers::class,
+            ->add('Fichier', EntityType::class, [
+                'class' => Fichier::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
-            ->add('Materiels', EntityType::class, [
-                'class' => Materiels::class,
+            ->add('Materiel', EntityType::class, [
+                'class' => Materiel::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
-            ->add('Commentaires', EntityType::class, [
-                'class' => Commentaires::class,
+            ->add('Commentaire', EntityType::class, [
+                'class' => Commentaire::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
-            ->add('commandes', EntityType::class, [
-                'class' => Commandes::class,
+            ->add('commande', EntityType::class, [
+                'class' => Commande::class,
                 'multiple' => true, 'required' => false, 'attr' => ['no_index',]
             ])
             ->add('Titre', TextType::class, ['attr' => ['data-inputmask' => "'alias': 'texte_propre'",]])

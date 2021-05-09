@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir LiensExterne
+{% endblock %}
+{% block body %} <h1>Voir LiensExterne </h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <tr>
+            <th>Site</th>
+            <td>{{liens_externe.Site}}</td>
+        </tr>
+        <tr>
+            <th>Url</th>
+            <td>{{liens_externe.Url}}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{liens_externe.Prix}}</td>
+        </tr>
+        <tr>
+            <th>Observation</th>
+            <td>{{liens_externe.Observation}}</td>
+        </tr>
+        <td>
+            <form method='post' action="{{ path('liens_externe_delete', {'id':  liens_externe.id }) }}"
+                onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  liens_externe . id ) }}">
+                <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
+                    href="{{ path('liens_externe_copy', {'id':  liens_externe.id }) }}">Dupliquer</a>
+                <a href='{{ path(' liens_externe_index') }}'><button class='btn btn-secondary mr-2'
+                        type='button'>Revenir à la liste</button></a>
+                <button class="btn btn-xs btn-warning ">Supprimer</button>
+            </form>
+            </tr>
+            </tbody>
+    </table>
+</div><a href="{{ path('liens_externe_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+
+{{ include('liens_externe/_delete_form.html.twig') }}
+{% endblock %}

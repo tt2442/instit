@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}{% block title %}Edition Commande{% endblock %}
+
+{% block body %}
+<h1>Editer Commande </h1>
+
+{{ form_start(form) }}
+{{ form_row(form.User) }}{{ form_row(form.Article) }}{{ form_row(form.Promotion) }}{{ form_row(form.id) }}{{
+form_row(form.Date) }}
+<button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
+<a href="{{ path('commande_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>
+
+{{ form_end(form, {'render_rest': false}) }}
+{{ include('commande/_delete_form.html.twig') }}
+{% endblock %}
