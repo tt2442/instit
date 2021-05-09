@@ -62,18 +62,18 @@ class Promotions
     private $Valeur;
 
     /**
-     * @ORM\OneToMany(targetEntity=Articles::class, mappedBy="Promotions")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="Promotions")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $articles;
+    private $article;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categories::class, mappedBy="Promotions")
+     * @ORM\ManyToMany(targetEntity=Categorie::class, mappedBy="Promotions")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $categories;
+    private $categorie;
 
     /**
      * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Promotions")
@@ -91,8 +91,8 @@ class Promotions
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
-        $this->categories = new ArrayCollection();
+        $this->article = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
         $this->commandes = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
@@ -187,26 +187,26 @@ class Promotions
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticle(): Collection
     {
-        return $this->articles;
+        return $this->article;
     }
 
-    public function addArticle(Articles $article): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
             $article->setPromotions($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Articles $article): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->article->removeElement($article)) {
             // set the owning side to null (unless already changed)
             if ($article->getPromotions() === $this) {
                 $article->setPromotions(null);
@@ -217,26 +217,26 @@ class Promotions
     }
 
     /**
-     * @return Collection|Categories[]
+     * @return Collection|Categorie[]
      */
-    public function getCategories(): Collection
+    public function getCategorie(): Collection
     {
-        return $this->categories;
+        return $this->categorie;
     }
 
-    public function addCategory(Categories $category): self
+    public function addCategory(Categorie $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
+        if (!$this->categorie->contains($category)) {
+            $this->categorie[] = $category;
             $category->addPromotion($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Categories $category): self
+    public function removeCategory(Categorie $category): self
     {
-        if ($this->categories->removeElement($category)) {
+        if ($this->categorie->removeElement($category)) {
             $category->removePromotion($this);
         }
 
@@ -270,30 +270,8 @@ class Promotions
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function __toString()
     {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addAdelete($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeAdelete($this);
-        }
-
-        return $this;
+        return $this->getNom();
     }
 }

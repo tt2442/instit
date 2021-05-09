@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticlesRepository;
+use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArticlesRepository::class)
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
-class Articles
+class Article
 {
     /**
      * @ORM\Id
@@ -60,7 +60,7 @@ class Articles
     private $FraisEnvoi;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticlesAchetes")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticleAchetes")
      * OPT=required=>false
      * ATTR=no_index
      */
@@ -73,42 +73,42 @@ class Articles
     private $Prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Promotions::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Promotions::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
     private $Promotions;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categories::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $Categories;
+    private $Categorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Fichiers::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Fichiers::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
     private $Fichiers;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Materiels::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Materiels::class, inversedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
     private $Materiels;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="articles")
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="article")
      * OPT=required=>false
      * ATTR=no_index
      */
     private $Commentaires;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Articles")
+     * @ORM\ManyToMany(targetEntity=Commandes::class, mappedBy="Article")
      * OPT=required=>false
      * ATTR=no_index
      */
@@ -117,7 +117,7 @@ class Articles
     public function __construct()
     {
         $this->Users = new ArrayCollection();
-        $this->Categories = new ArrayCollection();
+        $this->Categorie = new ArrayCollection();
         $this->Fichiers = new ArrayCollection();
         $this->Materiels = new ArrayCollection();
         $this->Commentaires = new ArrayCollection();
@@ -213,7 +213,7 @@ class Articles
     {
         if (!$this->Users->contains($commentaire)) {
             $this->Users[] = $commentaire;
-            $commentaire->addArticlesAchetE($this);
+            $commentaire->addArticleAchetE($this);
         }
 
         return $this;
@@ -222,7 +222,7 @@ class Articles
     public function removeCommentaire(User $commentaire): self
     {
         if ($this->Users->removeElement($commentaire)) {
-            $commentaire->removeArticlesAchetE($this);
+            $commentaire->removeArticleAchetE($this);
         }
 
         return $this;
@@ -253,25 +253,25 @@ class Articles
     }
 
     /**
-     * @return Collection|Categories[]
+     * @return Collection|Categorie[]
      */
-    public function getCategories(): Collection
+    public function getCategorie(): Collection
     {
-        return $this->Categories;
+        return $this->Categorie;
     }
 
-    public function addCategory(Categories $category): self
+    public function addCategory(Categorie $category): self
     {
-        if (!$this->Categories->contains($category)) {
-            $this->Categories[] = $category;
+        if (!$this->Categorie->contains($category)) {
+            $this->Categorie[] = $category;
         }
 
         return $this;
     }
 
-    public function removeCategory(Categories $category): self
+    public function removeCategory(Categorie $category): self
     {
-        $this->Categories->removeElement($category);
+        $this->Categorie->removeElement($category);
 
         return $this;
     }
@@ -284,18 +284,18 @@ class Articles
         return $this->Fichiers;
     }
 
-    public function addFichier(Fichiers $fichier): self
+    public function addFichiers(Fichiers $fichiers): self
     {
-        if (!$this->Fichiers->contains($fichier)) {
-            $this->Fichiers[] = $fichier;
+        if (!$this->Fichiers->contains($fichiers)) {
+            $this->Fichiers[] = $fichiers;
         }
 
         return $this;
     }
 
-    public function removeFichier(Fichiers $fichier): self
+    public function removeFichiers(Fichiers $fichiers): self
     {
-        $this->Fichiers->removeElement($fichier);
+        $this->Fichiers->removeElement($fichiers);
 
         return $this;
     }

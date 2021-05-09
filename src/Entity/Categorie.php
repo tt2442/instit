@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoriesRepository::class)
+ * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
-class Categories
+class Categorie
 {
     /**
      * @ORM\Id
@@ -40,14 +40,14 @@ class Categories
     private $Etat;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Categories")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="Categorie")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $articles;
+    private $article;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="categorie")
      * OPT=required=>false
      * ATTR=no_index
      */
@@ -55,7 +55,7 @@ class Categories
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->article = new ArrayCollection();
         $this->Promotions = new ArrayCollection();
     }
 
@@ -101,26 +101,26 @@ class Categories
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticle(): Collection
     {
-        return $this->articles;
+        return $this->article;
     }
 
-    public function addArticle(Articles $article): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
             $article->addCategory($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Articles $article): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->article->removeElement($article)) {
             $article->removeCategory($this);
         }
 

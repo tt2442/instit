@@ -48,15 +48,15 @@ class Fichiers
     private $Enligne;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Fichiers")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="Fichiers")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $articles;
+    private $article;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->article = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,29 +113,34 @@ class Fichiers
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticle(): Collection
     {
-        return $this->articles;
+        return $this->article;
     }
 
-    public function addArticle(Articles $article): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->addFichier($this);
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
+            $article->addFichiers($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Articles $article): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
-            $article->removeFichier($this);
+        if ($this->article->removeElement($article)) {
+            $article->removeFichiers($this);
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return  $this->getImage();
     }
 }

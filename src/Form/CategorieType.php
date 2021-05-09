@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Fichiers;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,10 +10,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use App\Entity\Article;
+
+use App\Entity\Promotions;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class FichiersType extends AbstractType
+class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
     {
@@ -21,17 +23,20 @@ class FichiersType extends AbstractType
             'class' => Article::class,
             'multiple' => true, 'required' => false, 'attr' => ['no_index',]
         ])
+            ->add('Promotions', EntityType::class, [
+                'class' => Promotions::class,
+                'multiple' => true, 'required' => false, 'attr' => ['no_index',]
+            ])
+            ->add('Nom', TextType::class, ['attr' => ['data-inputmask' => "'alias': 'texte_propre'",]])
 
-            ->add('Image', null, ['attr' => []])
-            ->add('Tag', TextType::class, ['attr' => ['data-inputmask' => "'alias': 'texte_propre'",]])
-            ->add('Degrade', ChoiceType::class, ['choices' => ['Oui' => 'true', 'Non' => 'false'], 'expanded' => true, 'attr' => []])
-            ->add('Enligne', ChoiceType::class, ['choices' => ['Oui' => 'true', 'Non' => 'false'], 'expanded' => true, 'attr' => []]);
+            ->add('Description', null, ['attr' => []])
+            ->add('Etat', ChoiceType::class, ['choices' => ['Actif' => 'true', 'Inactif' => 'false'], 'attr' => []]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Fichiers::class,
+            'data_class' => Categorie::class,
         ]);
     }
 }

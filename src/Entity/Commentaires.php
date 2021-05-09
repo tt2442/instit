@@ -43,11 +43,11 @@ class Commentaires
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="Commentaires")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="Commentaires")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $articles;
+    private $article;
 
     public function getId(): ?int
     {
@@ -102,15 +102,20 @@ class Commentaires
         return $this;
     }
 
-    public function getArticles(): ?Articles
+    public function getArticle(): ?Article
     {
-        return $this->articles;
+        return $this->article;
     }
 
-    public function setArticles(?Articles $articles): self
+    public function setArticle(?Article $article): self
     {
-        $this->articles = $articles;
+        $this->article = $article;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getMessage();
     }
 }

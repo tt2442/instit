@@ -116,11 +116,11 @@ class User implements UserInterface
     private $Pays;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="Commentaires")
+     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="Commentaires")
      * OPT=required=>false
      * ATTR=no_index
      */
-    private $ArticlesAchetes;
+    private $ArticleAchetes;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
@@ -138,7 +138,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->ArticlesAchetes = new ArrayCollection();
+        $this->ArticleAchetes = new ArrayCollection();
         $this->Commentaires = new ArrayCollection();
         $this->commandes = new ArrayCollection();
     }
@@ -345,25 +345,25 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticlesAchetes(): Collection
+    public function getArticleAchetes(): Collection
     {
-        return $this->ArticlesAchetes;
+        return $this->ArticleAchetes;
     }
 
-    public function addArticlesAchetE(Articles $articlesAchetE): self
+    public function addArticleAchetE(Article $articleAchetE): self
     {
-        if (!$this->ArticlesAchetes->contains($articlesAchetE)) {
-            $this->ArticlesAchetes[] = $articlesAchetE;
+        if (!$this->ArticleAchetes->contains($articleAchetE)) {
+            $this->ArticleAchetes[] = $articleAchetE;
         }
 
         return $this;
     }
 
-    public function removeArticlesAchetE(Articles $articlesAchetE): self
+    public function removeArticleAchetE(Article $articleAchetE): self
     {
-        $this->ArticlesAchetes->removeElement($articlesAchetE);
+        $this->ArticleAchetes->removeElement($articleAchetE);
 
         return $this;
     }

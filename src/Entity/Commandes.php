@@ -33,10 +33,10 @@ class Commandes
     private $User;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, inversedBy="commandes")
+     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="commandes")
      * OPT=required=>false
      */
-    private $Articles;
+    private $Article;
 
     /**
      * @ORM\ManyToMany(targetEntity=Promotions::class, inversedBy="commandes")
@@ -46,7 +46,7 @@ class Commandes
 
     public function __construct()
     {
-        $this->Articles = new ArrayCollection();
+        $this->Article = new ArrayCollection();
         $this->Promotions = new ArrayCollection();
     }
 
@@ -80,25 +80,25 @@ class Commandes
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticle(): Collection
     {
-        return $this->Articles;
+        return $this->Article;
     }
 
-    public function addArticle(Articles $article): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->Articles->contains($article)) {
-            $this->Articles[] = $article;
+        if (!$this->Article->contains($article)) {
+            $this->Article[] = $article;
         }
 
         return $this;
     }
 
-    public function removeArticle(Articles $article): self
+    public function removeArticle(Article $article): self
     {
-        $this->Articles->removeElement($article);
+        $this->Article->removeElement($article);
 
         return $this;
     }

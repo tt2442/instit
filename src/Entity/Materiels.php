@@ -37,10 +37,10 @@ class Materiels
     private $Quantite;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="Materiels")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="Materiels")
      * OPT=required=>false
      */
-    private $articles;
+    private $article;
 
     /**
      * @ORM\ManyToMany(targetEntity=LiensInternes::class, inversedBy="materiels")
@@ -56,7 +56,7 @@ class Materiels
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->article = new ArrayCollection();
         $this->LiensInternes = new ArrayCollection();
         $this->LiensExternes = new ArrayCollection();
     }
@@ -103,26 +103,26 @@ class Materiels
     }
 
     /**
-     * @return Collection|Articles[]
+     * @return Collection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticle(): Collection
     {
-        return $this->articles;
+        return $this->article;
     }
 
-    public function addArticle(Articles $article): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
             $article->addMateriel($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Articles $article): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->article->removeElement($article)) {
             $article->removeMateriel($this);
         }
 

@@ -1,44 +1,43 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %} Materiels
+{% block title %} Categorie
 {% endblock %}
-{% block body %} <h1> Materiels </h1>
+{% block body %} <h1> Categorie </h1>
 <div class='table-responsive'>
     <table class='table'>
         <thead>
             <tr>
-                <th>Article </th>
-                <th>LiensInternes </th>
-                <th>LiensExternes </th>
-                <th>Id </th>
                 <th>Nom </th>
                 <th>Description </th>
-                <th>Quantite </th>
+                <th>Etat </th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for materiel in materiels %}
+            {% for category in categorie %}
             <tr>
-                <td>{{materiel.article|json_encode}}</td>
-                <td>{{materiel.LiensInternes|json_encode}}</td>
-                <td>{{materiel.LiensExternes|json_encode}}</td>
-                <td>{{materiel.id}}</td>
-                <td>{{materiel.Nom}}</td>
-                <td>{{materiel.Description}}</td>
-                <td>{{materiel.Quantite}}</td>
+                <td>{{category.Nom}}</td>
+                <td>{{category.Description}}</td>
+                <td>{% set options={'Actif':'true','Inactif':'false',} %}
+                    {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in category.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
                 <td>
-                    <form method='post' action="{{ path('materiels_delete', {'id':  materiel.id }) }}"
+                    <form method='post' action="{{ path('categorie_delete', {'id':  category.id }) }}"
                         onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  materiel . id ) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  category . id ) }}">
                         <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir'
-                            href="{{ path('materiels_show', {'id':  materiel.id }) }}"><i
+                            href="{{ path('categorie_show', {'id':  category.id }) }}"><i
                                 class="icone fas fa-glasses "></i></a>
                         <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer'
-                            href="{{ path('materiels_edit', {'id':  materiel.id }) }}"><i
+                            href="{{ path('categorie_edit', {'id':  category.id }) }}"><i
                                 class="icone fas fa-pen "></i></a>
                         <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
-                            href="{{ path('materiels_copy', {'id':  materiel.id }) }}"><i
+                            href="{{ path('categorie_copy', {'id':  category.id }) }}"><i
                                 class="icone fas fa-copy "></i></a>
 
                         <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
@@ -52,5 +51,5 @@
 
         </tbody>
     </table>
-</div><a href="{{ path('materiels_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+</div><a href="{{ path('categorie_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
 {% endblock %}

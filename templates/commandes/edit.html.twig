@@ -4,7 +4,8 @@
 <h1>Editer Commandes </h1>
 
 {{ form_start(form) }}
-{{ form_row(form.User) }}{{ form_row(form.Articles) }}{{ form_row(form.Promotions) }}{{ form_row(form.id) }}{{ form_row(form.Date) }}
+{{ form_row(form.User) }}{{ form_row(form.Article) }}{{ form_row(form.Promotions) }}{{ form_row(form.id) }}{{
+form_row(form.Date) }}
 <button class="btn btn-primary mr-2" type="submit">Mettre à jour</button>
 <a href="{{ path('commandes_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>
 
