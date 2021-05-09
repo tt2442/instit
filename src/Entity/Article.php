@@ -63,6 +63,7 @@ class Article
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticleAchetes")
      * OPT=required=>false
      * ATTR=no_index
+     * ATTR=no_new=>
      */
     private $Users;
 
@@ -103,6 +104,7 @@ class Article
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
      * OPT=required=>false
+     * ATTR=no_new=>
      * ATTR=no_index
      */
     private $Commentaire;
