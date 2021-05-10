@@ -1,6 +1,21 @@
 [submodule "src/Command"]
 	path = src/Command
-	url = https://github.com/eldinomick/symfony5-command.git
+	url = https://github.com/eldinomick/Command
 [submodule "patch/patch_crud"]
 	path = patch/patch_crud
-	url = https://github.com/eldinomick/patch_crud.git
+	url = https://github.com/eldinomick/patch_crud
+[submodule "src/Validator"]
+	path = src/Validator
+	url = https://github.com/eldinomick/Validator
+[submodule "src/Form/Type"]
+	path = src/Form/Type
+	url = https://github.com/eldinomick/Type
+[submodule "src/Twig"]
+	path = src/Twig
+	url = https://github.com/eldinomick/Twig
+[submodule "assets/js/mobile_view"]
+	path = assets/js/mobile_view
+	url = https://github.com/eldinomick/mobile_view
+[submodule "src/Service"]
+	path = src/Service
+	url = https://github.com/eldinomick/Service

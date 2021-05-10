@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+{% set route=path(app.request.attributes.get('_route'),
+app.request.attributes.get('_route_params')) %}
+{% set action=path(app.request.attributes.get('_route'),
+app.request.attributes.get('_route_params'))|split('/')|last
+%}
+
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +22,8 @@
     {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
+
+
 
 <body>
     {% block header %}

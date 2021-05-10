@@ -1,4 +1,5 @@
 <?php
+//******no_regenerate*****
 namespace  App\Controller ;use App\Entity\User;
 use App\Form\UserType;
     use App\Repository\UserRepository;
@@ -6,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\SetNullFilter;
-use DeepCopy\Matcher\PropertyNameMatcher;
 
 /**
  * @Route("admin/user")
@@ -71,7 +69,7 @@ $this->getDoctrine()->getManager()->flush();
 return $this->redirectToRoute('user_index');
 }
 
-return $this->render('user/edit.html.twig', [
+return $this->render('user/new.html.twig', [
 'user' => $user,
 'form' => $form->createView(),
 ]);
@@ -82,11 +80,15 @@ return $this->render('user/edit.html.twig', [
     */
 public function copy(Request $request, User $userc): Response
 {
-$copier = new DeepCopy();
-$copier->addFilter(new SetNullFilter(), new PropertyNameMatcher('id'));
-$user = $copier->copy($userc);
-$form = $this->createForm(UserType::class, $user);
-$form->handleRequest($request);
+$user = clone $userc;
+
+$em = $this->getDoctrine()->getManager();
+$em->persist($user);
+$em->flush();
+return $this->redirectToRoute('user_index');
+//$user = $copier->copy($userc);
+//$form = $this->createForm(UserType::class, $user);
+//$form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
 $entityManager = $this->getDoctrine()->getManager();

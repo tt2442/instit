@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %} Categorie
+{% endblock %}
+{% block body %} <h1> Categorie </h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Nom </th>
+                <th>Description </th>
+                <th>Etat </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categorie %}
+            <tr>
+                <td>{{category.Nom}}</td>
+                <td>{{category.Description}}</td>
+                <td>{% set options={'Actif':'true','Inactif':'false',} %}
+                    {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in category.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
+                <td>
+                    <form method='post' action="{{ path('categorie_delete', {'id':  category.id }) }}"
+                        onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  category . id ) }}">
+                        <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir'
+                            href="{{ path('categorie_show', {'id':  category.id }) }}"><i
+                                class="icone fas fa-glasses "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer'
+                            href="{{ path('categorie_edit', {'id':  category.id }) }}"><i
+                                class="icone fas fa-pen "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
+                            href="{{ path('categorie_copy', {'id':  category.id }) }}"><i
+                                class="icone fas fa-copy "></i></a>
+
+                        <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
+                    </form>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan=5>Aucun enregistrement</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div><a href="{{ path('categorie_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+{% endblock %}

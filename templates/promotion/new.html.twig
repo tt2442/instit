@@ -10,9 +10,9 @@
         </span>
     </h1>
 </div>
-</div class="col-12">
-{{ form_start(form) }}
-{{ form_row(form.DateStart) }}
+<div class="col-12">
+    {{ form_start(form) }}
+    {{ form_row(form.DateStart) }}
 {{ form_row(form.DateEnd) }}
 {{ form_row(form.Etat) }}
 {{ form_row(form.Nom) }}
@@ -23,10 +23,10 @@
 {{ form_row(form.commande) }}
 {{ form_row(form.users) }}
 {{ form_row(form.article) }}
-<button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
+    <button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
 
-<a href="{{ path('promotion_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
-<input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
-{{ form_end(form) }}
+    <a href="{{ path('promotion_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
+    <input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
+    {{ form_end(form) }}
 </div>
 {% endblock %}

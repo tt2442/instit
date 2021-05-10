@@ -1,0 +1,71 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %} Promotion
+{% endblock %}
+{% block body %} <h1> Promotion </h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>DateStart </th>
+                <th>DateEnd </th>
+                <th>Etat </th>
+                <th>Nom </th>
+                <th>Description </th>
+                <th>Type </th>
+                <th>Valeur </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for promotion in promotion %}
+            <tr>
+                <td>{{promotion.DateStart ? promotion.DateStart|date('Y-m-d H:i:s') : ''}}</td>
+                <td>{{promotion.DateEnd ? promotion.DateEnd|date('Y-m-d H:i:s') : ''}}</td>
+                <td>{% set options={'Actif':'true', 'Passif':'false',} %}
+                    {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotion.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
+                <td>{{promotion.Nom}}</td>
+                <td>{{promotion.Description}}</td>
+                <td>{% set options={"Pourcentage sur l'achat":'achat','Pourcentage sur la
+                    livraison':'livraison',"Montant sur l'achat":'montant_achat','...':'ect',} %}
+                    {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotion.Type %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
+                <td>{{promotion.Valeur}}</td>
+                <td>
+                    <form method='post' action="{{ path('promotion_delete', {'id':  promotion.id }) }}"
+                        onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  promotion . id ) }}">
+                        <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir'
+                            href="{{ path('promotion_show', {'id':  promotion.id }) }}"><i
+                                class="icone fas fa-glasses "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer'
+                            href="{{ path('promotion_edit', {'id':  promotion.id }) }}"><i
+                                class="icone fas fa-pen "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
+                            href="{{ path('promotion_copy', {'id':  promotion.id }) }}"><i
+                                class="icone fas fa-copy "></i></a>
+
+                        <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
+                    </form>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan=9>Aucun enregistrement</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div><a href="{{ path('promotion_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+{% endblock %}

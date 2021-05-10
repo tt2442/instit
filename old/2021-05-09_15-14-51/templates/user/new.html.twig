@@ -1,0 +1,37 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{% if action=='new'  %}Création {% elseif action=='copy' %}Duplication {% elseif action=='edit' %}Edition{% endif %} User{% endblock %}
+
+{% block body %}
+
+<div class="col-12 text-center">
+    <h1>{% if action=='new'  %}Créer {% elseif action=='copy' %}Dupliquer {% elseif action=='edit' %}Editer{% endif %} User        <span class="text-right">
+            <h5>taille maxi d'envoie:{{upload_max()}} Mo</h5>
+        </span>
+    </h1>
+</div>
+</div class="col-12">
+{{ form_start(form) }}
+{{ form_row(form.email) }}
+{{ form_row(form.roles) }}
+{{ form_row(form.password) }}
+{{ form_row(form.Nom) }}
+{{ form_row(form.Prenom) }}
+{{ form_row(form.Sexe) }}
+{{ form_row(form.Adresse) }}
+{{ form_row(form.CodePostal) }}
+{{ form_row(form.Ville) }}
+{{ form_row(form.Region) }}
+{{ form_row(form.Mobile) }}
+{{ form_row(form.Fixe) }}
+{{ form_row(form.Pays) }}
+{{ form_row(form.ArticleAchetes) }}
+{{ form_row(form.Commentaire) }}
+{{ form_row(form.commande) }}
+<button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
+
+<a href="{{ path('user_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
+<input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
+{{ form_end(form) }}
+</div>
+{% endblock %}

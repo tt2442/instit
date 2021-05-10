@@ -1,19 +1,26 @@
-{% extends 'admin.html.twig' %}{% set action=path(app.request.attributes.get('_route'),
-app.request.attributes.get('_route_params'))|split('/')|last
-%}
+{% extends 'admin.html.twig' %}
 
-{% block title %}{% if action=='new' %}Création {% else %}Duplication {% endif %} LiensExterne{% endblock %}
+{% block title %}{% if action=='new'  %}Création {% elseif action=='copy' %}Duplication {% elseif action=='edit' %}Edition{% endif %} LiensExterne{% endblock %}
 
 {% block body %}
 
+<div class="col-12 text-center">
+    <h1>{% if action=='new'  %}Créer {% elseif action=='copy' %}Dupliquer {% elseif action=='edit' %}Editer{% endif %} LiensExterne        <span class="text-right">
+            <h5>taille maxi d'envoie:{{upload_max()}} Mo</h5>
+        </span>
+    </h1>
+</div>
+<div class="col-12">
+    {{ form_start(form) }}
+    {{ form_row(form.Site) }}
+{{ form_row(form.Url) }}
+{{ form_row(form.Prix) }}
+{{ form_row(form.Observation) }}
+{{ form_row(form.materiel) }}
+    <button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
 
-<h1>{% if action=='new' %}Ajouter {% else %}Dupliquer {% endif %} LiensExterne</h1>
-
-{{ form_start(form) }}
-
-{{ form_widget(form) }}<button class="btn btn-primary" type="submit">Créer</button>
-
-<a href="{{ path('liens_externe_index') }}"><button class="btn btn-secondary" type="button">Revenir à la
-        liste</button></a>
-{{ form_end(form) }}
+    <a href="{{ path('liens_externe_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
+    <input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
+    {{ form_end(form) }}
+</div>
 {% endblock %}

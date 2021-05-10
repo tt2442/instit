@@ -1,28 +1,14 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Voir LiensInterne
+{% block title %}Voir LiensInterne 
 {% endblock %}
-{% block body %} <h1>Voir LiensInterne </h1>
-<div class='table-responsive'>
-    <table class='table'>
-        <tr>
-            <th>Observation</th>
-            <td>{{liens_interne.Observation}}</td>
-        </tr>
-        <td>
-            <form method='post' action="{{ path('liens_interne_delete', {'id':  liens_interne.id }) }}"
-                onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  liens_interne . id ) }}">
-                <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
-                    href="{{ path('liens_interne_copy', {'id':  liens_interne.id }) }}">Dupliquer</a>
-                <a href='{{ path(' liens_interne_index') }}'><button class='btn btn-secondary mr-2'
-                        type='button'>Revenir à la liste</button></a>
-                <button class="btn btn-xs btn-warning ">Supprimer</button>
-            </form>
-            </tr>
-            </tbody>
-    </table>
-</div><a href="{{ path('liens_interne_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
-
-{{ include('liens_interne/_delete_form.html.twig') }}
-{% endblock %}
+{% block body %} <h1>Voir LiensInterne </h1><div class="col-12">
+<ul class="list-group">
+<li class="list-group-item"><h6>Observation</h6>
+<hr>{{liens_interne.Observation}}
+<td>{{liens_interne.materiel|json_encode}}
+<li class="list-group-item"><h6>Id</h6>
+<hr>{{liens_interne.id}}
+    </ul>
+    </div>
+<a href="{{ path('liens_interne_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{% endblock %}
