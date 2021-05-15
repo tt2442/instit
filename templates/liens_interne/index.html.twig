@@ -11,10 +11,7 @@
         <tbody>
             {% for  liens_interne  in  liens_internes  %}
             <tr>
-<td>{{liens_interne.Observation}}</td>
-<td>{% for item in  liens_interne.materiel %}
-    {{ item }},
-  {% endfor %}</td><td>
+<td>{{liens_interne.Observation}}</td><td>
                     <form method='post' action="{{ path('liens_interne_delete', {'id':  liens_interne.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
                     <div class='row'>

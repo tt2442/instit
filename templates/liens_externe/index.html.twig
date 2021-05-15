@@ -14,10 +14,7 @@
 <td>{{liens_externe.Site}}</td>
 <td>{{liens_externe.Url}}</td>
 <td>{{liens_externe.Prix}}</td>
-<td>{{liens_externe.Observation}}</td>
-<td>{% for item in  liens_externe.materiel %}
-    {{ item }},
-  {% endfor %}</td><td>
+<td>{{liens_externe.Observation}}</td><td>
                     <form method='post' action="{{ path('liens_externe_delete', {'id':  liens_externe.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
                     <div class='row'>

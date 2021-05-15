@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir Commande 
+{% endblock %}
+{% block body %} <h1>Voir Commande </h1><div class="col-12">
+<ul class="list-group">
+<li class="list-group-item"><h6>Date</h6>
+<hr>{{commande.Date ? commande.Date|date('Y-m-d H:i:s') : ''}}
+<td>{{commande.User|json_encode}}
+<td>{{commande.Article|json_encode}}
+<td>{{commande.Promotion|json_encode}}
+<li class="list-group-item"><h6>Id</h6>
+<hr>{{commande.id}}
+    </ul>
+    </div>
+<a href="{{ path('commande_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{% endblock %}

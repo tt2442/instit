@@ -1,0 +1,26 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{% if action=='new'  %}Création {% elseif action=='copy' %}Duplication {% elseif action=='edit' %}Edition{% endif %} Categorie{% endblock %}
+
+{% block body %}
+
+<div class="col-12 text-center">
+    <h1>{% if action=='new'  %}Créer {% elseif action=='copy' %}Dupliquer {% elseif action=='edit' %}Editer{% endif %} Categorie        <span class="text-right">
+            <h5>taille maxi d'envoie:{{upload_max()}} Mo</h5>
+        </span>
+    </h1>
+</div>
+<div class="col-12">
+    {{ form_start(form) }}
+    {{ form_row(form.Nom) }}
+{{ form_row(form.Description) }}
+{{ form_row(form.Etat) }}
+{{ form_row(form.article) }}
+{{ form_row(form.Promotion) }}
+    <button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
+
+    <a href="{{ path('categorie_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
+    <input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
+    {{ form_end(form) }}
+</div>
+{% endblock %}

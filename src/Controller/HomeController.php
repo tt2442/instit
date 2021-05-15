@@ -17,4 +17,14 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/accueil", name="accueil")
+     */
+    public function accueil(): Response
+    {
+        return $this->render('home/accueil.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

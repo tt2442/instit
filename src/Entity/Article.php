@@ -59,13 +59,13 @@ class Article
      */
     private $FraisEnvoi;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticleAchetes")
-     * OPT=required=>false
-     * ATTR=no_index
-     * ATTR=no_new=>
-     */
-    private $Users;
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticleAchetes")
+    //  * OPT=required=>false
+    //  * ATTR=no_index
+    //  * ATTR=no_new
+    //  */
+    // private $Users;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -101,29 +101,29 @@ class Article
      */
     private $Materiel;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
-     * OPT=required=>false
-     * ATTR=no_new=>
-     * ATTR=no_index
-     */
-    private $Commentaire;
+    // /**
+    //  * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
+    //  * OPT=required=>false
+    //  * ATTR=no_new=>
+    //  * ATTR=no_index
+    //  */
+    // private $Commentaire;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Commande::class, mappedBy="Article")
-     * OPT=required=>false
-     * ATTR=no_index
-     */
-    private $commande;
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Commande::class, mappedBy="Article")
+    //  * OPT=required=>false
+    //  * ATTR=no_index
+    //  */
+    // private $commande;
 
     public function __construct()
     {
-        $this->Users = new ArrayCollection();
+        // $this->Users = new ArrayCollection();
         $this->Categorie = new ArrayCollection();
         $this->Fichier = new ArrayCollection();
         $this->Materiel = new ArrayCollection();
-        $this->Commentaire = new ArrayCollection();
-        $this->commande = new ArrayCollection();
+        // $this->Commentaire = new ArrayCollection();
+        // $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -203,32 +203,32 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->Users;
-    }
+    // /**
+    //  * @return Collection|User[]
+    //  */
+    // public function getUsers(): Collection
+    // {
+    //     return $this->Users;
+    // }
 
-    public function addCommentaire(User $commentaire): self
-    {
-        if (!$this->Users->contains($commentaire)) {
-            $this->Users[] = $commentaire;
-            $commentaire->addArticleAchetE($this);
-        }
+    // public function addCommentaire(User $commentaire): self
+    // {
+    //     if (!$this->Users->contains($commentaire)) {
+    //         $this->Users[] = $commentaire;
+    //         $commentaire->addArticleAchetE($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCommentaire(User $commentaire): self
-    {
-        if ($this->Users->removeElement($commentaire)) {
-            $commentaire->removeArticleAchetE($this);
-        }
+    // public function removeCommentaire(User $commentaire): self
+    // {
+    //     if ($this->Users->removeElement($commentaire)) {
+    //         $commentaire->removeArticleAchetE($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPrix(): ?int
     {
@@ -326,40 +326,40 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|Commentaire[]
-     */
-    public function getCommentaire(): Collection
-    {
-        return $this->Commentaire;
-    }
+    // /**
+    //  * @return Collection|Commentaire[]
+    //  */
+    // public function getCommentaire(): Collection
+    // {
+    //     return $this->Commentaire;
+    // }
 
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getCommande(): Collection
-    {
-        return $this->commande;
-    }
+    // /**
+    //  * @return Collection|Commande[]
+    //  */
+    // public function getCommande(): Collection
+    // {
+    //     return $this->commande;
+    // }
 
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commande->contains($commande)) {
-            $this->commande[] = $commande;
-            $commande->addArticle($this);
-        }
+    // public function addCommande(Commande $commande): self
+    // {
+    //     if (!$this->commande->contains($commande)) {
+    //         $this->commande[] = $commande;
+    //         $commande->addArticle($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commande->removeElement($commande)) {
-            $commande->removeArticle($this);
-        }
+    // public function removeCommande(Commande $commande): self
+    // {
+    //     if ($this->commande->removeElement($commande)) {
+    //         $commande->removeArticle($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function __toString()
     {

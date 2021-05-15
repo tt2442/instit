@@ -1,0 +1,39 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir Promotion 
+{% endblock %}
+{% block body %} <h1>Voir Promotion </h1><div class="col-12">
+<ul class="list-group">
+<li class="list-group-item"><h6>DateStart</h6>
+<hr>{{promotion.DateStart ? promotion.DateStart|date('Y-m-d H:i:s') : ''}}
+<li class="list-group-item"><h6>DateEnd</h6>
+<hr>{{promotion.DateEnd ? promotion.DateEnd|date('Y-m-d H:i:s') : ''}}Etat{% set options={'Actif':'true', 'Passif':'false',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotion.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}
+<li class="list-group-item"><h6>Nom</h6>
+<hr>{{promotion.Nom}}
+<li class="list-group-item"><h6>Description</h6>
+<hr>{{promotion.Description}}Type{% set options={"Pourcentage sur l'achat":'achat','Pourcentage sur la livraison':'livraison',"Montant sur l'achat":'montant_achat','...':'ect',} %}
+         {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in promotion.Type %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}
+<li class="list-group-item"><h6>Valeur</h6>
+<hr>{{promotion.Valeur}}
+<td>{{promotion.categorie|json_encode}}
+<td>{{promotion.commande|json_encode}}
+<td>{{promotion.users|json_encode}}
+<td>{{promotion.article|json_encode}}
+<li class="list-group-item"><h6>Id</h6>
+<hr>{{promotion.id}}
+    </ul>
+    </div>
+<a href="{{ path('promotion_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{% endblock %}
