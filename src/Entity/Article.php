@@ -36,7 +36,9 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * ATTR=no_index
+     * OPT=required=>false
+     * ALIAS=fichier
+     * ATTR=image=>'0x100'
      */
     private $Multimedia;
 
@@ -101,6 +103,12 @@ class Article
      */
     private $Materiel;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * OPT=choices=>['À partir de 3 ans'=>'À partir de 3 ans', 'À partir de 4 ans'=>'À partir de 4 ans', 'À partir de 5 ans'=>'À partir de 5 ans', 'À partir de 6 ans'=>'À partir de 6 ans', 'De 3 à 5 ans'=>'De 3 à 5 ans','De 4 à 6 ans'=>'De 4 à 6 ans' ]
+     */
+    private $age;
+
     // /**
     //  * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
     //  * OPT=required=>false
@@ -162,8 +170,17 @@ class Article
 
     public function setMultimedia(?string $Multimedia): self
     {
-        $this->Multimedia = $Multimedia;
-
+        //on récupère le nom de la function
+        $backtrace = debug_backtrace();
+        $class = strtolower(array_reverse(explode('\\', $backtrace[0]['class']))[0]);
+        $champ = substr($backtrace[0]['function'], strlen('set'));
+        if ($$champ) {
+            @mkdir('uploads');
+            @mkdir("uploads/$champ");
+            $name = uniqid() . '_' . $_FILES[$class]['name'][$champ];
+            rename($$champ, "uploads/$champ/" .  $name);
+            $this->$champ = $name;
+        }
         return $this;
     }
 
@@ -364,5 +381,17 @@ class Article
     public function __toString()
     {
         return $this->getTitre();
+    }
+
+    public function getAge(): ?string
+    {
+        return $this->age;
+    }
+
+    public function setAge(?string $age): self
+    {
+        $this->age = $age;
+
+        return $this;
     }
 }

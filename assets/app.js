@@ -14,10 +14,14 @@ import '@fortawesome/fontawesome-free';
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
 import '../patch/patch_crud/alias.js';
-
+import '../patch/patch_crud/upload';
 // start the Stimulus application
 
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import './bootstrap';
 
+$('[data-toggle="popover-hover"]').on('click', function () {
+    var popup = this
+    setTimeout(function () { $(popup).popover('hide'); }, 5000);
+}).popover({ html: true, trigger: 'click', placement: 'bottom', content: function () { return ''; } }); $("html").on("mouseup", function (e) { var l = $(e.target); if (l[0].className.indexOf("popover") == -1) { $(".popover").each(function () { $(this).popover("hide"); }); } });

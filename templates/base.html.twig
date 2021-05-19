@@ -24,6 +24,61 @@ app.request.attributes.get('_route_params'))|split('/')|last
 </head>
 
 <body>
+    <nav>
+        <div class="container-fluid position-absolute">
+            <div class="row">
+                <div class="logo col-12 text-center">
+                    <img class="img-fluid" src="{{ asset('build/logo.png') }}" alt="">
+                </div>
+                <div class="col-md-9 offset-md-3">
+                    <div class="row w-100 navbar">
+                        <div class="col-md-3 d-flex flex-column">
+                            <h1 class="m-0 mt-auto mb-auto">jeux avec du petit matériel</h1>
+                        </div>
+                        <div class="col-md-3 d-flex flex-column">
+                            <h1 class="m-0 mt-auto mb-auto">apprendre en s’amusant</h1>
+                        </div>
+                        <div class="col-md-2 d-flex flex-column">
+                            <h1 class="m-0 mt-auto mb-auto">jeux de mon âge</h1>
+                        </div>
+                        <div class="col-md-2 d-flex flex-column">
+                            <h1 class="m-0 mt-auto mb-auto">contactez-moi</h1>
+                        </div>
+                        <div class="col-md-2  d-flex flex-column">
+                            <h1 class="m-0 mt-auto mb-auto d-flex justify-content-around">
+                                <a href="{{ path('admin') }}">
+                                    <i class="fa fa-user m-1" aria-hidden="true"></i>
+                                </a>
+                                <i class="fa fa-heart m-1" aria-hidden="true"></i>
+                                <i class="fa fa-shopping-basket m-1" aria-hidden="true"></i>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-md-4 mr-2">
+                <img src="https://us.123rf.com/450wm/sabelskaya/sabelskaya1603/sabelskaya160300156/54119905-neon-square-neon-blue-light-.jpg?ver=6"
+                    class="rounded-circle img-fluid rotate">
+            </div>
+            <div class="col-md-5 d-flex flex-column">
+                <h1 class="mt-auto">
+                    bienvenue sur ma boutique
+                </h1>
+                <span class="span-primary">
+                    Vous y trouverez des idées de jeux, des fiches à imprimer pour apprendre en jouant destinés aux
+                    enfants
+                    en maternelle de
+                    3 à 6 ans.
+                </span>
+                <span class="span-secondary">
+                    Sélectionnez, téléchargez, imprimez, découpez, assemblez et amusez-vous avec vos p’tits loups !
+                </span>
+            </div>
+        </div>
+
+    </nav>
     {% block body %}
     <a href="{{ path('admin') }}"></a>
     {% endblock %}

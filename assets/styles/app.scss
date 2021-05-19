@@ -1,3 +1,185 @@
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+$amatic_orange: #FF6438;
+$amatic_gris_fonce: #625C61;
+$amatic_classic: #00566C;
+$pastel_beige_pale: #FAF4F4;
+$amatic_blanc:white;
+$ombre :rgba(98, 92, 97, 0.2);
+
+
+$amatic_grand_titre : 'Amatic SC',
+cursive;
+$amatic_texte : 'Raleway',
+sans-serif;
+
+
+//font responsive
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+html {
+    font-size: 14pt;
+}
+
+$baseline: 1.5rem;
+
+$minScreen: 20rem;
+$maxScreen: 50rem;
+$minFont: .8rem;
+$maxFont: 1.4rem;
+
+$h1: 1.8rem;
+$h2: 1.5rem;
+$h3: 1.25rem;
+$h4: 1rem;
+$h5: .875rem;
+$h6: .675rem;
+$p:1rem;
+$span:1rem;
+$body:1rem;
+
+h1 {
+    font-size: $h1;
+    font-family: $amatic_grand_titre;
+    font-style: normal;
+    font-weight: bold;
+    color: $amatic_orange;
+
+}
+
+h2 {
+    font-size: $h2;
+}
+
+h3 {
+    font-size: $h3;
+}
+
+h4 {
+    font-size: $h4;
+}
+
+h5 {
+    font-size: $h5;
+}
+
+h6 {
+    font-size: $h6;
+}
+
+p {
+    font-size: $p;
+}
+
 body {
-    background-color: white;
+    font-size: $body;
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+        & {
+            font-size: $min-font-size;
+
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+//fin font-responsive
+
+
+nav {
+
+    .container-fluid {
+        z-index: $zindex-dropdown;
+    }
+
+    .logo {
+        margin-top: 1rem;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    & .rotate {
+        // max-width: 392px;
+        transform: rotate(-15deg);
+        margin-top: 4rem;
+        margin-left: 2rem;
+    }
+
+    .navbar {
+        border: 1px solid black;
+        background: $pastel_beige_pale;
+        box-shadow: 0px 2px 4px $ombre;
+        border-radius: 60px;
+        padding: 1.2rem;
+
+        & h1 {
+            @extend h1;
+            font-size: 1.15rem;
+            color: $amatic_classic;
+        }
+    }
+}
+
+.span {
+    font-size: $span;
+    font-family: $amatic_texte;
+
+    &-primary {
+        @extend .span;
+        color: $amatic_gris_fonce;
+    }
+
+    &-secondary {
+        @extend .span;
+        color: $amatic_classic;
+    }
+
+    &-age {
+        color: $amatic_gris_fonce;
+        font-size: $h5;
+        line-height: 1rem;
+        font: $amatic_texte;
+        font-weight: 400;
+    }
+
+    &-prix {
+        color: $amatic_gris_fonce;
+        font-size: $h5;
+        line-height: 1rem;
+        font: $amatic_texte;
+        font-weight: 600;
+    }
+}
+
+.titre_produit {
+    font-family: $amatic_grand_titre;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    color: $amatic_classic;
+}
+
+.button-arrow {
+    background: $amatic_classic;
+    color: $amatic_blanc;
+    box-shadow: 0px 2px 4px rgba(98, 92, 97, 0.2);
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
 }
