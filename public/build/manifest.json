@@ -3,8 +3,8 @@
   "build/app.js": "/build/app.js",
   "build/runtime.js": "/build/runtime.js",
   "build/vendors-node_modules_symfony_webpack-encore_lib_webpack_copy-files-loader_js_context_app_node-219c94.js": "/build/vendors-node_modules_symfony_webpack-encore_lib_webpack_copy-files-loader_js_context_app_node-219c94.js",
-  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-cd6e40.css": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-cd6e40.css",
-  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-cd6e40.js": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-cd6e40.js",
+  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-f80610.css": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-f80610.css",
+  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-f80610.js": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-f80610.js",
   "build/images/fa-solid-900.svg": "/build/images/fa-solid-900.13de59f1.svg",
   "build/images/fa-brands-400.svg": "/build/images/fa-brands-400.216edb96.svg",
   "build/ckeditor/ckeditor.js": "/build/ckeditor/ckeditor.js",
@@ -199,6 +199,7 @@
   "build/ckeditor/plugins/specialchar/dialogs/lang/he.js": "/build/ckeditor/plugins/specialchar/dialogs/lang/he.js",
   "build/ckeditor/plugins/balloonpanel/skins/moono/balloonpanel.css": "/build/ckeditor/plugins/balloonpanel/skins/moono/balloonpanel.css",
   "build/ckeditor/plugins/specialchar/dialogs/lang/cs.js": "/build/ckeditor/plugins/specialchar/dialogs/lang/cs.js",
+  "build/images/owl.video.play.png": "/build/images/owl.video.play.7f01b071.png",
   "build/ckeditor/plugins/specialchar/dialogs/lang/es.js": "/build/ckeditor/plugins/specialchar/dialogs/lang/es.js",
   "build/ckeditor/plugins/a11yhelp/dialogs/lang/it.js": "/build/ckeditor/plugins/a11yhelp/dialogs/lang/it.js",
   "build/ckeditor/plugins/specialchar/dialogs/lang/ko.js": "/build/ckeditor/plugins/specialchar/dialogs/lang/ko.js",
@@ -2667,7 +2668,5 @@
   "build/ckeditor/plugins/save/lang/vi.js": "/build/ckeditor/plugins/save/lang/vi.js",
   "build/ckeditor/plugins/print/lang/vi.js": "/build/ckeditor/plugins/print/lang/vi.js",
   "build/ckeditor/plugins/save/lang/da.js": "/build/ckeditor/plugins/save/lang/da.js",
-  "build/ckeditor/skins/kama/images/dialog_sides.gif": "/build/ckeditor/skins/kama/images/dialog_sides.gif",
-  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-b2a4d6.css": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-b2a4d6.css",
-  "build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-b2a4d6.js": "/build/vendors-node_modules_fortawesome_fontawesome-free_js_all_js-node_modules_fortawesome_fontawes-b2a4d6.js"
+  "build/ckeditor/skins/kama/images/dialog_sides.gif": "/build/ckeditor/skins/kama/images/dialog_sides.gif"
 }

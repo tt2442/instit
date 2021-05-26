@@ -15,6 +15,8 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
 import '../patch/patch_crud/alias.js';
 import '../patch/patch_crud/upload';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
 // start the Stimulus application
 
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -25,3 +27,33 @@ $('[data-toggle="popover-hover"]').on('click', function () {
     var popup = this
     setTimeout(function () { $(popup).popover('hide'); }, 5000);
 }).popover({ html: true, trigger: 'click', placement: 'bottom', content: function () { return ''; } }); $("html").on("mouseup", function (e) { var l = $(e.target); if (l[0].className.indexOf("popover") == -1) { $(".popover").each(function () { $(this).popover("hide"); }); } });
+
+
+
+
+$(function () {
+    $('.owl-carousel').owlCarousel({
+        center: false,
+        items: 4,
+        loop: true,
+        margin: 10,
+        responsive: {
+            600: {
+                items: 4
+            }
+        }
+    });
+
+    var owl = $('.owl-carousel');
+    owl.owlCarousel();
+    // Go to the next item
+    $('.customNextBtn').click(function () {
+        owl.trigger('next.owl.carousel');
+    })
+    // Go to the previous item
+    $('.customPrevBtn').click(function () {
+        // Parameters has to be in square bracket '[]'
+        owl.trigger('prev.owl.carousel');
+    })
+});
+

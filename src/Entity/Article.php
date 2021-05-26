@@ -38,7 +38,7 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      * OPT=required=>false
      * ALIAS=fichier
-     * ATTR=image=>'0x100'
+     * ATTR=no_index
      */
     private $Multimedia;
 
@@ -58,6 +58,7 @@ class Article
      * @ORM\Column(type="integer")
      * ALIAS=prix
      * OPT=label=>"Frais d'envoi"
+     * ATTR=no_index
      */
     private $FraisEnvoi;
 
@@ -106,6 +107,7 @@ class Article
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * OPT=choices=>['À partir de 3 ans'=>'À partir de 3 ans', 'À partir de 4 ans'=>'À partir de 4 ans', 'À partir de 5 ans'=>'À partir de 5 ans', 'À partir de 6 ans'=>'À partir de 6 ans', 'De 3 à 5 ans'=>'De 3 à 5 ans','De 4 à 6 ans'=>'De 4 à 6 ans' ]
+     * ATTR=no_index
      */
     private $age;
 

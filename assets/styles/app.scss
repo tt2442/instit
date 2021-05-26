@@ -8,7 +8,7 @@ $amatic_classic: #00566C;
 $pastel_beige_pale: #FAF4F4;
 $amatic_blanc:white;
 $ombre :rgba(98, 92, 97, 0.2);
-
+$amatic_rose: #FF54A5;
 
 $amatic_grand_titre : 'Amatic SC',
 cursive;
@@ -77,6 +77,16 @@ p {
 
 body {
     font-size: $body;
+}
+
+small {
+    font-family: $amatic_texte;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.7rem;
+    line-height: 154%;
+    text-transform: uppercase;
+    color: $amatic_rose;
 }
 
 @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
@@ -173,13 +183,36 @@ nav {
     font-size: 1.5rem;
     line-height: 1.5rem;
     color: $amatic_classic;
+
+    &-gris {
+        color: $amatic_gris_fonce;
+    }
 }
 
 .button-arrow {
     background: $amatic_classic;
     color: $amatic_blanc;
     box-shadow: 0px 2px 4px rgba(98, 92, 97, 0.2);
+    margin-top: 5rem;
     width: 4rem;
     height: 4rem;
     font-size: 2rem;
+}
+
+.img {
+    &-shadow {
+        box-shadow: 0px 2px 4px rgba(98, 92, 97, 0.2);
+    }
+}
+
+.btn {
+
+    &-rose {
+        font-size: 0.7rem;
+        line-height: 154%;
+        color: $amatic_blanc;
+
+        background: $amatic_rose;
+        border-radius: 26px;
+    }
 }

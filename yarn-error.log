@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /app/.yarn/releases/yarn-1.22.10.cjs add FileFunctions
+  /usr/bin/node /app/.yarn/releases/yarn-1.22.10.cjs add owl.carousel jquery --network-timeout 100000
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -14,17 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/FileFunctions: Not found
-      at Request.params.callback [as _callback] (/app/.yarn/releases/yarn-1.22.10.cjs:78518:18)
-      at Request.self.callback (/app/.yarn/releases/yarn-1.22.10.cjs:135160:22)
-      at Request.emit (node:events:369:20)
-      at Request.<anonymous> (/app/.yarn/releases/yarn-1.22.10.cjs:136132:10)
-      at Request.emit (node:events:369:20)
-      at IncomingMessage.<anonymous> (/app/.yarn/releases/yarn-1.22.10.cjs:136054:12)
-      at Object.onceWrapper (node:events:475:28)
-      at IncomingMessage.emit (node:events:381:22)
-      at endReadableNT (node:internal/streams/readable:1307:12)
-      at processTicksAndRejections (node:internal/process/task_queues:81:21)
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:69:26)
 
 npm manifest: 
   {
