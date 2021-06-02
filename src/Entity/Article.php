@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -111,6 +112,13 @@ class Article
      */
     private $age;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * ATTR=no_new
+     * ATTR=no_index
+     */
+    private $date;
+
     // /**
     //  * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
     //  * OPT=required=>false
@@ -134,6 +142,9 @@ class Article
         $this->Materiel = new ArrayCollection();
         // $this->Commentaire = new ArrayCollection();
         // $this->commande = new ArrayCollection();
+
+        $date = new DateTime(date("Y-m-d H:i:s"));
+        $this->setDate($date);
     }
 
     public function getId(): ?int
@@ -150,6 +161,8 @@ class Article
     {
         $this->Titre = $Titre;
 
+        $date = new DateTime(date("Y-m-d H:i:s"));
+        $this->setDate($date);
         return $this;
     }
 
@@ -393,6 +406,18 @@ class Article
     public function setAge(?string $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

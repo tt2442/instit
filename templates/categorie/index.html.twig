@@ -5,7 +5,7 @@
 {% block body %} <h1> Categorie </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Nom </th><th>Description </th><th>Etat </th><th>Actions</th>
+        <thead><tr><th>Nom </th><th>Description </th><th>Etat </th><th>Couleur </th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +20,14 @@
                     {% set res=res|merge([key]) %}
                     {% endif %}
                     {% endfor %}
-                    {{res|json_encode}}</td><td>
+                    {{res|json_encode}}</td>
+<td>{{categorie.couleur}}</td>
+<td>{% for item in  categorie.article %}
+    {{ item }},
+  {% endfor %}</td>
+<td>{% for item in  categorie.Promotion %}
+    {{ item }},
+  {% endfor %}</td><td>
                     <form method='post' action="{{ path('categorie_delete', {'id':  categorie.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
                     <div class='row'>
@@ -34,7 +41,7 @@
             </tr>
             {% else %}
             <tr>
-                <td colspan=5>Aucun enregistrement</td>
+                <td colspan=6>Aucun enregistrement</td>
             </tr>
             {% endfor %}
             

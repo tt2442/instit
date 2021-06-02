@@ -53,6 +53,12 @@ class Categorie
      */
     private $Promotion;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=color
+     */
+    private $couleur;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -154,5 +160,17 @@ class Categorie
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
+
+        return $this;
     }
 }

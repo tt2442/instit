@@ -19,6 +19,12 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+
+    public function findAllSortDate()
+    {
+        return $this->findBy(array(), array('date' => 'DESC'), 8);
+    }
+
     // /**
     //  * @return Article] Returns an array of AArticlebjects
     //  */

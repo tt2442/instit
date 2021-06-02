@@ -11,6 +11,7 @@ use App\Entity\Article;
 use App\Entity\Promotion;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 class CategorieType extends AbstractType
 {
 public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
@@ -19,6 +20,7 @@ $builder->add('Nom', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'text
 
 ->add('Description', null,['attr'=>[]])
 ->add('Etat', ChoiceType::class,['choices' =>['Actif'=>'true','Inactif'=>'false',],'attr'=>[]])
+->add('couleur', ColorType::class,['attr'=>['data-inputmask'=>"'alias': 'color'",]])
 ->add('article', EntityType::class,[
                 'class' => Article::class,
                 'multiple' => true,'required'=>false,'attr'=>['no_index',]])
