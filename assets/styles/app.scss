@@ -61,7 +61,9 @@ h3 {
 
 h4 {
     font-size: $h4;
+
 }
+
 
 h5 {
     font-size: $h5;
@@ -77,6 +79,9 @@ p {
 
 body {
     font-size: $body;
+    max-width: 100%;
+    height: auto;
+    background-image: url('/assets/images/background.png');
 }
 
 small {
@@ -121,12 +126,11 @@ nav {
 
     .logo {
         margin-top: 1rem;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        margin-bottom: .5rem;
     }
 
     & .rotate {
         // max-width: 392px;
-        transform: rotate(-15deg);
         margin-top: 4rem;
         margin-left: 2rem;
     }
@@ -153,6 +157,10 @@ nav {
     &-primary {
         @extend .span;
         color: $amatic_gris_fonce;
+
+        &-footer {
+            font-size: $h5;
+        }
     }
 
     &-secondary {
@@ -205,8 +213,18 @@ nav {
     }
 }
 
-.btn {
+.h4-footer {
+    @extend h5;
+    font-weight: 600;
+    text-transform: uppercase;
+}
 
+.card-rounded {
+    border-radius: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.2)
+}
+
+.btn {
     &-rose {
         font-size: 0.7rem;
         line-height: 154%;

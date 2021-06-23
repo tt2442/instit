@@ -29,7 +29,7 @@ action=path(app.request.attributes.get('_route'), app.request.attributes.get('_r
 
 <body>
     {% block header %}
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="nav-link" class="navbar-brand" href="{{path('admin')}}">Administration</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,11 @@ action=path(app.request.attributes.get('_route'), app.request.attributes.get('_r
     </nav>
     {% endblock %}
     <div class="container">
+        <div class="row">
 
-        {% block body %}
-        {% endblock %}
+            {% block body %}
+            {% endblock %}
+        </div>
     </div>
 
 </body>

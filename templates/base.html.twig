@@ -28,7 +28,9 @@ app.request.attributes.get('_route_params'))|split('/')|last
         <div class="container-fluid position-absolute">
             <div class="row">
                 <div class="logo col-12 text-center">
-                    <img class="img-fluid" src="{{ asset('build/logo.png') }}" alt="">
+                    <a href="{{ path('home') }}">
+                        <img class="img-fluid" src="{{ asset('build/logo.png') }}" alt="">
+                    </a>
                 </div>
                 <div class="col-md-9 offset-md-3">
                     <div class="row w-100 navbar">
@@ -59,8 +61,7 @@ app.request.attributes.get('_route_params'))|split('/')|last
         </div>
         <div class="row w-100">
             <div class="col-md-4 mr-2">
-                <img src="https://us.123rf.com/450wm/sabelskaya/sabelskaya1603/sabelskaya160300156/54119905-neon-square-neon-blue-light-.jpg?ver=6"
-                    class="rounded-circle img-fluid rotate">
+                <img src="{{ asset('build/rachel_photo.png') }}" class="rounded-circle img-fluid rotate">
             </div>
             <div class="col-md-5 d-flex flex-column">
                 <h1 class="mt-auto">
@@ -82,6 +83,79 @@ app.request.attributes.get('_route_params'))|split('/')|last
     {% block body %}
     <a href="{{ path('admin') }}"></a>
     {% endblock %}
+    <footer>
+        {% block footer %}
+        <div class="container my-5">
+            <hr>
+            <div class="row">
+                <div class="col-3">
+                    <h4 class="h4-footer">
+                        informations
+                    </h4>
+                    <span class=" span-primary-footer">
+                        Conditions générales de vente
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        Mentions légales
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        Questions fréquentes
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        RGPD - politique de confidentialité
+                        <br>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <h4 class="h4-footer">
+                        moyens de paiement
+                    </h4>
+                    <span class=" span-primary-footer">
+                        Carte Maestro
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        Carte Master Card
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        Carte Visa
+                        <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        PayPal
+                        <br>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <h4 class="h4-footer">
+                        mentions
+                    </h4>
+                    <span class=" span-primary-footer">
+                        Les documents de cette boutique sont protégés et sous droits d'auteur. <br>
+                    </span>
+                    <span class="span-primary-footer">
+                        Les prix incluent la TVA.<br>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <h4 class="h4-footer">
+                        suivez-moi sur facebook
+                    </h4>
+                    <div class="span-primary-footer">
+                        <a href="https://www.facebook.com/rachouentrinstits/">
+                            <img class="img-fluid" src="{{ asset('build/logo.png') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </footer>
+
 </body>
 
 </html>
