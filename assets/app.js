@@ -13,8 +13,8 @@ import Inputmask from "inputmask"; $(document).ready(function () { Inputmask().m
 import '@fortawesome/fontawesome-free';
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
-import '../patch/patch_crud/alias.js';
-import '../patch/patch_crud/upload';
+import '../patch/patch_crud/js/alias.js';
+import '../patch/patch_crud/js/upload';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 // start the Stimulus application

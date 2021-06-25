@@ -1,7 +1,7 @@
 <?php
 //******no_regenerate*****
 namespace  App\Controller ;use App\Entity\Categorie;
-use App\Form\CategorieType;
+use App\Form\Categorie2Type;
     use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +28,7 @@ use Symfony\Component\Routing\Annotation\Route;
 public function new(Request $request): Response
 {
 $categorie = new Categorie();
-$form = $this->createForm(CategorieType::class, $categorie);
+$form = $this->createForm(Categorie2Type::class, $categorie);
 $form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +60,7 @@ return $this->render('categorie/show.html.twig', [
     */
 public function edit(Request $request, Categorie $categorie): Response
 {
-$form = $this->createForm(CategorieType::class, $categorie);
+$form = $this->createForm(Categorie2Type::class, $categorie);
 $form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
@@ -87,7 +87,7 @@ $em->persist($categorie);
 $em->flush();
 return $this->redirectToRoute('categorie_index');
 //$categorie = $copier->copy($categoriec);
-//$form = $this->createForm(CategorieType::class, $categorie);
+//$form = $this->createForm(Categorie2Type::class, $categorie);
 //$form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {

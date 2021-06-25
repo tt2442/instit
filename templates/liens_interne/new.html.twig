@@ -1,22 +1,27 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}{% if action=='new'  %}Création {% elseif action=='copy' %}Duplication {% elseif action=='edit' %}Edition{% endif %} LiensInterne{% endblock %}
+{% block title %}{% if action=='new' %}Création {% elseif action=='copy' %}Duplication {% elseif action=='edit'
+%}Edition{% endif %} LiensInterne{% endblock %}
 
 {% block body %}
 
 <div class="col-12 text-center">
-    <h1>{% if action=='new'  %}Créer {% elseif action=='copy' %}Dupliquer {% elseif action=='edit' %}Editer{% endif %} LiensInterne        <span class="text-right">
-            <h5>taille maxi d'envoie:{{upload_max()}} Mo</h5>
-        </span>
+    <h1>{% if action=='new' %}Créer {% elseif action=='copy' %}Dupliquer {% elseif action=='edit' %}Editer{% endif %}
+        LiensInterne
     </h1>
+    <span class="text-right">
+        <h5>taille maxi d'envoie:{{upload_max()}} Mo</h5>
+    </span>
 </div>
 <div class="col-12">
     {{ form_start(form) }}
     {{ form_row(form.Observation) }}
-{{ form_row(form.materiel) }}
-    <button class="btn btn-primary" type="submit">{% if action=='new'  %}Créer {% else %}Mettre à jour{% endif %}</button>
+    {{ form_row(form.materiel) }}
+    <button class="btn btn-primary" type="submit">{% if action=='new' %}Créer {% else %}Mettre à jour{% endif
+        %}</button>
 
-    <a href="{{ path('liens_interne_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>
+    <a href="{{ path('liens_interne_index') }}"><button class="btn btn-secondary" type="button">Revenir à la
+            liste</button></a>
     <input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
     {{ form_end(form) }}
 </div>
