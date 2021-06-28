@@ -7,9 +7,9 @@
 
     <div class="row">
         <div class="col-md-3 text-right pr-md-5 pl-md-5">
-            <h1>
+            <h2>
                 je suis rachou
-            </h1>
+            </h2>
             <span class="span-primary">
                 Instit maternelle depuis 22 ans, coach pour les jeunes enseignants, passionnée par le monde des enfants
                 et
@@ -22,9 +22,9 @@
             <img src="{{ asset('build/visuel_calendrier.png') }}" class="img-fluid">
         </div>
         <div class="col-md-4 offset-md-4 mt-3">
-            <h1>
+            <h2>
                 mon calendrier au jour le jour et au fil des ans !
-            </h1>
+            </h2>
             <span class="span-primary">
                 Pour mieux appréhender les notions de jours, mois, années. Mais
                 aussi, les saisons, la météo, mon humeur du jour, les chiffres, le vocabulaire, la lecture en majuscules
@@ -48,9 +48,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col text-center">
-            <h1 class="titre_produit">
+            <h2 class="titre_produit">
                 nouveautés
-            </h1>
+            </h2>
         </div>
     </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -65,16 +65,16 @@
 
 
                 <div class="row">
-                    <div class="owl-carousel">
+                    <div class="owl-carousel row">
                         {% for article in articles %}
-                        <div class="card border-0 bg-transparent">
+                        <div class="card border-0 bg-transparent d-inline-block">
                             {% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
                             <img class="card-img-top border-0 img-fluid bg-white"
                                 style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
                             <div class="card-body bg-transparent text-left px-0">
-                                <h1 class="titre_produit m-0">
+                                <h2 class="titre_produit m-0">
                                     {{ article.Titre }}
-                                </h1>
+                                </h2>
                                 <span class="card-text span-age">
                                     {{ article.age }}
                                 </span>
@@ -129,9 +129,9 @@
                         <small class="mt-2 mb-n2" style="color:{{ categorie.couleur }};">
                             {{ categorie.Nom }}
                         </small>
-                        <h1 class="titre_produit-gris">
+                        <h2 class="titre_produit-gris">
                             {{ article.Titre }}
-                        </h1>
+                        </h2>
                         <span class="card-text span-age">
                             {{ article.age }}
                         </span>
@@ -161,7 +161,7 @@
             <img class="card-img-top" src="holder.js/100x180/" alt="">
             <div class="row">
                 <div class="card-body col-8">
-                    <h1 class="titre_produit-gris">pensez à plastifier les documents pour qu’ils durent longtemps !</h1>
+                    <h2 class="titre_produit-gris">pensez à plastifier les documents pour qu’ils durent longtemps !</h2>
                     <span class="card-text span-age">
                         Voici un lien pour acheter une plastifieuse à 29,99 € sur Amazon
                     </span>

@@ -44,15 +44,15 @@ $body:1rem;
 
 h1 {
     font-size: $h1;
-    font-family: $amatic_grand_titre;
-    font-style: normal;
-    font-weight: bold;
-    color: $amatic_orange;
 
 }
 
 h2 {
-    font-size: $h2;
+    font-size: $h1;
+    font-family: $amatic_grand_titre;
+    font-style: normal;
+    font-weight: bold;
+    color: $amatic_orange;
 }
 
 h3 {
@@ -142,9 +142,9 @@ nav {
         border-radius: 60px;
         padding: 1.2rem;
 
-        & h1 {
-            @extend h1;
-            font-size: 1.15rem;
+        & h2 {
+            @extend h2;
+            font-size: $h3;
             color: $amatic_classic;
         }
     }
@@ -232,5 +232,29 @@ nav {
 
         background: $amatic_rose;
         border-radius: 26px;
+    }
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.dropdown-dessin:hover {
+    background-image: url('/assets/images/courbe_header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+a {
+    &.a_no_syle {
+        text-decoration: none;
+        color: $amatic_classic;
+    }
+
+    &.a_no_syle:hover {
+        text-decoration: none;
+        color: $amatic_classic;
     }
 }

@@ -33,27 +33,101 @@ app.request.attributes.get('_route_params'))|split('/')|last
                     </a>
                 </div>
                 <div class="col-md-9 offset-md-3">
-                    <div class="row w-100 navbar">
+                    <div class="row w-100 navbar py-2">
                         <div class="col-md-3 d-flex flex-column">
-                            <h1 class="m-0 mt-auto mb-auto">jeux avec du petit matériel</h1>
+                            <div class="nav-item dropdown">
+                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">jeux avec du petit matériel</h2>
+                                <div class="dropdown-menu">
+                                    <div class="d-flex align-items-start flex-column flex-sm-row p-3">
+
+                                        <div>
+                                            <div class="dropdown-header">Services</div>
+                                            <a class="dropdown-item" href="#">Développement web</a>
+                                            <a class="dropdown-item" href="#">Développement mobile</a>
+                                            <a class="dropdown-item" href="#">UX et Design</a>
+                                            <a class="dropdown-item" href="#">Infographie</a>
+                                        </div>
+
+                                        <div>
+                                            <div class="dropdown-header">Technologies</div>
+                                            <a class="dropdown-item" href="#">HTML et CSS</a>
+                                            <a class="dropdown-item" href="#">BOOTSTRAP</a>
+                                            <a class="dropdown-item" href="#">PHP et LARAVEL</a>
+                                            <a class="dropdown-item" href="#">JAVASCRIPT et VUE.JS</a>
+                                        </div>
+
+                                        <div>
+                                            <div class="dropdown-header">Outils</div>
+                                            <a class="dropdown-item" href="#">Visual Studio Code</a>
+                                            <a class="dropdown-item" href="#">Laragon</a>
+                                            <a class="dropdown-item" href="#">Google Chrome</a>
+                                            <a class="dropdown-item" href="#">Windows 10</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3 d-flex flex-column">
-                            <h1 class="m-0 mt-auto mb-auto">apprendre en s’amusant</h1>
+                            <div class="nav-item dropdown">
+                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">apprendre en s’amusant</h2>
+                                <div class="dropdown-menu" style="left: -10rem;">
+                                    <div class="d-flex align-items-center flex-column flex-sm-row p-3 py-0">
+
+                                        <div class="col px-0">
+                                            <a class="dropdown-item px-3">Les p'tits défis</a>
+                                            <a class="dropdown-item px-3">Les p'tits défis scientifiques</a>
+                                        </div>
+
+                                        <div class="col px-0">
+                                            <a class="dropdown-item px-3">Les p’tits dicos</a>
+                                            <a class="dropdown-item px-3">Le corps humain</a>
+                                        </div>
+
+                                        <div class="col px-0">
+                                            <a class="dropdown-item px-3">La ferme</a>
+                                            <a class="dropdown-item px-3">les dinosaures</a>
+                                        </div>
+                                        <div class="col px-0">
+                                            <a class="dropdown-item px-3">Les fruits & légumes</a>
+                                            <a class="dropdown-item px-3">Les insectes</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-2 d-flex flex-column">
-                            <h1 class="m-0 mt-auto mb-auto">jeux de mon âge</h1>
+                            <div class="nav-item dropdown">
+                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">jeux de mon âge</h2>
+                                <div class="dropdown-menu">
+                                    <div class="d-flex align-items-start flex-column flex-sm-row p-3">
+                                        <div class="col">
+                                            <img src="{{ asset('build/3_ans_nav.png') }}" alt="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="{{ asset('build/4_ans_nav.png') }}" alt="">
+                                        </div>
+                                        <div class="col">
+                                            <img src="{{ asset('build/5_ans_nav.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-2 d-flex flex-column">
-                            <h1 class="m-0 mt-auto mb-auto">contactez-moi</h1>
+                            <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">
+                                <a class="a_no_syle" href="{{ path('home') }}">contactez-moi</a>
+                            </h2>
                         </div>
                         <div class="col-md-2  d-flex flex-column">
-                            <h1 class="m-0 mt-auto mb-auto d-flex justify-content-around">
+                            <h2 class="m-0 mt-auto mb-auto d-flex justify-content-around">
                                 <a href="{{ path('admin') }}">
                                     <i class="fa fa-user m-1" aria-hidden="true"></i>
                                 </a>
                                 <i class="fa fa-heart m-1" aria-hidden="true"></i>
                                 <i class="fa fa-shopping-basket m-1" aria-hidden="true"></i>
-                            </h1>
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -64,9 +138,9 @@ app.request.attributes.get('_route_params'))|split('/')|last
                 <img src="{{ asset('build/rachel_photo.png') }}" class="rounded-circle img-fluid rotate">
             </div>
             <div class="col-md-5 d-flex flex-column">
-                <h1 class="mt-auto">
+                <h2 class="mt-auto">
                     bienvenue sur ma boutique
-                </h1>
+                </h2>
                 <span class="span-primary">
                     Vous y trouverez des idées de jeux, des fiches à imprimer pour apprendre en jouant destinés aux
                     enfants
