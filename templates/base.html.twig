@@ -156,7 +156,14 @@ app.request.attributes.get('_route_params'))|split('/')|last
         </div>
         <div class="row w-100">
             <div class="col-md-4 mr-2">
-                <img src="{{ asset('build/rachel_photo.png') }}" class="rounded-circle img-fluid rotate">
+                <div>
+                    <img src="{{ asset('build/rachel_photo.png') }}" class="rounded-circle img-fluid img-pos">
+                </div>
+                <div class="row">
+                    <div class="col offset-6  mt-n5 ">
+                        <img class="img-fluid rotate" src="{{ asset('build/etoile.png') }}" alt="">
+                    </div>
+                </div>
             </div>
             <div class="col-md-5 d-flex flex-column">
                 <h2 class="mt-auto">

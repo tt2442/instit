@@ -129,10 +129,15 @@ nav {
         margin-bottom: .5rem;
     }
 
-    & .rotate {
+    & .img-pos {
         // max-width: 392px;
         margin-top: 4rem;
         margin-left: 2rem;
+    }
+
+    & .rotate {
+        transform: rotate(-4deg);
+        margin-top: .5em;
     }
 
     .navbar {

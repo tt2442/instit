@@ -60,4 +60,5 @@ $(function () {
     $(document).click(function (event) {
         $('.collapse-menu').collapse('hide');
     });
+    $('.collapse-menu').collapse('hide');
 });
