@@ -26,7 +26,7 @@ app.request.attributes.get('_route_params'))|split('/')|last
 <body>
     <nav>
         <div class="container-fluid position-absolute">
-            <div class="row">
+            <div class="row" id="navbarParent">
                 <div class="logo col-12 text-center">
                     <a href="{{ path('home') }}">
                         <img class="img-fluid" src="{{ asset('build/logo.png') }}" alt="">
@@ -35,84 +35,30 @@ app.request.attributes.get('_route_params'))|split('/')|last
                 <div class="col-md-9 offset-md-3">
                     <div class="row w-100 navbar py-2">
                         <div class="col-md-3 d-flex flex-column">
-                            <div class="nav-item dropdown">
-                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">jeux avec du petit matériel</h2>
-                                <div class="dropdown-menu">
-                                    <div class="d-flex align-items-start flex-column flex-sm-row p-3">
-
-                                        <div>
-                                            <div class="dropdown-header">Services</div>
-                                            <a class="dropdown-item" href="#">Développement web</a>
-                                            <a class="dropdown-item" href="#">Développement mobile</a>
-                                            <a class="dropdown-item" href="#">UX et Design</a>
-                                            <a class="dropdown-item" href="#">Infographie</a>
-                                        </div>
-
-                                        <div>
-                                            <div class="dropdown-header">Technologies</div>
-                                            <a class="dropdown-item" href="#">HTML et CSS</a>
-                                            <a class="dropdown-item" href="#">BOOTSTRAP</a>
-                                            <a class="dropdown-item" href="#">PHP et LARAVEL</a>
-                                            <a class="dropdown-item" href="#">JAVASCRIPT et VUE.JS</a>
-                                        </div>
-
-                                        <div>
-                                            <div class="dropdown-header">Outils</div>
-                                            <a class="dropdown-item" href="#">Visual Studio Code</a>
-                                            <a class="dropdown-item" href="#">Laragon</a>
-                                            <a class="dropdown-item" href="#">Google Chrome</a>
-                                            <a class="dropdown-item" href="#">Windows 10</a>
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="nav-item">
+                                <a href="" id="nav_materiel" data-toggle="collapse" data-target="#materiel_collapse"
+                                    aria-controls="materiel_collapse" aria-expanded="false" data-parent="#navbarParent"
+                                    class="m-0 mt-auto mb-auto dropdown-dessin py-3 px-1 a_no_syle nav-collapse">
+                                    jeux avec du petit matériel
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-3 d-flex flex-column">
-                            <div class="nav-item dropdown">
-                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">apprendre en s’amusant</h2>
-                                <div class="dropdown-menu" style="left: -10rem;">
-                                    <div class="d-flex align-items-center flex-column flex-sm-row p-3 py-0">
-
-                                        <div class="col px-0">
-                                            <a class="dropdown-item px-3">Les p'tits défis</a>
-                                            <a class="dropdown-item px-3">Les p'tits défis scientifiques</a>
-                                        </div>
-
-                                        <div class="col px-0">
-                                            <a class="dropdown-item px-3">Les p’tits dicos</a>
-                                            <a class="dropdown-item px-3">Le corps humain</a>
-                                        </div>
-
-                                        <div class="col px-0">
-                                            <a class="dropdown-item px-3">La ferme</a>
-                                            <a class="dropdown-item px-3">les dinosaures</a>
-                                        </div>
-                                        <div class="col px-0">
-                                            <a class="dropdown-item px-3">Les fruits & légumes</a>
-                                            <a class="dropdown-item px-3">Les insectes</a>
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="nav-item">
+                                <a href="" id="nav_materiel" data-toggle="collapse" data-target="#apprendre_collapse"
+                                    aria-controls="apprendre_collapse" aria-expanded="false" data-parent="#navbarParent"
+                                    class="m-0 mt-auto mb-auto dropdown-dessin py-3 px-1 a_no_syle nav-collapse">
+                                    apprendre en s’amusant
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-2 d-flex flex-column">
-                            <div class="nav-item dropdown">
-                                <h2 class="m-0 mt-auto mb-auto dropdown-dessin py-3">jeux de mon âge</h2>
-                                <div class="dropdown-menu">
-                                    <div class="d-flex align-items-start flex-column flex-sm-row p-3">
-                                        <div class="col">
-                                            <img src="{{ asset('build/3_ans_nav.png') }}" alt="">
-                                        </div>
-                                        <div class="col">
-                                            <img src="{{ asset('build/4_ans_nav.png') }}" alt="">
-                                        </div>
-                                        <div class="col">
-                                            <img src="{{ asset('build/5_ans_nav.png') }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="nav-item">
+                                <a href="" id="nav_materiel" data-toggle="collapse" data-target="#age_collapse"
+                                    aria-controls="age_collapse" aria-expanded="false" data-parent="#navbarParent"
+                                    class="m-0 mt-auto mb-auto dropdown-dessin py-3 px-1 a_no_syle nav-collapse">
+                                    jeux de mon âge
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-2 d-flex flex-column">
@@ -131,7 +77,82 @@ app.request.attributes.get('_route_params'))|split('/')|last
                         </div>
                     </div>
                 </div>
+                <div class="col-md-8 offset-md-3 mt-n3">
+                    <div class="collapse-menu collapse row ml-3" id="materiel_collapse" data-parent="#navbarParent">
+                        <div class="col-4 pr-0">
+                            <a href="#" class="a_no_syle">Développement web</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Développement mobile</a>
+                            <br>
+                            <a href="#" class="a_no_syle">UX et Design</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Infographie</a>
+                        </div>
+                        <div class="col-4 pr-0">
+                            <a href="#" class="a_no_syle">HTML et CSS</a>
+                            <br>
+                            <a href="#" class="a_no_syle">BOOTSTRAP</a>
+                            <br>
+                            <a href="#" class="a_no_syle">PHP et LARAVEL</a>
+                            <br>
+                            <a href="#" class="a_no_syle">JAVASCRIPT et VUE.JS</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="a_no_syle">Visual Studio Code</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Laragon</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Google Chrome</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Windows 10</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-3 mt-n3">
+                    <div class="collapse-menu collapse row ml-3" id="apprendre_collapse" data-parent="#navbarParent">
+                        <div class="col-3 pr-0">
+                            <a href="#" class="a_no_syle">Les p'tits défis</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Les p'tits défis scientifiques</a>
+                        </div>
+                        <div class="col-3 pr-0">
+                            <a href="#" class="a_no_syle">Les p’tits dicos</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Le corps humain</a>
+                        </div>
+                        <div class="col-3 pr-0">
+                            <a href="#" class="a_no_syle">La ferme</a>
+                            <br>
+                            <a href="#" class="a_no_syle">les dinosaures</a>
+                        </div>
+                        <div class="col-3">
+                            <a href="#" class="a_no_syle">Les fruits & légumes</a>
+                            <br>
+                            <a href="#" class="a_no_syle">Les insectes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-3 mt-n3">
+                    <div class="collapse-menu collapse row ml-3 text-center" id="age_collapse"
+                        data-parent="#navbarParent">
+                        <div class="col-4 pr-0">
+                            <a href="#" class="a_no_syle"><img src="{{ asset('build/3_ans_nav.png') }}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-4 pr-0">
+                            <a href="#" class="a_no_syle"><img src="{{ asset('build/4_ans_nav.png') }}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="a_no_syle"><img src="{{ asset('build/5_ans_nav.png') }}" alt="">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
         <div class="row w-100">
             <div class="col-md-4 mr-2">

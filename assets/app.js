@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import 'bootstrap';
+// import 'bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
 import './styles/app.scss';
 import Inputmask from "inputmask"; $(document).ready(function () { Inputmask().mask(document.querySelectorAll("input")); })
@@ -21,7 +21,6 @@ import 'owl.carousel';
 
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import './bootstrap';
 
 $('[data-toggle="popover-hover"]').on('click', function () {
     var popup = this
@@ -57,3 +56,8 @@ $(function () {
     })
 });
 
+$(function () {
+    $(document).click(function (event) {
+        $('.collapse-menu').collapse('hide');
+    });
+});

@@ -200,7 +200,7 @@ nav {
 .button-arrow {
     background: $amatic_classic;
     color: $amatic_blanc;
-    box-shadow: 0px 2px 4px rgba(98, 92, 97, 0.2);
+    box-shadow: 0px 2px 4px $ombre;
     margin-top: 5rem;
     width: 4rem;
     height: 4rem;
@@ -209,7 +209,7 @@ nav {
 
 .img {
     &-shadow {
-        box-shadow: 0px 2px 4px rgba(98, 92, 97, 0.2);
+        box-shadow: 0px 2px 4px $ombre;
     }
 }
 
@@ -235,16 +235,22 @@ nav {
     }
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
-    border-radius: 0rem 0rem 1rem 1rem;
+.nav-collapse {
+    @extend h2;
 }
 
-.dropdown-dessin:hover {
-    background-image: url('/assets/images/courbe_header.png');
-    background-repeat: no-repeat;
-    background-position: center;
+.dropdown-dessin {
+    &:hover {
+        background-image: url('/assets/images/courbe_header.png');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &[aria-expanded="true"] {
+        background-color: white;
+        box-shadow: 0px 2px 4px $ombre;
+        border-radius: 24px 24px 0px 0px;
+    }
 }
 
 a {
@@ -256,5 +262,27 @@ a {
     &.a_no_syle:hover {
         text-decoration: none;
         color: $amatic_classic;
+    }
+}
+
+.collapse-menu {
+    z-index: 1000;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px $ombre;
+    border-radius: 10px 10px 24px 24px;
+
+    a {
+        font-size: $h5;
+
+        &.a_no_syle {
+            text-decoration: none;
+            color: $amatic_classic;
+        }
+
+        &.a_no_syle:hover {
+            text-decoration: overline underline;
+            color: $amatic_gris_fonce;
+        }
     }
 }
