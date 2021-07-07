@@ -1,0 +1,64 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %} Categorie
+{% endblock %}
+{% block body %} <h1> Categorie </h1>
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Nom </th>
+                <th>Description </th>
+                <th>Etat </th>
+                <th>Couleur </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+            <tr>
+                <td>{{categorie.Nom}}</td>
+                <td>{{categorie.Description}}</td>
+                <td>{% set options={'Actif':'true','Inactif':'false',} %}
+                    {% set res=[] %}
+                    {% for key,option in options %}
+                    {% if option in categorie.Etat %}
+                    {% set res=res|merge([key]) %}
+                    {% endif %}
+                    {% endfor %}
+                    {{res|json_encode}}</td>
+                <td>{{categorie.couleur}}</td>
+                <td>{% for item in categorie.article %}
+                    {{ item }},
+                    {% endfor %}</td>
+                <td>{% for item in categorie.Promotion %}
+                    {{ item }},
+                    {% endfor %}</td>
+                <td>
+                    <form method='post' action="{{ path('categorie_delete', {'id':  categorie.id }) }}"
+                        onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                        <div class='row'>
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  categorie . id ) }}">
+                            <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir'
+                                href="{{ path('categorie_show', {'id':  categorie.id }) }}"><i
+                                    class="icone fas fa-glasses "></i></a>
+                            <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer'
+                                href="{{ path('categorie_edit', {'id':  categorie.id }) }}"><i
+                                    class="icone fas fa-pen "></i></a>
+                            <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer'
+                                href="{{ path('categorie_copy', {'id':  categorie.id }) }}"><i
+                                    class="icone fas fa-copy "></i></a>
+                            <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
+                        </div>
+                    </form>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan=6>Aucun enregistrement</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div><a href="{{ path('categorie_new') }}"><button class="btn btn-secondary" type="button">Ajouter</button></a>
+{% endblock %}

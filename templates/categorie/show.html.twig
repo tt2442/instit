@@ -1,0 +1,32 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir Categorie
+{% endblock %}
+{% block body %} <h1>Voir Categorie </h1>
+<div class="col-12">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h6>Nom</h6>
+            <hr>{{categorie.Nom}}
+        <li class="list-group-item">
+            <h6>Description</h6>
+            <hr>{{categorie.Description}}Etat{% set options={'Actif':'true','Inactif':'false',} %}
+            {% set res=[] %}
+            {% for key,option in options %}
+            {% if option in categorie.Etat %}
+            {% set res=res|merge([key]) %}
+            {% endif %}
+            {% endfor %}
+            {{res|json_encode}}
+        <li class="list-group-item">
+            <h6>Couleur</h6>
+            <hr>{{categorie.couleur}}
+            <td>{{categorie.article|json_encode}}
+            <td>{{categorie.Promotion|json_encode}}
+        <li class="list-group-item">
+            <h6>Id</h6>
+            <hr>{{categorie.id}}
+    </ul>
+</div>
+<a href="{{ path('categorie_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{%
+endblock %}
