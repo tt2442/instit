@@ -35,7 +35,7 @@ class Categorie
 
     /**
      * @ORM\Column(type="boolean")
-     * OPT=choices=>['Actif'=>'true','Inactif'=>'false']
+     * OPT=choices=>['Actif'=>True,'Inactif'=>False]
      */
     private $Etat;
 

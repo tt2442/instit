@@ -31,7 +31,7 @@ class HomeController extends AbstractController
         return $this->render('home/accueil.html.twig', [
             'controller_name' => 'HomeController',
             'articles' => $articles,
-            'categories' => $categorieRepository->findAll(),
+            'categories' => $categorieRepository->findBy(['Etat' => True]),
         ]);
     }
 }

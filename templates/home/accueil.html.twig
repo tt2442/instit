@@ -45,36 +45,32 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="titre_produit">
-                nouveautés
-            </h2>
-        </div>
-    </div>
+<div class="container">
+    <h2 class="chapitre text-center">
+        nouveautés
+    </h2>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="row">
-            <div class="col-md-1 text-center">
+            <div class="col-md-1 p-0 text-center">
                 <a type="button" class="btn button-arrow rounded-circle customPrevBtn"><i class="fa fa-arrow-left mt-2"
                         aria-hidden="true"></i>
                 </a>
             </div>
 
-            <div class="col-md-10 text-center carousel-inner">
+            <div class="col-md-10  p-0 text-center carousel-inner">
 
 
-                <div class="row">
-                    <div class="owl-carousel row">
+                {# <div class="row"> #}
+                    <div class="owl-carousel row m-0">
                         {% for article in articles %}
                         <div class="card border-0 bg-transparent d-inline-block">
                             {% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
                             <img class="card-img-top border-0 img-fluid bg-white"
                                 style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
                             <div class="card-body bg-transparent text-left px-0">
-                                <h2 class="titre_produit m-0">
+                                <h3 class="titre_produit m-0">
                                     {{ article.Titre }}
-                                </h2>
+                                </h3>
                                 <span class="card-text span-age">
                                     {{ article.age }}
                                 </span>
@@ -86,10 +82,11 @@
                             </div>
                         </div>
                         {% endfor %}
-                    </div>
+                        {#
+                    </div> #}
                 </div>
             </div>
-            <div class="col-md-1 text-center">
+            <div class="col-md-1  p-0 text-center">
                 <a type="button" class="btn button-arrow rounded-circle customNextBtn"><i class="fa fa-arrow-right mt-2"
                         toto aria-hidden="true"></i>
                 </a>
@@ -102,11 +99,18 @@
 {% for categorie in categories %}
 <div class="container">
     <div class="row">
+        <div class="col-12  text-center">
+            <h2 class="chapitre">
+                {{ categorie.Nom }}
+            </h2>
+            <hr>
+            <span class="span-primary">
+                {{ categorie.Description }}
+            </span>
+        </div>
         <div class="text-center p-0 d-flex col">
             <div class="row w-100 justify-content-around  mt-2">
-
-
-                <div class="card border-0 col-md-3 flex-fill bg-transparent">
+                {# <div class="card border-0 col-md-3 flex-fill bg-transparent">
                     <div class="card-body text-center px-0 justify-content-center pt-0 pb-2">
                         <div class="card-img-top img-fluid rounded-circle img-shadow"
                             style=" height:13.5rem; width:13.5rem;background-color: {{ categorie.couleur }};"></div>
@@ -117,7 +121,7 @@
                             {{ categorie.Description }}
                         </span>
                     </div>
-                </div>
+                </div> #}
 
                 {% for article in categorie.article %}
                 <div class="card border-0 col-md-3 flex-fill bg-transparent">
@@ -126,25 +130,12 @@
                         <div class="card-img-top img-fluid rounded-circle img-shadow bg-white"
                             style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
                         </div>
-                        <small class="mt-2 mb-n2" style="color:{{ categorie.couleur }};">
-                            {{ categorie.Nom }}
-                        </small>
-                        <h2 class="titre_produit-gris">
+                        <h3 class="titre_produit-gris">
                             {{ article.Titre }}
-                        </h2>
-                        <span class="card-text span-age">
-                            {{ article.age }}
-                        </span>
-                        <span class="span-prix">
-                            {% set price = article.prix / 100 %}
-                            {{ price|number_format(2, '.', ',') }} €
-                        </span>
+                        </h3>
                         <br>
                         <a href="{{ path('article_edit', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
-                            style="background-color:{{ categorie.couleur }};">Acheter
-                            {% for cat in article.Categorie %}
-                            {{ cat.Nom }}
-                            {% endfor %}</a>
+                            style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
                     </div>
                 </div>
                 {% endfor %}

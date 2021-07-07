@@ -33,7 +33,7 @@ $minFont: .8rem;
 $maxFont: 1.4rem;
 
 $h1: 1.8rem;
-$h2: 1.5rem;
+$h2: 3rem;
 $h3: 1.25rem;
 $h4: 1rem;
 $h5: .875rem;
@@ -53,10 +53,15 @@ h2 {
     font-style: normal;
     font-weight: bold;
     color: $amatic_orange;
+
+    &.chapitre {
+        color: $amatic_classic;
+        font-size: $h2;
+    }
 }
 
 h3 {
-    font-size: $h3;
+    @extend h2
 }
 
 h4 {
@@ -132,7 +137,7 @@ nav {
     & .img-pos {
         // max-width: 392px;
         margin-top: 4rem;
-        margin-left: 2rem;
+        margin-left: 1rem;
     }
 
     & .rotate {
