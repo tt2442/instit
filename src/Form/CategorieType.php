@@ -12,18 +12,19 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Article;
 
 use App\Entity\Promotion;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 
-class Categorie1Type extends AbstractType
+class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
     {
         $builder->add('Nom', TextType::class, ['attr' => ['data-inputmask' => "'alias': 'texte_propre'",]])
 
             ->add('Description', null, ['attr' => []])
-            ->add('Etat', ChoiceType::class, ['choices' => ['Actif' => 'true', 'Inactif' => 'false',], 'attr' => []])
+            ->add('Etat', CheckboxType::class, ['label' => 'Actif', 'required' => false, 'attr' => []])
             ->add('couleur', ColorType::class, ['attr' => ['data-inputmask' => "'alias': 'color'",]])
             ->add('article', EntityType::class, [
                 'class' => Article::class,

@@ -19,14 +19,7 @@
             <tr>
                 <td>{{categorie.Nom}}</td>
                 <td>{{categorie.Description}}</td>
-                <td>{% set options={'Actif':'true','Inactif':'false',} %}
-                    {% set res=[] %}
-                    {% for key,option in options %}
-                    {% if option in categorie.Etat %}
-                    {% set res=res|merge([key]) %}
-                    {% endif %}
-                    {% endfor %}
-                    {{res|json_encode}}</td>
+                <td>{{ categorie.Etat ? 'Actif':'Inactif' }}</td>
                 <td>{{categorie.couleur}}</td>
                 <td>{% for item in categorie.article %}
                     {{ item }},
