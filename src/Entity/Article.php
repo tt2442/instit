@@ -56,33 +56,17 @@ class Article
     private $Quantite;
 
     /**
-     * @ORM\Column(type="integer")
-     * ALIAS=prix
-     * OPT=label=>"Frais d'envoi"
-     * ATTR=no_index
-     */
-    private $FraisEnvoi;
-
-    // /**
-    //  * @ORM\ManyToMany(targetEntity=User::class, mappedBy="ArticleAchetes")
-    //  * OPT=required=>false
-    //  * ATTR=no_index
-    //  * ATTR=no_new
-    //  */
-    // private $Users;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      * ALIAS=prix
      */
     private $Prix;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="article")
-     * OPT=required=>false
-     * ATTR=no_index
-     */
-    private $Promotion;
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="article")
+    //  * OPT=required=>false
+    //  * ATTR=no_index
+    //  */
+    // private $Promotion;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="article")
@@ -223,45 +207,6 @@ class Article
         return $this;
     }
 
-    public function getFraisEnvoi(): ?int
-    {
-        return $this->FraisEnvoi;
-    }
-
-    public function setFraisEnvoi(int $FraisEnvoi): self
-    {
-        $this->FraisEnvoi = $FraisEnvoi;
-
-        return $this;
-    }
-
-    // /**
-    //  * @return Collection|User[]
-    //  */
-    // public function getUsers(): Collection
-    // {
-    //     return $this->Users;
-    // }
-
-    // public function addCommentaire(User $commentaire): self
-    // {
-    //     if (!$this->Users->contains($commentaire)) {
-    //         $this->Users[] = $commentaire;
-    //         $commentaire->addArticleAchetE($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeCommentaire(User $commentaire): self
-    // {
-    //     if ($this->Users->removeElement($commentaire)) {
-    //         $commentaire->removeArticleAchetE($this);
-    //     }
-
-    //     return $this;
-    // }
-
     public function getPrix(): ?int
     {
         return $this->Prix;
@@ -274,17 +219,17 @@ class Article
         return $this;
     }
 
-    public function getPromotion(): ?Promotion
-    {
-        return $this->Promotion;
-    }
+    // public function getPromotion(): ?Promotion
+    // {
+    //     return $this->Promotion;
+    // }
 
-    public function setPromotion(?Promotion $Promotion): self
-    {
-        $this->Promotion = $Promotion;
+    // public function setPromotion(?Promotion $Promotion): self
+    // {
+    //     $this->Promotion = $Promotion;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection|Categorie[]

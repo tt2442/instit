@@ -97,6 +97,8 @@
 </div>
 
 {% for categorie in categories %}
+{% if categorie.etat == true  and categorie.article|length > 0 %}
+    
 <div class="container">
     <div class="row">
         <div class="col-12  text-center">
@@ -134,7 +136,7 @@
                             {{ article.Titre }}
                         </h3>
                         <br>
-                        <a href="{{ path('article_edit', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
+                        <a href="{{ path('article_show', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
                             style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
                     </div>
                 </div>
@@ -144,6 +146,7 @@
 
     </div>
 </div>
+{% endif %}
 {% endfor %}
 
 <div class="container">

@@ -59,10 +59,16 @@ class Categorie
      */
     private $couleur;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Souscat::class, mappedBy="categorie")
+     */
+    private $souscats;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
         $this->Promotion = new ArrayCollection();
+        $this->souscats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -173,4 +179,32 @@ class Categorie
 
         return $this;
     }
+
+    /**
+     * @return Collection|Souscat[]
+     */
+    public function getSouscats(): Collection
+    {
+        return $this->souscats;
+    }
+
+    public function addSouscat(Souscat $souscat): self
+    {
+        if (!$this->souscats->contains($souscat)) {
+            $this->souscats[] = $souscat;
+            $souscat->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouscat(Souscat $souscat): self
+    {
+        if ($this->souscats->removeElement($souscat)) {
+            $souscat->removeCategorie($this);
+        }
+
+        return $this;
+    }
+
 }

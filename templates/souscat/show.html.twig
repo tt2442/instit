@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Voir Sous-categorie 
+{% endblock %}
+{% block body %} <h1>Voir Sous-categorie </h1><div class="col-12">
+<ul class="list-group">
+<hr>{{souscat.Titre}}
+<td>{{souscat.categorie|json_encode}}
+    </ul>
+    </div>
+<a href="{{ path('souscat_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{% endblock %}
