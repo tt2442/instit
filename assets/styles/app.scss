@@ -296,3 +296,9 @@ a {
         }
     }
 }
+
+.breadcrumb-item {
+    & a {
+        text-transform: uppercase;
+    }
+}

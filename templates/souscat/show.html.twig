@@ -6,11 +6,15 @@
 
 <div {% set route=path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %} {% set
     action=path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|split('/')|last %}
-    {{route}} class="col-xl-5 d-flex flex-column">
-    <h2 class="mt-auto mb-auto pt-5">
-        {{route}} future fil d'arianne
-    </h2>
-
+    {{route}} class="col-xl d-flex flex-column">
+    <nav aria-label="breadcrumb" class="mt-auto mb-auto pt-5">
+        <ol class="breadcrumb bg-transparent">
+            <li class="breadcrumb-item"><a href="{{path('home')}}"
+                    style="color:{{ souscat.categorie.couleur }} ;">Accueil</a></li>
+            <li class="breadcrumb-item active">{{souscat.categorie.Nom }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ souscat.Titre }}</li>
+        </ol>
+    </nav>
 </div>
 {% endblock arianne %}
 
@@ -47,7 +51,7 @@
                 {% else %}
                 <div class="col-2">
                     <h3 class="titre_produit-gris">
-                        Aucun produit disponible
+                        Aucun article disponible
                     </h3>
                 </div>
                 {% endfor %}
