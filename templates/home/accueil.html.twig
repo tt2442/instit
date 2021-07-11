@@ -97,7 +97,7 @@
 </div>
 
 {% for categorie in categories %}
-{% if categorie.etat == true  and categorie.article|length > 0 %}
+{% if categorie.etat == true  and categorie.souscats|length > 0 %}
     
 <div class="container">
     <div class="row">
@@ -125,18 +125,18 @@
                     </div>
                 </div> #}
 
-                {% for article in categorie.article %}
+                {% for souscat in categorie.souscats %}
                 <div class="card border-0 col-md-3 flex-fill bg-transparent">
-                    {% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
+                    {% set link = asset('/uploads/image/' ~ souscat.image) %}
                     <div class="card-body text-center px-0 justify-content-center d-flex flex-column pt-0 pb-2">
                         <div class="card-img-top img-fluid rounded-circle img-shadow bg-white"
                             style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
                         </div>
                         <h3 class="titre_produit-gris">
-                            {{ article.Titre }}
+                            {{ souscat.Titre }}
                         </h3>
                         <br>
-                        <a href="{{ path('article_show', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
+                        <a href="{{ path('article_show', {'id':  souscat.id }) }}" class="btn btn-rose mt-auto"
                             style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
                     </div>
                 </div>

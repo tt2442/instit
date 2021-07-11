@@ -82,12 +82,12 @@ class Article
      */
     private $Fichier;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Materiel::class, inversedBy="article")
-     * OPT=required=>false
-     * ATTR=no_index
-     */
-    private $Materiel;
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Materiel::class, inversedBy="article")
+    //  * OPT=required=>false
+    //  * ATTR=no_index
+    //  */
+    // private $Materiel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -287,21 +287,21 @@ class Article
         return $this->Materiel;
     }
 
-    public function addMateriel(Materiel $materiel): self
-    {
-        if (!$this->Materiel->contains($materiel)) {
-            $this->Materiel[] = $materiel;
-        }
+    // public function addMateriel(Materiel $materiel): self
+    // {
+    //     if (!$this->Materiel->contains($materiel)) {
+    //         $this->Materiel[] = $materiel;
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeMateriel(Materiel $materiel): self
-    {
-        $this->Materiel->removeElement($materiel);
+    // public function removeMateriel(Materiel $materiel): self
+    // {
+    //     $this->Materiel->removeElement($materiel);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     // /**
     //  * @return Collection|Commentaire[]

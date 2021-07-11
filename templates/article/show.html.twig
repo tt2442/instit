@@ -9,14 +9,21 @@
          <h6>Titre</h6>
          <hr>
          {{article.Titre}}
+         </li>
       <li class="list-group-item">
          <h6>Description</h6>
          <hr>
          {{article.Description}}
+         </li>
       <li class="list-group-item">
          <h6>Multimedia</h6>
          <hr>
-         {{article.Multimedia}}Etat{% set options={'Actif':'actif', 'En rupture':'rupture','Arrêté':'arret','En réapprovisionnement':'reapprovisionnement',} %}
+         {{article.Multimedia}}
+         </li>
+      <li class="list-group-item">
+         <h6>Etat</h6>
+         <hr>
+         {% set options={'Actif':'actif', 'En rupture':'rupture','Arrêté':'arret','En réapprovisionnement':'reapprovisionnement',} %}
          {% set res=[] %}
          {% for key,option in options %}
          {% if option in article.Etat %}
@@ -47,8 +54,8 @@
          {# <td>{{article.Promotion|json_encode}} #}
          <td>{{article.Categorie|json_encode}}
          <td>{{article.Fichier|json_encode}}
-         <td>
-            {{article.Materiel|json_encode}}
+         {# <td>
+            {{article.Materiel|json_encode}} #}
       <li class="list-group-item"><h6>Id</h6>
       <hr>{{article.id}}
    </ul>

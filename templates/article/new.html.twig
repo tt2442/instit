@@ -26,7 +26,7 @@
 {# {{ form_row(form.Promotion) }} #}
 {{ form_row(form.Categorie) }}
 {{ form_row(form.Fichier) }}
-{{ form_row(form.Materiel) }}
+{# {{ form_row(form.Materiel) }} #}
 <button class="btn btn-primary" type="submit">{% if action=='new' %}Créer {% else %}Mettre à jour{% endif %}</button>
 
 <a href="{{ path('article_index') }}"><button class="btn btn-secondary" type="button">Revenir à la liste</button></a>

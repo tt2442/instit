@@ -5,7 +5,7 @@
 {% block body %} <h1> Article </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Titre </th><th>Description </th><th>Etat </th><th>Quantite </th><th>Prix </th><th>Actions</th>
+        <thead><tr><th>Titre </th><th>Description </th><th>Etat </th><th>Quantite </th><th>Prix </th><th>Categorie</th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,18 +23,16 @@
                     {{res|json_encode}}</td>
 <td>{{article.Quantite}}</td>
 <td>{{article.Prix}}</td>
-<td>{% for item in  article.Promotion %}
+{# <td>{% for item in  article.Promotion %}
     {{ item }},
-  {% endfor %}</td>
+  {% endfor %}</td> #}
 <td>{% for item in  article.Categorie %}
     {{ item }},
   {% endfor %}</td>
-<td>{% for item in  article.Fichier %}
+{# <td>{% for item in  article.Materiel %}
     {{ item }},
-  {% endfor %}</td>
-<td>{% for item in  article.Materiel %}
-    {{ item }},
-  {% endfor %}</td><td>
+  {% endfor %}</td> #}
+  <td>
                     <form method='post' action="{{ path('article_delete', {'id':  article.id }) }}" 
                     onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
                     <div class='row'>

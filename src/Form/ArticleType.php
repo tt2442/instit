@@ -41,9 +41,9 @@ $builder->add('Titre', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'te
 ->add('Fichier', EntityType::class,[
                 'class' => Fichier::class,
                 'multiple' => true,'required'=>false,'attr'=>['no_index',]])
-->add('Materiel', EntityType::class,[
-                'class' => Materiel::class,
-                'multiple' => true,'required'=>false,'attr'=>['no_index',]])
+// ->add('Materiel', EntityType::class,[
+//                 'class' => Materiel::class,
+//                 'multiple' => true,'required'=>false,'attr'=>['no_index',]])
 
 ;}
 

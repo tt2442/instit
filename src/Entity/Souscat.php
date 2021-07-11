@@ -68,8 +68,16 @@ class Souscat
 
     public function setImage(string $image): self
     {
-        $this->image = $image;
-
+      $backtrace = debug_backtrace();
+        $class = strtolower(array_reverse(explode('\\', $backtrace[0]['class']))[0]);
+        $champ = strtolower(substr($backtrace[0]['function'], strlen('set')));
+        if ($$champ) {
+            @mkdir('uploads');
+            @mkdir("uploads/$champ");
+            $name = uniqid() . '_' . $_FILES[$class]['name'][$champ];
+            rename($$champ, "uploads/$champ/" .  $name);
+            $this->$champ = $name;
+        }
         return $this;
     }
 
