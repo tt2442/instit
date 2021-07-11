@@ -34,13 +34,18 @@ class Souscat
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="souscats")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="souscats")
+     */
+    private $articles;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="souscats")
      */
     private $categorie;
 
     public function __construct()
     {
-        $this->categorie = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,26 +87,43 @@ class Souscat
     }
 
     /**
-     * @return Collection|Categorie[]
+     * @return Collection|Article[]
      */
-    public function getCategorie(): Collection
+    public function getArticles(): Collection
     {
-        return $this->categorie;
+        return $this->articles;
     }
 
-    public function addCategorie(Categorie $categorie): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->categorie->contains($categorie)) {
-            $this->categorie[] = $categorie;
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
         }
 
         return $this;
     }
 
-    public function removeCategorie(Categorie $categorie): self
+    public function removeArticle(Article $article): self
     {
-        $this->categorie->removeElement($categorie);
+        $this->articles->removeElement($article);
 
         return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitre();
     }
 }

@@ -14,9 +14,9 @@ public function buildForm(FormBuilderInterface $builder, array $AtypeOption)
 {
 $builder
 ->add('Titre', null,['attr'=>[]])
-->add('image', FileType::class,['data_class' => null,'required'=>false,'attr'=>['data-inputmask'=>"'alias': 'fichier'",'no_index',]])
+->add('image', FileType::class,['data_class' => null,'required'=>true,'attr'=>['data-inputmask'=>"'alias': 'fichier'",'no_index',]])
 
-->add('categorie', EntityType::class,['class' => Categorie::class, 'multiple' => true,'required'=>false,'attr'=>['no_index',]])
+->add('categorie', EntityType::class,['class' => Categorie::class, 'multiple' => false,'required'=>true,'attr'=>['no_index',]])
 
 ;}
 

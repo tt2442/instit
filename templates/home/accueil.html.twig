@@ -6,7 +6,7 @@
 <div class="container-fluid mt-3 mb-5">
 
     <div class="row">
-        <div class="col-md-3 text-right pr-md-5 pl-md-5">
+        <div class="col-xl-3 text-right pr-xl-5 pl-xl-5">
             <h2>
                 je suis rachou
             </h2>
@@ -18,10 +18,10 @@
                 Montessori.
             </span>
         </div>
-        <div class="col-md-8">
+        <div class="col-xl-8">
             <img src="{{ asset('build/visuel_calendrier.png') }}" class="img-fluid">
         </div>
-        <div class="col-md-4 offset-md-4 mt-3">
+        <div class="col-xl-4 offset-xl-4 mt-3">
             <h2>
                 mon calendrier au jour le jour et au fil des ans !
             </h2>
@@ -51,13 +51,13 @@
     </h2>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="row">
-            <div class="col-md-1 p-0 text-center">
+            <div class="col-xl-1 p-0 text-center">
                 <a type="button" class="btn button-arrow rounded-circle customPrevBtn"><i class="fa fa-arrow-left mt-2"
                         aria-hidden="true"></i>
                 </a>
             </div>
 
-            <div class="col-md-10  p-0 text-center carousel-inner">
+            <div class="col-xl-10  p-0 text-center carousel-inner">
 
 
                 {# <div class="row"> #}
@@ -86,7 +86,7 @@
                     </div> #}
                 </div>
             </div>
-            <div class="col-md-1  p-0 text-center">
+            <div class="col-xl-1  p-0 text-center">
                 <a type="button" class="btn button-arrow rounded-circle customNextBtn"><i class="fa fa-arrow-right mt-2"
                         toto aria-hidden="true"></i>
                 </a>
@@ -112,7 +112,7 @@
         </div>
         <div class="text-center p-0 d-flex col">
             <div class="row w-100 justify-content-around  mt-2">
-                {# <div class="card border-0 col-md-3 flex-fill bg-transparent">
+                {# <div class="card border-0 col-xl-3 flex-fill bg-transparent">
                     <div class="card-body text-center px-0 justify-content-center pt-0 pb-2">
                         <div class="card-img-top img-fluid rounded-circle img-shadow"
                             style=" height:13.5rem; width:13.5rem;background-color: {{ categorie.couleur }};"></div>
@@ -126,7 +126,7 @@
                 </div> #}
 
                 {% for souscat in categorie.souscats %}
-                <div class="card border-0 col-md-3 flex-fill bg-transparent">
+                <div class="card border-0 col-xl-3 flex-fill bg-transparent">
                     {% set link = asset('/uploads/image/' ~ souscat.image) %}
                     <div class="card-body text-center px-0 justify-content-center d-flex flex-column pt-0 pb-2">
                         <div class="card-img-top img-fluid rounded-circle img-shadow bg-white"
@@ -136,7 +136,7 @@
                             {{ souscat.Titre }}
                         </h3>
                         <br>
-                        <a href="{{ path('article_show', {'id':  souscat.id }) }}" class="btn btn-rose mt-auto"
+                        <a href="{{ path('souscat_show', {'id':  souscat.id }) }}" class="btn btn-rose mt-auto"
                             style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
                     </div>
                 </div>

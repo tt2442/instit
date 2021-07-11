@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Promotion;
 
 use App\Entity\Categorie;
+use App\Entity\SousCat;
 
 use App\Entity\Fichier;
 
@@ -35,9 +36,9 @@ $builder->add('Titre', TextType::class,['attr'=>['data-inputmask'=>"'alias': 'te
 // ->add('Promotion', EntityType::class,[
                 // 'class' => Promotion::class,
                 // 'required'=>false,'attr'=>['no_index',]])
-->add('Categorie', EntityType::class,[
-                'class' => Categorie::class,
-                'multiple' => true,'required'=>false,'attr'=>['no_index',]])
+->add('souscats', EntityType::class,[
+                'class' => Souscat::class,
+                'multiple' => true,'required'=>true,'attr'=>['no_index',]])
 ->add('Fichier', EntityType::class,[
                 'class' => Fichier::class,
                 'multiple' => true,'required'=>false,'attr'=>['no_index',]])

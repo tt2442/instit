@@ -5,7 +5,7 @@
 {% block body %} <h1> Article </h1>
 <div class='table-responsive'>
     <table class='table'>
-        <thead><tr><th>Titre </th><th>Description </th><th>Etat </th><th>Quantite </th><th>Prix </th><th>Categorie</th><th>Actions</th>
+        <thead><tr><th>Titre </th><th>Description </th><th>Etat </th><th>Quantite </th><th>Prix </th><th>Sous-catégorie</th><th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +26,8 @@
 {# <td>{% for item in  article.Promotion %}
     {{ item }},
   {% endfor %}</td> #}
-<td>{% for item in  article.Categorie %}
-    {{ item }},
+<td>{% for item in  article.souscats %}
+    {{ item.Titre }},
   {% endfor %}</td>
 {# <td>{% for item in  article.Materiel %}
     {{ item }},

@@ -1,11 +1,42 @@
-{% extends 'admin.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Voir Sous-categorie 
+{% block title %}{{souscat.Titre}}
 {% endblock %}
-{% block body %} <h1>Voir Sous-categorie </h1><div class="col-12">
-<ul class="list-group">
-<hr>{{souscat.Titre}}
-<td>{{souscat.categorie|json_encode}}
-    </ul>
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12  text-center">
+            <h2 class="chapitre">
+                {{ souscat.Titre }}
+            </h2>
+            <hr>
+            <span class="span-primary">
+                {{ souscat.categorie.Nom }} 
+            </span>
+        </div>
+        <div class="text-center p-0 d-flex col">
+            <div class="row w-100 justify-content-around  mt-2">
+                {% for article in souscat.articles %}
+                <div class="card border-0 col-xl-3 flex-fill bg-transparent">
+                    {% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
+                    <div class="card-body text-center px-0 justify-content-center d-flex flex-column pt-0 pb-2">
+                        <div class="card-img-top img-fluid rounded-circle img-shadow bg-white"
+                            style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
+                        </div>
+                        <h3 class="titre_produit-gris">
+                            {{ article.Titre }}
+                        </h3>
+                        <br>
+                        <a href="{{ path('article_show', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
+                            style="background-color:{{ souscat.categorie.couleur }};">Voir le produit</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
-<a href="{{ path('souscat_index') }}" class="btn btn-secondary mr-2" type="button">Revenir à la liste</button></a>{% endblock %}
+</div>
+
+{% endblock %}

@@ -60,9 +60,10 @@ class Categorie
     private $couleur;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Souscat::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Souscat::class, mappedBy="categorie")
      */
     private $souscats;
+
 
     public function __construct()
     {
@@ -192,7 +193,7 @@ class Categorie
     {
         if (!$this->souscats->contains($souscat)) {
             $this->souscats[] = $souscat;
-            $souscat->addCategorie($this);
+            $souscat->setCategorie($this);
         }
 
         return $this;
@@ -201,7 +202,10 @@ class Categorie
     public function removeSouscat(Souscat $souscat): self
     {
         if ($this->souscats->removeElement($souscat)) {
-            $souscat->removeCategorie($this);
+            // set the owning side to null (unless already changed)
+            if ($souscat->getCategorie() === $this) {
+                $souscat->setCategorie(null);
+            }
         }
 
         return $this;

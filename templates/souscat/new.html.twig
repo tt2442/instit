@@ -19,7 +19,7 @@
     <button class="btn btn-primary" type="submit">{% if action=='new' %}Créer {% else %}Mettre à jour{% endif
         %}</button>
 
-    <a href="{{ path('promotion_index') }}"><button class="btn btn-secondary" type="button">Revenir à la
+    <a href="{{ path('souscat_index') }}"><button class="btn btn-secondary" type="button">Revenir à la
             liste</button></a>
     <input type="hidden" id="token" value="{{ csrf_token('upload')}}" />
     {{ form_end(form) }}

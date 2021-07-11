@@ -103,6 +103,11 @@ class Article
      */
     private $date;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Souscat::class, inversedBy="articles")
+     */
+    private $souscats;
+
     // /**
     //  * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
     //  * OPT=required=>false
@@ -129,6 +134,7 @@ class Article
 
         $date = new DateTime(date("Y-m-d H:i:s"));
         $this->setDate($date);
+        $this->souscats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -363,6 +369,33 @@ class Article
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Souscat[]
+     */
+    public function getSouscats(): Collection
+    {
+        return $this->souscats;
+    }
+
+    public function addSouscat(Souscat $souscat): self
+    {
+        if (!$this->souscats->contains($souscat)) {
+            $this->souscats[] = $souscat;
+            $souscat->addArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSouscat(Souscat $souscat): self
+    {
+        if ($this->souscats->removeElement($souscat)) {
+            $souscat->removeArticle($this);
+        }
 
         return $this;
     }
