@@ -43,6 +43,12 @@ class Souscat
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * ALIAS=color
+     */
+    private $couleur;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -73,7 +79,7 @@ class Souscat
 
     public function setImage(string $image): self
     {
-      $backtrace = debug_backtrace();
+        $backtrace = debug_backtrace();
         $class = strtolower(array_reverse(explode('\\', $backtrace[0]['class']))[0]);
         $champ = strtolower(substr($backtrace[0]['function'], strlen('set')));
         if ($$champ) {
@@ -118,6 +124,18 @@ class Souscat
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

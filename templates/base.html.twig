@@ -33,24 +33,27 @@ app.request.attributes.get('_route_params'))|split('/')|last
                 </div>
                 <div class="col-xl-9 offset-xl-3">
                     <div class="row w-100 navbar py-2">
-                        <div class="col-xl-3 d-flex flex-column">
+                        <div class="col-xl-1 mr-n5 p-0">
+                            <h2 class="m-0">
+                                <a href="{{ path('home') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                </a>
+                            </h2>
+                        </div>
+                        {% for categorie in findall('Categorie') %}
+                        <div class="col-xl d-flex flex-column">
                             <div class="nav-item">
-                                <a href="" id="nav_materiel" data-toggle="collapse" data-target="#materiel_collapse"
-                                    aria-controls="materiel_collapse" aria-expanded="false" data-parent="#navbarParent"
+                                <a href="" id="nav_materiel" data-toggle="collapse"
+                                    data-target="#{{categorie.Nom|replace({' ': '', "'": ''})}}_collapse"
+                                    aria-controls="{{categorie.Nom|replace({' ': '', "'": ''})}}_collapse"
+                                    aria-expanded="false" data-parent="#navbarParent"
                                     class="m-0 mt-auto mb-auto dropdown-dessin py-3 px-1 a_no_syle nav-collapse">
-                                    jeux avec du petit matériel
+                                    {{categorie.Nom}}
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-3 d-flex flex-column">
-                            <div class="nav-item">
-                                <a href="" id="nav_materiel" data-toggle="collapse" data-target="#apprendre_collapse"
-                                    aria-controls="apprendre_collapse" aria-expanded="false" data-parent="#navbarParent"
-                                    class="m-0 mt-auto mb-auto dropdown-dessin py-3 px-1 a_no_syle nav-collapse">
-                                    apprendre en s’amusant
-                                </a>
-                            </div>
-                        </div>
+                        {% endfor %}
+
                         <div class="col-xl-2 d-flex flex-column">
                             <div class="nav-item">
                                 <a href="" id="nav_materiel" data-toggle="collapse" data-target="#age_collapse"
@@ -65,7 +68,7 @@ app.request.attributes.get('_route_params'))|split('/')|last
                                 <a class="a_no_syle" href="{{ path('home') }}">contactez-moi</a>
                             </h2>
                         </div>
-                        <div class="col-xl-2  d-flex flex-column">
+                        <div class="col-xl-1  d-flex flex-column">
                             <h2 class="m-0 mt-auto mb-auto d-flex justify-content-around">
                                 <a href="{{ path('admin') }}">
                                     <i class="fa fa-user m-1" aria-hidden="true"></i>
@@ -76,82 +79,47 @@ app.request.attributes.get('_route_params'))|split('/')|last
                         </div>
                     </div>
                 </div>
+                {% for categorie in findall('Categorie') %}
                 <div class="col-xl-8 offset-xl-3 mt-n3">
-                    <div class="collapse-menu collapse row ml-3" id="materiel_collapse" data-parent="#navbarParent">
-                        <div class="col-4 pr-0">
-                            <a href="#" class="a_no_syle">Développement web</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Développement mobile</a>
-                            <br>
-                            <a href="#" class="a_no_syle">UX et Design</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Infographie</a>
-                        </div>
-                        <div class="col-4 pr-0">
-                            <a href="#" class="a_no_syle">HTML et CSS</a>
-                            <br>
-                            <a href="#" class="a_no_syle">BOOTSTRAP</a>
-                            <br>
-                            <a href="#" class="a_no_syle">PHP et LARAVEL</a>
-                            <br>
-                            <a href="#" class="a_no_syle">JAVASCRIPT et VUE.JS</a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="a_no_syle">Visual Studio Code</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Laragon</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Google Chrome</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Windows 10</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-xl-8 offset-xl-3 mt-n3">
-                    <div class="collapse-menu collapse row ml-3" id="apprendre_collapse" data-parent="#navbarParent">
-                        <div class="col-3 pr-0">
-                            <a href="#" class="a_no_syle">Les p'tits défis</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Les p'tits défis scientifiques</a>
-                        </div>
-                        <div class="col-3 pr-0">
-                            <a href="#" class="a_no_syle">Les p’tits dicos</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Le corps humain</a>
-                        </div>
-                        <div class="col-3 pr-0">
-                            <a href="#" class="a_no_syle">La ferme</a>
-                            <br>
-                            <a href="#" class="a_no_syle">les dinosaures</a>
-                        </div>
-                        <div class="col-3">
-                            <a href="#" class="a_no_syle">Les fruits & légumes</a>
-                            <br>
-                            <a href="#" class="a_no_syle">Les insectes</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8 offset-xl-3 mt-n3">
-                    <div class="collapse-menu collapse row ml-3 text-center" id="age_collapse"
+                    <div class="collapse-menu collapse row ml-3 w-100 " id="{{categorie.Nom|replace({' ': '', "'": ''})}}_collapse"
                         data-parent="#navbarParent">
-                        <div class="col-4 pr-0">
-                            <a href="#" class="a_no_syle"><img src="{{ asset('build/3_ans_nav.png') }}" alt="">
-                            </a>
-                        </div>
-                        <div class="col-4 pr-0">
-                            <a href="#" class="a_no_syle"><img src="{{ asset('build/4_ans_nav.png') }}" alt="">
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="#" class="a_no_syle"><img src="{{ asset('build/5_ans_nav.png') }}" alt="">
-                            </a>
-                        </div>
+                        {% for souscat in categorie.souscats %}
 
+                        <div class="pr-0 col-xl-4 flex-fill">
+                            <a href="{{ path('souscat_show', {'id':  souscat.id }) }}" class="a_no_syle">{{souscat.titre}}</a>
                     </div>
+                    {% else %}
+                    <div class="row w-100 text-center">
+                        <div class="col-12">
+                            <h2>
+                                Aucune sous-categorie
+                            </h2>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
+            {% endfor %}
+            
+            <div class="col-xl-8 offset-xl-3 mt-n3">
+                <div class="collapse-menu collapse row ml-3 text-center" id="age_collapse" data-parent="#navbarParent">
+                    <div class="col-4 pr-0">
+                        <a href="#" class="a_no_syle"><img src="{{ asset('build/3_ans_nav.png') }}" alt="">
+                        </a>
+                    </div>
+                    <div class="col-4 pr-0">
+                        <a href="#" class="a_no_syle"><img src="{{ asset('build/4_ans_nav.png') }}" alt="">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="#" class="a_no_syle"><img src="{{ asset('build/5_ans_nav.png') }}" alt="">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            </div>
         </div>
         <div class="row w-100">
             <div class="col-xl-4 mr-2">
@@ -165,6 +133,8 @@ app.request.attributes.get('_route_params'))|split('/')|last
                     </div> #}
                 </div>
             </div>
+            {% block arianne %}
+
             <div class="col-xl-5 d-flex flex-column">
                 <h2 class="mt-auto">
                     bienvenue sur ma boutique
@@ -179,6 +149,7 @@ app.request.attributes.get('_route_params'))|split('/')|last
                     Sélectionnez, téléchargez, imprimez, découpez, assemblez et amusez-vous avec vos p’tits loups !
                 </span>
             </div>
+            {% endblock arianne %}
         </div>
 
     </nav>

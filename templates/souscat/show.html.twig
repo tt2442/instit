@@ -2,6 +2,18 @@
 
 {% block title %}{{souscat.Titre}}
 {% endblock %}
+{% block arianne %}
+
+<div {% set route=path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %} {% set
+    action=path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|split('/')|last %}
+    {{route}} class="col-xl-5 d-flex flex-column">
+    <h2 class="mt-auto mb-auto pt-5">
+        {{route}} future fil d'arianne
+    </h2>
+
+</div>
+{% endblock arianne %}
+
 {% block body %}
 
 <div class="container">
@@ -11,8 +23,8 @@
                 {{ souscat.Titre }}
             </h2>
             <hr>
-            <span class="span-primary">
-                {{ souscat.categorie.Nom }} 
+            <span class="span-primary" style="color: {{ souscat.categorie.couleur }};">
+                {{ souscat.categorie.Nom }}
             </span>
         </div>
         <div class="text-center p-0 d-flex col">
@@ -29,8 +41,14 @@
                         </h3>
                         <br>
                         <a href="{{ path('article_show', {'id':  article.id }) }}" class="btn btn-rose mt-auto"
-                            style="background-color:{{ souscat.categorie.couleur }};">Voir le produit</a>
+                            style="background-color:{{ souscat.couleur }};">Voir le produit</a>
                     </div>
+                </div>
+                {% else %}
+                <div class="col-2">
+                    <h3 class="titre_produit-gris">
+                        Aucun produit disponible
+                    </h3>
                 </div>
                 {% endfor %}
             </div>
