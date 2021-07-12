@@ -19,7 +19,7 @@
             </span>
         </div>
         <div class="col-xl-8">
-            <img src="{{ asset('build/visuel_calendrier.png') }}" class="img-fluid">
+            <img src="{{ asset('build/visuel_calendrier.png')|imagine_filter('moyen') }}" class="img-fluid">
         </div>
         <div class="col-xl-4 offset-xl-4 mt-3">
             <h2>
@@ -97,8 +97,8 @@
 </div>
 
 {% for categorie in categories %}
-{% if categorie.etat == true  and categorie.souscats|length > 0 %}
-    
+{% if categorie.etat == true and categorie.souscats|length > 0 %}
+
 <div class="container">
     <div class="row">
         <div class="col-12  text-center">

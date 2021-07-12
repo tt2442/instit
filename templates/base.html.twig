@@ -86,7 +86,8 @@ app.request.attributes.get('_route_params'))|split('/')|last
                         {% for souscat in categorie.souscats %}
 
                         <div class="pr-0 col-xl-4 flex-fill">
-                            <a href="{{ path('souscat_show', {'id':  souscat.id }) }}" class="a_no_syle">{{souscat.titre}}</a>
+                            <a href="{{ path('souscat_show', {'id': souscat.id }) }}" class="a_no_syle">
+                        {{souscat.titre}}</a>
                     </div>
                     {% else %}
                     <div class="row w-100 text-center">
@@ -100,7 +101,7 @@ app.request.attributes.get('_route_params'))|split('/')|last
                 </div>
             </div>
             {% endfor %}
-            
+
             <div class="col-xl-8 offset-xl-3 mt-n3">
                 <div class="collapse-menu collapse row ml-3 text-center" id="age_collapse" data-parent="#navbarParent">
                     <div class="col-4 pr-0">
@@ -118,14 +119,15 @@ app.request.attributes.get('_route_params'))|split('/')|last
 
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
+        </div>
         </div>
         <div class="row w-100">
             <div class="col-xl-4 mr-2">
                 <div class="row">
                     <div class="col-12 text-right">
-                        <img src="{{ asset('build/rachel_photo.png') }}" class="rounded-circle img-fluid img-pos">
+                        <img src="{{ asset('build/rachel_photo.png')|imagine_filter('moyen') }}"
+                            class="rounded-circle img-fluid img-pos">
                         <img class="img-fluid rotate" style="margin-top:-2rem;margin-right:3rem"
                             src="{{ asset('build/etoile.png') }}" alt="">
                     </div>
