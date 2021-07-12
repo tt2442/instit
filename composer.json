@@ -85,17 +85,12 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
-        "patch": ["cp patch/patch_crud/templates/* vendor/symfony/maker-bundle/src/Resources/skeleton/crud/templates/.", "cp patch/patch_crud/Controller.tpl.php vendor/symfony/maker-bundle/src/Resources/skeleton/crud/controller/.", "cp patch/patch_crud/Type.tpl.php vendor/symfony/maker-bundle/src/Resources/skeleton/form/.", "cp patch/patch_crud/EntityDetails.php vendor/symfony/maker-bundle/src/Doctrine/.", "cp patch/patch_crud/MakeCrud.php vendor/symfony/maker-bundle/src/Maker/."
-
-        ],
         "post-install-cmd": [
             [
-                "@patch",
                 "@auto-scripts"
             ]
         ],
         "post-update-cmd": [
-            "@patch",
             "@auto-scripts"
         ]
     },
