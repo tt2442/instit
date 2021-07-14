@@ -6,19 +6,17 @@ $amatic_orange: #FF6438;
 $amatic_gris_fonce: #625C61;
 $amatic_classic: #00566C;
 $pastel_beige_pale: #FAF4F4;
-$amatic_blanc:white;
-$ombre :rgba(98, 92, 97, 0.2);
+$amatic_blanc: white;
+$ombre: rgba(98, 92, 97, 0.2);
 $amatic_rose: #FF54A5;
 
-$amatic_grand_titre : 'Amatic SC',
-cursive;
-$amatic_texte : 'Raleway',
-sans-serif;
+$amatic_grand_titre: 'Amatic SC', cursive;
+$amatic_texte: 'Raleway', sans-serif;
 
 
-//font responsive
+// font responsive
 @function strip-unit($value) {
-    @return $value / ($value * 0 + 1);
+    @return $value /($value * 0 + 1);
 }
 
 html {
@@ -29,18 +27,18 @@ $baseline: 1.5rem;
 
 $minScreen: 20rem;
 $maxScreen: 50rem;
-$minFont: .8rem;
+$minFont: 0.8rem;
 $maxFont: 1.4rem;
 
 $h1: 1.8rem;
 $h2: 3rem;
 $h3: 1.25rem;
 $h4: 1rem;
-$h5: .875rem;
-$h6: .675rem;
-$p:1rem;
-$span:1rem;
-$body:1rem;
+$h5: 0.875rem;
+$h6: 0.675rem;
+$p: 1rem;
+$span: 1rem;
+$body: 1rem;
 
 h1 {
     font-size: $h1;
@@ -61,8 +59,7 @@ h2 {
 }
 
 h3 {
-    @extend h2
-}
+    @extend h2}
 
 h4 {
     font-size: $h4;
@@ -82,11 +79,16 @@ p {
     font-size: $p;
 }
 
+.btn-xs {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+
+}
+
 body {
     font-size: $body;
-    max-width: 100%;
-    height: auto;
-    background-image: url('/assets/images/background.png');
 }
 
 small {
@@ -109,18 +111,18 @@ small {
         & {
             font-size: $min-font-size;
 
-            @media screen and (min-width: $min-vw) {
+            @media screen and(min-width: $min-vw) {
                 font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
             }
 
-            @media screen and (min-width: $max-vw) {
+            @media screen and(min-width: $max-vw) {
                 font-size: $max-font-size;
             }
         }
     }
 }
 
-//fin font-responsive
+// fin font-responsive
 
 
 nav {
@@ -131,7 +133,7 @@ nav {
 
     .logo {
         margin-top: 1rem;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
     }
 
     & .img-pos {
@@ -142,13 +144,15 @@ nav {
 
     & .rotate {
         transform: rotate(-4deg);
-        margin-top: .5em;
+        margin-top:-2rem;
+        margin-right:3rem;
+        margin-left:3rem;
     }
 
     .navbar {
         border: 1px solid black;
         background: $pastel_beige_pale;
-        box-shadow: 0px 2px 4px $ombre;
+        box-shadow: 0 2px 4px $ombre;
         border-radius: 60px;
         padding: 1.2rem;
 
@@ -210,7 +214,7 @@ nav {
 .button-arrow {
     background: $amatic_classic;
     color: $amatic_blanc;
-    box-shadow: 0px 2px 4px $ombre;
+    box-shadow: 0 2px 4px $ombre;
     margin-top: 5rem;
     width: 4rem;
     height: 4rem;
@@ -219,7 +223,7 @@ nav {
 
 .img {
     &-shadow {
-        box-shadow: 0px 2px 4px $ombre;
+        box-shadow: 0 2px 4px $ombre;
     }
 }
 
@@ -258,8 +262,8 @@ nav {
 
     &[aria-expanded="true"] {
         background-color: white;
-        box-shadow: 0px 2px 4px $ombre;
-        border-radius: 24px 24px 0px 0px;
+        box-shadow: 0 2px 4px $ombre;
+        border-radius: 24px 24px 0 0;
     }
 }
 
@@ -279,7 +283,7 @@ a {
     z-index: 1000;
     padding: 0.5rem 0;
     background-color: #fff;
-    box-shadow: 0px 2px 4px $ombre;
+    box-shadow: 0 2px 4px $ombre;
     border-radius: 10px 10px 24px 24px;
 
     a {

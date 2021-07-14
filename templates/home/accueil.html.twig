@@ -1,180 +1,176 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-3 mb-5">
+	<div class="container-fluid mt-3 mb-5">
 
-    <div class="row">
-        <div class="col-xl-3 text-right pr-xl-5 pl-xl-5">
-            <h2>
-                je suis rachou
-            </h2>
-            <span class="span-primary">
-                Instit maternelle depuis 22 ans, coach pour les jeunes enseignants, passionnée par le monde des enfants
-                et
-                la
-                méthode
-                Montessori.
-            </span>
-        </div>
-        <div class="col-xl-8">
-            <img src="{{ asset('build/visuel_calendrier.png')|imagine_filter('moyen') }}" class="img-fluid">
-        </div>
-        <div class="col-xl-4 offset-xl-4 mt-3">
-            <h2>
-                mon calendrier au jour le jour et au fil des ans !
-            </h2>
-            <span class="span-primary">
-                Pour mieux appréhender les notions de jours, mois, années. Mais
-                aussi, les saisons, la météo, mon humeur du jour, les chiffres, le vocabulaire, la lecture en majuscules
-                et minuscules.
-            </span>
-            <br>
-            <p class="span-secondary">
-                Un cahier de 26 pages avec plein de visuels à scratcher, à utiliser au quotidien et au fil des années !
-            </p>
-            <span class="span-age">
-                de 3 à 6 ans
-            </span>
-            <br>
-            <span class="span-prix">
-                20,00 €
-            </span>
-        </div>
-    </div>
-</div>
+		<div class="row">
+			<div class="col-xl-3 text-right pr-xl-5 pl-xl-5">
+				<h2>
+					je suis rachou
+				</h2>
+				<span class="span-primary">
+					Instit maternelle depuis 22 ans, coach pour les jeunes enseignants, passionnée par le monde des enfants
+										                et
+										                la
+										                méthode
+										                Montessori.
+				</span>
+			</div>
+			<div class="col-xl-8">
+				<img src="{{ asset('build/visuel_calendrier.png')|imagine_filter('grand') }}" class="img-fluid">
+			</div>
+			<div class="col-xl-4 offset-xl-4 mt-3">
+				<h2>
+					mon calendrier au jour le jour et au fil des ans !
+				</h2>
+				<span class="span-primary">
+					Pour mieux appréhender les notions de jours, mois, années. Mais
+										                aussi, les saisons, la météo, mon humeur du jour, les chiffres, le vocabulaire, la lecture en majuscules
+										                et minuscules.
+				</span>
+				<br>
+				<p class="span-secondary">
+					Un cahier de 26 pages avec plein de visuels à scratcher, à utiliser au quotidien et au fil des années !
+				</p>
+				<span class="span-age">
+					de 3 à 6 ans
+				</span>
+				<br>
+				<span class="span-prix">
+					20,00 €
+				</span>
+			</div>
+		</div>
+	</div>
 
-<div class="container">
-    <h2 class="chapitre text-center">
-        nouveautés
-    </h2>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="row">
-            <div class="col-xl-1 p-0 text-center">
-                <a type="button" class="btn button-arrow rounded-circle customPrevBtn"><i class="fa fa-arrow-left mt-2"
-                        aria-hidden="true"></i>
-                </a>
-            </div>
+	<div class="container">
+		<h2 class="chapitre text-center">
+			nouveautés
+		</h2>
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<div class="row">
+				<div class="col-xl-1 p-0 text-center">
+					<a type="button" class="btn button-arrow rounded-circle customPrevBtn">
+						<i class="fa fa-arrow-left mt-2" aria-hidden="true"></i>
+					</a>
+				</div>
 
-            <div class="col-xl-10  p-0 text-center carousel-inner">
+				<div
+					class="col-xl-10  p-0 text-center carousel-inner">
 
 
-                {# <div class="row"> #}
-                    <div class="owl-carousel row m-0">
-                        {% for article in articles %}
-                        <div class="card border-0 bg-transparent d-inline-block">
-                            {% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
-                            <img class="card-img-top border-0 img-fluid bg-white"
-                                style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
-                            <div class="card-body bg-transparent text-left px-0">
-                                <h3 class="titre_produit m-0">
-                                    {{ article.Titre }}
-                                </h3>
-                                <span class="card-text span-age">
-                                    {{ article.age }}
-                                </span>
-                                <br>
-                                <span class="span-prix">
-                                    {% set price = article.prix / 100 %}
-                                    {{ price|number_format(2, '.', ',') }} €
-                                </span>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        {#
-                    </div> #}
-                </div>
-            </div>
-            <div class="col-xl-1  p-0 text-center">
-                <a type="button" class="btn button-arrow rounded-circle customNextBtn"><i class="fa fa-arrow-right mt-2"
-                        toto aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
+					{# <div class="row"> #}
+					<div class="owl-carousel row m-0">
+						{% for article in articles %}
+							<div class="card border-0 bg-transparent d-inline-block">
+								{% set link = asset('/uploads/Multimedia/' ~ article.Multimedia) %}
+								<img class="card-img-top border-0 img-fluid bg-white" style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
+								<div class="card-body bg-transparent text-left px-0">
+									<h3 class="titre_produit m-0">
+										{{ article.Titre }}
+									</h3>
+									<span class="card-text span-age">
+										{{ article.age }}
+									</span>
+									<br>
+									<span class="span-prix">
+										{% set price = article.prix / 100 %}
+										{{ price|number_format(2, '.', ',') }}
+										€
+									</span>
+								</div>
+							</div>
+						{% endfor %}
+						{#
+												                    </div> #}
+					</div>
+				</div>
+				<div class="col-xl-1  p-0 text-center">
+					<a type="button" class="btn button-arrow rounded-circle customNextBtn">
+						<i class="fa fa-arrow-right mt-2" toto aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
 
-    </div>
-</div>
+		</div>
+	</div>
 
-{% for categorie in categories %}
-{% if categorie.etat == true and categorie.souscats|length > 0 %}
+	{% for categorie in categories %}
+		{% if categorie.etat == true and categorie.souscats|length > 0 %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-12  text-center">
-            <h2 class="chapitre">
-                {{ categorie.Nom }}
-            </h2>
-            <hr>
-            <span class="span-primary">
-                {{ categorie.Description }}
-            </span>
-        </div>
-        <div class="text-center p-0 d-flex col">
-            <div class="row w-100 justify-content-around  mt-2">
-                {# <div class="card border-0 col-xl-3 flex-fill bg-transparent">
-                    <div class="card-body text-center px-0 justify-content-center pt-0 pb-2">
-                        <div class="card-img-top img-fluid rounded-circle img-shadow"
-                            style=" height:13.5rem; width:13.5rem;background-color: {{ categorie.couleur }};"></div>
-                        <span class="span-primary" style="color:{{ categorie.couleur }};">
-                            {{ categorie.Nom }}
-                        </span>
-                        <span class="span-primary">
-                            {{ categorie.Description }}
-                        </span>
-                    </div>
-                </div> #}
+			<div class="container">
+				<div class="row">
+					<div class="col-12  text-center">
+						<h2 class="chapitre">
+							{{ categorie.Nom }}
+						</h2>
+						<hr>
+						<span class="span-primary">
+							{{ categorie.Description }}
+						</span>
+					</div>
+					<div class="text-center p-0 d-flex col">
+						<div
+							class="row w-100 justify-content-around  mt-2">
+							{# <div class="card border-0 col-xl-3 flex-fill bg-transparent">
+														                    <div class="card-body text-center px-0 justify-content-center pt-0 pb-2">
+														                        <div class="card-img-top img-fluid rounded-circle img-shadow"
+														                            style=" height:13.5rem; width:13.5rem;background-color: {{ categorie.couleur }};"></div>
+														                        <span class="span-primary" style="color:{{ categorie.couleur }};">
+														                            {{ categorie.Nom }}
+														                        </span>
+														                        <span class="span-primary">
+														                            {{ categorie.Description }}
+														                        </span>
+														                    </div>
+														                </div> #}
 
-                {% for souscat in categorie.souscats %}
-                <div class="card border-0 col-xl-3 flex-fill bg-transparent">
-                    {% set link = asset('/uploads/image/' ~ souscat.image) %}
-                    <div class="card-body text-center px-0 justify-content-center d-flex flex-column pt-0 pb-2">
-                        <div class="card-img-top img-fluid rounded-circle img-shadow bg-white"
-                            style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;">
-                        </div>
-                        <h3 class="titre_produit-gris">
-                            {{ souscat.Titre }}
-                        </h3>
-                        <br>
-                        <a href="{{ path('souscat_show', {'id':  souscat.id }) }}" class="btn btn-rose mt-auto"
-                            style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+							{% for souscat in categorie.souscats %}
+								<div class="card col border-0 col-xl-3 flex-fill bg-transparent">
+									{% set link = asset('/uploads/image/' ~ souscat.image) %}
+									<div class="card-body row text-center px-0 justify-content-center pt-0 pb-2">
+										<div class="col-12 card-img-top img-fluid rounded-circle img-shadow bg-white" style=" height:13.5rem; width:13.5rem; background-image: url('{{link}}'); background-size:cover; background-position:center;"></div>
+										<h3 class="titre_produit-gris">
+											{{ souscat.Titre }}
+										</h3>
+										<br>
+										<a href="{{ path('souscat_show', {'id': souscat.id }) }}" class="btn btn-rose mt-auto w-auto" style="background-color:{{ categorie.couleur }};">Voir la sous-catégorie</a>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
 
-    </div>
-</div>
-{% endif %}
-{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
 
-<div class="container">
-    <div class="row">
-        <div class="card col card-rounded my-5">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
-            <div class="row">
-                <div class="card-body col-8">
-                    <h2 class="titre_produit-gris">pensez à plastifier les documents pour qu’ils durent longtemps !</h2>
-                    <span class="card-text span-age">
-                        Voici un lien pour acheter une plastifieuse à 29,99 € sur Amazon
-                    </span>
-                    <a class="btn btn-primary"
-                        href="https://www.amazon.fr/TOPELEK-Plastifieuse-Plastifier-Pochettes-Coupe-papier/dp/B07ZGC8XFV/ref=sr_1_7?dchild=1&keywords=plastifieuse&qid=1624384709&smid=A328Z4US2ZOVL0&sr=8-7">
-                        Voir l'article
-                    </a>
-                </div>
-                <div class="col-2">
-                    <a
-                        href="https://www.amazon.fr/TOPELEK-Plastifieuse-Plastifier-Pochettes-Coupe-papier/dp/B07ZGC8XFV/ref=sr_1_7?dchild=1&keywords=plastifieuse&qid=1624384709&smid=A328Z4US2ZOVL0&sr=8-7">
-                        <img class="img-fluid m-2"
-                            src="https://images-na.ssl-images-amazon.com/images/I/61o3wklx9dL._AC_SX425_.jpg"
-                            alt="amazon">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container">
+		<div class="row">
+			<div class="card col card-rounded my-5">
+				<img class="card-img-top" src="" alt="">
+				<div class="row">
+					<div class="card-body col-8">
+						<h2 class="titre_produit-gris">pensez à plastifier les documents pour qu’ils durent longtemps !</h2>
+						<span class="card-text span-age">
+							Voici un lien pour acheter une plastifieuse à 29,99 € sur Amazon
+						</span>
+						<a class="btn btn-primary" href="https://www.amazon.fr/TOPELEK-Plastifieuse-Plastifier-Pochettes-Coupe-papier/dp/B07ZGC8XFV/ref=sr_1_7?dchild=1&keywords=plastifieuse&qid=1624384709&smid=A328Z4US2ZOVL0&sr=8-7">
+							Voir l'article
+						</a>
+					</div>
+					<div class="col-2">
+						<a href="https://www.amazon.fr/TOPELEK-Plastifieuse-Plastifier-Pochettes-Coupe-papier/dp/B07ZGC8XFV/ref=sr_1_7?dchild=1&keywords=plastifieuse&qid=1624384709&smid=A328Z4US2ZOVL0&sr=8-7">
+							<img class="img-fluid m-2" src="https://images-na.ssl-images-amazon.com/images/I/61o3wklx9dL._AC_SX425_.jpg" alt="amazon">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

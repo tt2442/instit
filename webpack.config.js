@@ -43,6 +43,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry("collection", "./assets/jscrudmick/collection.js") //gestion des collections
+    .addEntry("sortable", "./assets/jscrudmick/sortable.js") //gestion des lignes sortables
+    //.addEntry("panier", "./assets/jscrudmick/panier.js") //gestion d'un panier
+
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -92,6 +96,12 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     .autoProvidejQuery()
+    .autoProvideVariables({
+        // indispensable pour les plugins jquery qui ne trouve pas $
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery",
+    })
     ;
 
 module.exports = Encore.getWebpackConfig();
