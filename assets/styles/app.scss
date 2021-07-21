@@ -1,20 +1,17 @@
-@import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+@import "bootstrap/scss/bootstrap";
 
-$amatic_orange: #FF6438;
-$amatic_gris_fonce: #625C61;
-$amatic_classic: #00566C;
-$pastel_beige_pale: #FAF4F4;
-$amatic_blanc:white;
-$ombre :rgba(98, 92, 97, 0.2);
-$amatic_rose: #FF54A5;
+$amatic_orange: #ff6438;
+$amatic_gris_fonce: #625c61;
+$amatic_classic: #00566c;
+$pastel_beige_pale: #faf4f4;
+$amatic_blanc: white;
+$ombre: rgba(98, 92, 97, 0.2);
+$amatic_rose: #ff54a5;
 
-$amatic_grand_titre : 'Amatic SC',
-cursive;
-$amatic_texte : 'Raleway',
-sans-serif;
-
+$amatic_grand_titre: "Amatic SC", cursive;
+$amatic_texte: "Raleway", sans-serif;
 
 //font responsive
 @function strip-unit($value) {
@@ -29,22 +26,21 @@ $baseline: 1.5rem;
 
 $minScreen: 20rem;
 $maxScreen: 50rem;
-$minFont: .8rem;
+$minFont: 0.8rem;
 $maxFont: 1.4rem;
 
 $h1: 1.8rem;
 $h2: 3rem;
 $h3: 1.25rem;
 $h4: 1rem;
-$h5: .875rem;
-$h6: .675rem;
-$p:1rem;
-$span:1rem;
-$body:1rem;
+$h5: 0.875rem;
+$h6: 0.675rem;
+$p: 1rem;
+$span: 1rem;
+$body: 1rem;
 
 h1 {
     font-size: $h1;
-
 }
 
 h2 {
@@ -61,14 +57,12 @@ h2 {
 }
 
 h3 {
-    @extend h2
+    @extend h2;
 }
 
 h4 {
     font-size: $h4;
-
 }
-
 
 h5 {
     font-size: $h5;
@@ -86,7 +80,7 @@ body {
     font-size: $body;
     max-width: 100%;
     height: auto;
-    background-image: url('/assets/images/background.png');
+    background-image: url("/assets/images/background.png");
 }
 
 small {
@@ -110,7 +104,10 @@ small {
             font-size: $min-font-size;
 
             @media screen and (min-width: $min-vw) {
-                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+                        ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+                );
             }
 
             @media screen and (min-width: $max-vw) {
@@ -122,16 +119,14 @@ small {
 
 //fin font-responsive
 
-
 nav {
-
     .container-fluid {
         z-index: $zindex-dropdown;
     }
 
     .logo {
         margin-top: 1rem;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
     }
 
     & .img-pos {
@@ -142,7 +137,7 @@ nav {
 
     & .rotate {
         transform: rotate(-4deg);
-        margin-top: .5em;
+        margin-top: 0.5em;
     }
 
     .navbar {
@@ -231,7 +226,7 @@ nav {
 
 .card-rounded {
     border-radius: 30px;
-    border: 2px solid rgba(0, 0, 0, 0.2)
+    border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -251,7 +246,7 @@ nav {
 
 .dropdown-dessin {
     &:hover {
-        background-image: url('/assets/images/courbe_header.png');
+        background-image: url("/assets/images/courbe_header.png");
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -295,4 +290,7 @@ a {
             color: $amatic_gris_fonce;
         }
     }
+}
+.btn-xs {
+    padding: 0.1rem 0.2rem;
 }

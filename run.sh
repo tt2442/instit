@@ -1,3 +1,3 @@
-docker kill instit
-docker rm instit
- docker run -d -p 80:80 --name instit -v /home/theo/sites/instit:/app cadotinfo/symfony5
+export result=${PWD##*/}
+docker-compose down --remove-orphans
+docker-compose up -d

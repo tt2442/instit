@@ -1,0 +1,17 @@
+version: '3'
+services:
+  instit:
+    image: cadotinfo/symfony5
+    container_name: instit
+    volumes:
+      - .:/app
+    networks:
+      - web
+    restart: always
+    ports:
+      - 49400:80
+
+
+networks:
+  web:
+    external: true
