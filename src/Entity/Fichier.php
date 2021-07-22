@@ -1,11 +1,14 @@
 <?php
+/* ------------------------------------------------------------------------------------------------------------------ */
+/*                                                                         ATTENTION CE FICHIER EST CRÉÉ PAR CRUDMICK */
+/* ------------------------------------------------------------------------------------------------------------------ */
 
 namespace App\Entity;
 
 use App\Repository\FichierRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Controller\UploadController;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass=FichierRepository::class)
@@ -15,132 +18,94 @@ class Fichier
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * PARTIE=admin
-     * EXTEND=admin.html.twig
      * @ORM\Column(type="integer")
-     * ATTR=no_index
+     * PARTIE=admin
+     * EXTEND=admin/admin.html.twig
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Image;
+    private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * ALIAS=texte_propre
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $Tag;
+    private $description;
 
     /**
-     * @ORM\Column(type="boolean")
-     * OPT=choices=>['Oui'=>'true', 'Non'=>'false']
-     * OPT=expanded=>true
+     * @ORM\Column(type="string", length=255,nullable=true)
+     * ALIAS=fichier
      */
-    private $Degrade;
+    private $url;
 
     /**
-     * @ORM\Column(type="boolean")
-     * OPT=choices=>['Oui'=>'true', 'Non'=>'false']
-     * OPT=expanded=>true
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
-    private $Enligne;
+    private $realName;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="Fichier")
-     * OPT=required=>false
-     * ATTR=no_index
-     */
-    private $article;
 
-    public function __construct()
-    {
-        $this->article = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImage(): ?string
+    public function getNom(): ?string
     {
-        return $this->Image;
+        return $this->nom;
     }
 
-    public function setImage(?string $Image): self
+    public function setNom(?string $nom): self
     {
-        $this->Image = $Image;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getTag(): ?string
+    public function getDescription(): ?string
     {
-        return $this->Tag;
+        return $this->description;
     }
 
-    public function setTag(string $Tag): self
+    public function setDescription(?string $description): self
     {
-        $this->Tag = $Tag;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getDegrade(): ?bool
+    public function getUrl(): ?string
     {
-        return $this->Degrade;
+        return $this->url;
     }
 
-    public function setDegrade(bool $Degrade): self
+    public function setUrl(string $url): self
     {
-        $this->Degrade = $Degrade;
-
+        $upload = new UploadController();
+        $data = $upload->tmpToFinal($url);
+        $this->url = $data->name;
+        $this->realName = $data->real_name;
         return $this;
     }
-
-    public function getEnligne(): ?bool
+    public function __toString(): ?string
     {
-        return $this->Enligne;
-    }
-
-    public function setEnligne(bool $Enligne): self
-    {
-        $this->Enligne = $Enligne;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticle(): Collection
-    {
-        return $this->article;
-    }
-
-    public function addArticle(Article $article): self
-    {
-        if (!$this->article->contains($article)) {
-            $this->article[] = $article;
-            $article->addFichier($this);
+        if (is_null($this->url)) {
+            return 'erreur';
         }
-
-        return $this;
+        return $this->url;
     }
 
-    public function removeArticle(Article $article): self
+    public function getrealName(): ?string
     {
-        if ($this->article->removeElement($article)) {
-            $article->removeFichier($this);
-        }
-
-        return $this;
+        return $this->realName;
     }
 
-    public function __toString()
+    public function setrealName(string $realName): self
     {
-        return  $this->getImage();
+        $this->realName = $realName;
+
+        return $this;
     }
 }

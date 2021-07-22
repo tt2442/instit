@@ -91,12 +91,7 @@ class Article
      */
     private $Categorie;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Fichier::class, inversedBy="article")
-     * OPT=required=>false
-     * ATTR=no_index
-     */
-    private $Fichier;
+
 
     /**
      * @ORM\ManyToMany(targetEntity=Materiel::class, inversedBy="article")
@@ -119,6 +114,11 @@ class Article
      */
     private $date;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Fichier::class,cascade={"persist"})
+     */
+    private $fichiers;
+
     // /**
     //  * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
     //  * OPT=required=>false
@@ -138,13 +138,13 @@ class Article
     {
         // $this->Users = new ArrayCollection();
         $this->Categorie = new ArrayCollection();
-        $this->Fichier = new ArrayCollection();
         $this->Materiel = new ArrayCollection();
         // $this->Commentaire = new ArrayCollection();
         // $this->commande = new ArrayCollection();
 
         $date = new DateTime(date("Y-m-d H:i:s"));
         $this->setDate($date);
+        $this->fichiers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -310,29 +310,6 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|Fichier[]
-     */
-    public function getFichier(): Collection
-    {
-        return $this->Fichier;
-    }
-
-    public function addFichier(Fichier $fichier): self
-    {
-        if (!$this->Fichier->contains($fichier)) {
-            $this->Fichier[] = $fichier;
-        }
-
-        return $this;
-    }
-
-    public function removeFichier(Fichier $fichier): self
-    {
-        $this->Fichier->removeElement($fichier);
-
-        return $this;
-    }
 
     /**
      * @return Collection|Materiel[]
@@ -418,6 +395,30 @@ class Article
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Fichier[]
+     */
+    public function getFichiers(): Collection
+    {
+        return $this->fichiers;
+    }
+
+    public function addFichier(Fichier $fichier): self
+    {
+        if (!$this->fichiers->contains($fichier)) {
+            $this->fichiers[] = $fichier;
+        }
+
+        return $this;
+    }
+
+    public function removeFichier(Fichier $fichier): self
+    {
+        $this->fichiers->removeElement($fichier);
 
         return $this;
     }
