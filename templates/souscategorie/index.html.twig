@@ -1,0 +1,40 @@
+{% extends 'admin/admin.html.twig' %}
+{% block title %}  Souscategorie 
+    {% endblock %}
+{% block body %} 
+<h1> Souscategorie </h1>{% set list=findOneBy('sortable',{'entite':'.$entitie.'}) %}
+{% if list != null %}
+<input type="hidden" id="ex_sortable" value="{{list.Ordre}}">
+{% endif %}
+    
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr><th>Id</th><th>Titre</th><th>Image</th><th>Description</th>
+            <th>Actions</th>
+<tbody id="sortable" style="cursor:move;" >
+{% for  Souscategorie  in  souscategories  %}
+    <tr data-num="{{Souscategorie.id }}">
+<td>{{Souscategorie.id}}</td>
+<td>{{Souscategorie.titre}}</td>
+<td>{%if Souscategorie.image %}<a data-toggle='popover-hover' data-original-title="" title="" data-img="{{voir('image/'~Souscategorie.image)}}"><img src="{{getico('image/'~Souscategorie.image)}}"></a> {% endif %}</td>
+<td>{{Souscategorie.description}}</td><td>
+                    <form method='post' action="{{ path('souscategorie_delete', {'id':  Souscategorie.id }) }}" 
+                    onsubmit="return confirm('Etes-vous sûr de vouloir effacer cet item?');">
+                    <div class='row'>
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~  Souscategorie . id ) }}">
+                        <a class='btn btn-xs btn-primary' data-toggle='tooltip' title='Voir' href="{{ path('souscategorie_show', {'id':  Souscategorie.id }) }}"><i class="icone fas fa-glasses "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Editer' href="{{ path('souscategorie_edit', {'id':  Souscategorie.id }) }}"><i class="icone fas fa-pen "></i></a>
+                        <a class='btn btn-xs btn-secondary' data-toggle='tooltip' title='Dupliquer' href="{{ path('souscategorie_copy',{'id':  Souscategorie.id }) }}"><i class="icone fas fa-copy "></i></a>
+                        <button class="btn btn-xs btn-warning "><i class="icone fas fa-trash "></i></button>
+                    </div>
+                        </form>
+            {% else %}
+            <tr>
+                <td colspan=5>Aucun enregistrement</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>{% endblock %}
