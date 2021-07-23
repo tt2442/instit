@@ -32,7 +32,7 @@ class ArticleType extends AbstractType
             ->add('Multimedia', FileType::class, ['data_class' => null, 'required' => false, 'attr' => ['data-inputmask' => "'alias': 'fichier'", 'no_index',]])
             ->add('Etat', ChoiceType::class, ['choices' => ['Actif' => 'actif', 'En rupture' => 'rupture', 'Arrêté' => 'arret', 'En réapprovisionnement' => 'reapprovisionnement',], 'attr' => []])
 
-            ->add('Quantite', null, ['attr' => ['data-inputmask' => "'alias': 'number'",]])
+            ->add('Quantite', null, ['attr' => ['data-inputmask' => "'alias': 'number'"]])
             ->add('FraisEnvoi', MoneyType::class, ['divisor' => 100, 'label' => "Frais d'envoi", 'attr' => ['data-inputmask' => "'alias': 'prix'", 'no_index',]])
             ->add('Prix', MoneyType::class, ['divisor' => 100, 'attr' => ['data-inputmask' => "'alias': 'prix'",]])
             ->add('age', ChoiceType::class, ['choices' => ['À partir de 3 ans' => 'À partir de 3 ans', 'À partir de 4 ans' => 'À partir de 4 ans', 'À partir de 5 ans' => 'À partir de 5 ans', 'À partir de 6 ans' => 'À partir de 6 ans', 'De 3 à 5 ans' => 'De 3 à 5 ans', 'De 4 à 6 ans' => 'De 4 à 6 ans',], 'attr' => ['no_index',]])

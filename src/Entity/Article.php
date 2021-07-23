@@ -53,7 +53,7 @@ class Article
      * @ORM\Column(type="integer")
      * ALIAS=number
      */
-    private $Quantite;
+    private $Quantite = 1;
 
     /**
      * @ORM\Column(type="integer")

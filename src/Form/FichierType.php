@@ -6,7 +6,6 @@
 namespace App\Form;
 
 use App\Entity\Fichier;
-use App\Form\Type\StrFileType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +18,6 @@ class FichierType extends AbstractType
     {
         $builder
             ->add('nom', null, ['attr' => []])
-
             ->add('description', null, ['attr' => []])
             ->add('fichier', FileType::class, ['required' => false, 'mapped' => false, 'attr' => ['data-inputmask' => "'alias': 'fichier'",]])
             ->add('url', HiddenType::class, ['attr' => ['data-inputmask' => "'alias': 'fichier'",]]);

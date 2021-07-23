@@ -1,52 +1,41 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Partie administration{% endblock %}
+{% block title %}Partie administration
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
+	<style>
+		.example-wrapper
+		{
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
 
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
+		.example-wrapper code
+		{
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Partie administration</h1>
+	<div class="example-wrapper">
+		<h1>Partie administration</h1>
 
-    Ci-dessous les différentes parties du site :
-    <ul>
-        {# <li>Utilisateurs
-            <code><a href="{{ path('user_index') }}">Utilisateurs</a></code>
-        </li> #}
-        <li>Article
-            <code><a href="{{ path('article_index') }}">Article</a></code>
-        </li>
-        <li>Categorie
-            <code><a href="{{ path('categorie_index') }}">Categorie</a></code>
-        </li>
-        <li>Commande
-            <code><a href="{{ path('materiel_index') }}">Materiel</a></code>
-        </li>
-        {# <li>Commentaire
-            <code><a href="{{ path('commentaire_index') }}">Commentaire</a></code>
-        </li> #}
-        <li>Fichier
-            <code><a href="{{ path('fichier_index') }}">Fichier</a></code>
-        </li>
-        <li>Liens internes
-            <code><a href="{{ path('liens_interne_index') }}">Liens internes</a></code>
-        </li>
-        <li>Liens externes
-            <code><a href="{{ path('liens_externe_index') }}">Liens externes</a></code>
-        </li>
+		Ci-dessous les différentes parties du site :
+		<ul>
+			{# <li>Utilisateurs
+			            <code><a href="{{ path('user_index') }}">Utilisateurs</a></code>
+			        </li> #}
+			{% set menus = ['article','categorie','materiel','liens_interne','liens_externe','promotion'] %}
+			{% for menu in menus %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path(menu~'_index') }}">{{menu|capitalize}}s</a>
+				</li>
+			{% endfor %}
 
-    </ul>
-</div>
+
+		</ul>
+	</div>
 {% endblock %}

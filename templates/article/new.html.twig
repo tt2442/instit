@@ -24,29 +24,31 @@
 				Mo</h5>
 		</span>
 	</div>
-</divclass="col-12">
-{{ form_start(form) }}
-{{ form_row(form.Titre) }}
-{{ form_row(form.Description) }}
-{{ form_row(form.Multimedia) }}
-{{ form_row(form.Etat) }}
-{{ form_row(form.Quantite) }}
-{{ form_row(form.FraisEnvoi) }}
-{{ form_row(form.Prix) }}
-{{ form_row(form.age) }}
-{{ form_row(form.date) }}
-{{ form_row(form.Promotion) }}
-{{ form_row(form.Categorie) }}
-{{ form_row(form.fichiers) }}
-{{ form_row(form.Materiel) }}
-<button class="btn btn-primary" type="submit">
-	{% if action=='new' %}Créer
-		{% else %}Mettre à jour
-	{% endif %}
-</button>
+	<div class="col-12">
+		{{ form_start(form) }}
+		{{ form_row(form.Titre) }}
+		{{ form_row(form.Description) }}
+		{{ form_row(form.Multimedia) }}
+		{{ form_row(form.Etat) }}
+		{{ form_row(form.Quantite) }}
+		{{ form_row(form.FraisEnvoi) }}
+		{{ form_row(form.Prix) }}
+		{{ form_row(form.age) }}
+		{{ form_row(form.date) }}
+		{{ form_row(form.Promotion) }}
+		{{ form_row(form.Categorie) }}
+		{{ form_row(form.fichiers) }}
+		{{ form_row(form.Materiel) }}
+		<button class="btn btn-primary" type="submit">
+			{% if action=='new' %}Créer
+				{% else %}Mettre à jour
+			{% endif %}
+		</button>
 
-<a href="{{ path('article_index') }}">
-	<button class="btn btn-secondary" type="button">Revenir à la liste</button>
-</a>
-<input type="hidden" id="token" value="{{ csrf_token('upload')}}"/>
-{{ form_end(form) }}</div>{% endblock %}
+		<a href="{{ path('article_index') }}">
+			<button class="btn btn-secondary" type="button">Revenir à la liste</button>
+		</a>
+		<input type="hidden" id="token" value="{{ csrf_token('upload')}}"/>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
